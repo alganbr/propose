@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     'bootstrap3',
     'dashboard',
     'project',
+    'rest_framework',
     'tag',
+    'webpack_loader',
 ]
 
 MIDDLEWARE = [
@@ -114,7 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -138,3 +139,10 @@ STATICFILES_DIRS =[STATIC_DIR]
 # Media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = MEDIA_DIR
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/local/',  # end with slash
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-local.json')
+    }
+}

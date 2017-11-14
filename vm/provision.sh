@@ -22,5 +22,9 @@ pushd /home/vagrant/propose
 /usr/bin/python3 manage.py migrate
 popd
 
+# Install npm
+sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo sh
+sudo apt-get install -y nodejs
+
 # Give everything in home folder back to vagrant user
 chown -R vagrant:vagrant /home/vagrant
