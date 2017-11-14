@@ -1,1 +1,0 @@
-{"virtualbox":{"/home/vagrant/propose":{"mount_options":["dmode=775","fmode=775","uid=1000","gid=1000"],"guestpath":"/home/vagrant/propose","hostpath":"/Users/alganbr/propose/propose","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/alganbr/propose/vm","disabled":false,"__vagrantfile":true}}}
