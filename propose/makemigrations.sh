@@ -1,0 +1,1 @@
+python3 manage.py makemigrations account application dashboard project tag

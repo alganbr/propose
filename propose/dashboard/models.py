@@ -13,3 +13,6 @@ class Dashboard(models.Model):
 
 	project = models.ForeignKey(
 		Project)
+
+	def __str__(self):
+		return "client:{0}, freelancer:{1}, project:{2}".format(self.client, self.freelancer, self.project)

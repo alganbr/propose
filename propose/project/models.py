@@ -13,11 +13,19 @@ class Compensation(models.Model):
 		default = 0,
 		blank = False)
 
+	def __str__(self):
+		return "{0} {1}".format(self.currency, self.value)
+
 class Project(models.Model):
 	owner = models.ForeignKey(
 		Client,
 		on_delete = models.CASCADE,
 		blank = False)
+
+	title = models.CharField(
+		max_length = 50,
+		blank = False,
+		null = True)
 
 	description = models.TextField(
 		blank = False)
@@ -27,12 +35,16 @@ class Project(models.Model):
 		blank = False)
 
 	requirements = models.ManyToManyField(
-		Tag)
+		Tag,
+		blank = True)
 
 	is_complete = models.BooleanField(
 			default = False,
 			null = False,
 			blank = False)
+
+	def __str__(self):
+		return self.title
 
 class Task(models.Model):
 	project = models.ForeignKey(
@@ -47,3 +59,6 @@ class Task(models.Model):
 		default = False,
 		null = False,
 		blank = False)
+
+	def __str__(self):
+		return self.description
