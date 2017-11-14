@@ -1,12 +1,13 @@
 # Install virtual machine requirements
 apt-get update
-apt-get install -y apache2 python3-pip python3-dev libpq-dev postgresql postgresql-contrib
+apt-get install -y apache2 python3-pip python3-dev libpq-dev postgresql postgresql-contrib libjpeg8-dev
 
 rm -rf /var/www
 ln -fs /vagrant /var/www
 
 # Install python requirements
-pip3 install -r /home/vagrant/propose/requirements.txt
+sudo pip3 install -U setuptools
+sudo pip3 install -r /home/vagrant/propose/requirements.txt
 
 # Create database and syncdb
 echo "ALTER USER postgres PASSWORD 'postgres'" | sudo -u postgres psql
