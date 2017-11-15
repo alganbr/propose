@@ -109,3 +109,6 @@ node_modules
 # Vagrant stuff
 vm/.vagrant/machines/default/virtualbox
 
+# Media folder
+media/
+
