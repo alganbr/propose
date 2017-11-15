@@ -112,3 +112,6 @@ vm/.vagrant/machines/default/virtualbox
 # Media folder
 media/
 
+# React stuff
+propose/webpack-stats-local.json
+propose/static/bundles/
