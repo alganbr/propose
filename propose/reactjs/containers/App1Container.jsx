@@ -1,7 +1,7 @@
-import React from "react"
+import React from 'react';
 
-import Headline from "../components/Headline"
-import Navbar from "../components/Navbar"
+import Headline from '../components/Headline';
+import Navbar from '../components/Navbar';
 
 export default class App1Container extends React.Component {
   render() {

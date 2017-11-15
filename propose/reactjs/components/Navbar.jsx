@@ -1,9 +1,10 @@
-import React from "react"
+import React from 'react';
+import FontAwesome from 'react-fontawesome';
 
 export default class Navbar extends React.Component {
   render() {
     return (
-        <nav id="mainNav" className="navbar navbar-default navbar-fixed-top">
+        <nav id="mainNav" className="navbar navbar-default navbar-static-top">
           <div className="container-fluid">
             <div className="navbar-header">
               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -23,7 +24,7 @@ export default class Navbar extends React.Component {
                   <a href="">Projects</a>
                 </li>
                 <li className="dropdown">
-                  <a href="#" className="dropdown-toggle" data-toggle="dropdown">My Account <i className="fa fa-caret-down"></i></a>
+                  <a href="#" className="dropdown-toggle" data-toggle="dropdown">My Account <FontAwesome name="caret-down" /></a>
                   <ul className="dropdown-menu">
                     <li><a href="">Profile</a></li>
                     <li><a href="">Settings</a></li>
