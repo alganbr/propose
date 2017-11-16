@@ -31,3 +31,27 @@ class Account(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class UserReview(models.Model):
+    reviewee = models.ForeignKey(
+        Account,
+        related_name = "reviewee",
+        on_delete = models.CASCADE,
+        blank = False)
+
+    reviewer = models.ForeignKey(
+        Account,
+        related_name = "reviewer",
+        on_delete = models.CASCADE,
+        blank = False)
+
+    review = models.TextField(
+        blank = False)
+
+    rating = models.IntegerField(
+        blank = False)
+
+    timestamp = models.DateTimeField(
+        auto_now_add = True,
+        editable = False,
+        blank = False)

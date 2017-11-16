@@ -71,3 +71,22 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
+
+class ProjectComment(models.Model):
+    project = models.ForeignKey(
+        Project,
+        on_delete = models.CASCADE,
+        blank = False)
+
+    user = models.ForeignKey(
+        Account,
+        on_delete = models.CASCADE,
+        blank = False)
+
+    comment = models.TextField(
+        blank = False)
+
+    timestamp = models.DateTimeField(
+        auto_now_add = True,
+        editable = False,
+        blank = False)

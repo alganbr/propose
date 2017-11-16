@@ -34,13 +34,18 @@ class WorkApplication(models.Model):
         on_delete = models.CASCADE,
         blank = False)
 
+    message = models.CharField(
+        max_length = 2000,
+        default = "",
+        blank = False)
+
     is_accepted = models.BooleanField(
         default = False,
         blank = False)
 
 class WorkOffer(models.Model):
     details = models.OneToOneField(
-        ApplicationDetails,
+        WorkApplication,
         on_delete = models.CASCADE,
         blank = False)
 
@@ -56,6 +61,11 @@ class WorkRequest(models.Model):
     details = models.OneToOneField(
         ApplicationDetails,
         on_delete = models.CASCADE,
+        blank = False)
+
+    message = models.CharField(
+        max_length = 2000,
+        default = "",
         blank = False)
 
     is_accepted = models.BooleanField(
