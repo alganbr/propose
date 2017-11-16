@@ -5,6 +5,8 @@ Endpoints
         - list of projects, filterable
     - POST /projects
         - create a new project
+    - GET /projects/new
+        - page to create a new project
     - GET /projects/<id>
         - project page of project <id>
 
@@ -12,24 +14,37 @@ Endpoints
         - (client-only) edit details of project <id>, or delete project
     - GET /projects/<id>/edit
         - (client-only) page to edit details of project <id>
-    - GET/POST /projects/<id>/apply
+    - GET /projects/<id>/apply
         - page to create an application for project <id>
-    - GET/POST /projects/<id>/request
+        - i.e., POST to /applications
+    - GET /projects/<id>/request
         - (client-only) page to create a request for a freelancer for project <id>
+        - i.e., POST to /requests
 
     - GET /applications
         - show list of applications
+    - POST /applications
+        - create new application
     - GET/DELETE /applications/<id>
         - (user-restricted) show application <id>, or withdraw it
-    - GET/POST /applications/<id>/respond
-        - (freelancer-only) accept or decline an offer
-        - (client-only) respond to an application
+    - POST /applications/<id>/offer
+        - (client-only) respond to an application with offer
+    - GET /application/<id>/offer/<id>
+        - (user-restricted) show offer details
+    - POST /application/<id>/offer/<id>
+        - (freelancer-only) accept or decline offer
+        - (client-only) edit offer for application
+    - POST /application/<id>/offer/<id>/edit
+        - (client-only) page to edit offer for application
     - GET /requests
         - show list of work requests
+    - POST /requests
+        - create new request
     - GET/DELETE /requests/<id>
         - (user-restricted) show request <id>, or withdraw it
-    - GET/POST /requests/<id>/respond
+    - GET /requests/<id>/apply
         - (freelancer-only) respond to a request by creating an application
+        - i.e., POST to /applications
 
     - GET /dashboard/working
         - show dashboard of ongoing projects
@@ -45,6 +60,8 @@ Endpoints
         - (user-restricted) show expanded project view of project <id>
     - POST /dashboard/project/<id>
         - (user-restricted) edit details, tasks, etc. for project <id>
+    - GET /dashboard/project/<id>/edit
+        - (client-only) page to edit details, tasks, etc. for project <id>
     - POST /dashboard/project/<id>/comment
         - (user-restricted) add a comment to project <id>
 
@@ -62,3 +79,5 @@ Endpoints
         - own profile
     - POST /profile
         - edit profile info
+    - GET /profile/edit
+        - page to edit own profile
