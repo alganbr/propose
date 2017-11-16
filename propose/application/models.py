@@ -4,7 +4,7 @@ from account.models import Account
 from project.models import Project
 
 # Create your models here.
-class ApplicationDetails(models.Model):
+class ApplicationDetail(models.Model):
     client = models.ForeignKey(
         Account,
         related_name = "client",
@@ -30,7 +30,7 @@ class ApplicationDetails(models.Model):
 
 class WorkApplication(models.Model):
     details = models.OneToOneField(
-        ApplicationDetails,
+        ApplicationDetail,
         on_delete = models.CASCADE,
         blank = False)
 
@@ -40,7 +40,7 @@ class WorkApplication(models.Model):
 
 class WorkOffer(models.Model):
     details = models.OneToOneField(
-        ApplicationDetails,
+        ApplicationDetail,
         on_delete = models.CASCADE,
         blank = False)
 
@@ -54,7 +54,7 @@ class WorkOffer(models.Model):
 
 class WorkRequest(models.Model):
     details = models.OneToOneField(
-        ApplicationDetails,
+        ApplicationDetail,
         on_delete = models.CASCADE,
         blank = False)
 

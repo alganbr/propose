@@ -57,7 +57,7 @@ class Task(models.Model):
         on_delete = models.CASCADE,
         blank = False)
 
-    name = models.TextField(
+    name = models.CharField(
         max_length = 50,
         blank = False)
 
