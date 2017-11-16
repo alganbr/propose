@@ -22,6 +22,11 @@ class ApplicationDetails(models.Model):
         on_delete = models.CASCADE,
         blank = False)
 
+    message = models.CharField(
+        max_length = 2000,
+        default = "",
+        blank = False)
+
     timestamp = models.DateTimeField(
         auto_now_add = True,
         editable = False,
@@ -34,17 +39,17 @@ class WorkApplication(models.Model):
         on_delete = models.CASCADE,
         blank = False)
 
-    message = models.CharField(
-        max_length = 2000,
-        default = "",
-        blank = False)
-
     is_accepted = models.BooleanField(
         default = False,
         blank = False)
 
 class WorkOffer(models.Model):
     details = models.OneToOneField(
+        ApplicationDetails,
+        on_delete = models.CASCADE,
+        blank = False)
+
+    application = models.OneToOneField(
         WorkApplication,
         on_delete = models.CASCADE,
         blank = False)
@@ -53,19 +58,13 @@ class WorkOffer(models.Model):
         default = False,
         blank = False)
 
-    is_expired = models.BooleanField(
-        default = False,
+    expire_time = models.DateTimeField(
         blank = False)
 
 class WorkRequest(models.Model):
     details = models.OneToOneField(
         ApplicationDetails,
         on_delete = models.CASCADE,
-        blank = False)
-
-    message = models.CharField(
-        max_length = 2000,
-        default = "",
         blank = False)
 
     is_accepted = models.BooleanField(
