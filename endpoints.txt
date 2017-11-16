@@ -36,15 +36,17 @@ Endpoints
     - GET /dashboard/completed
         - show dashboard of completed projects
     - POST /dashboard/working
-        - add dashboard entry to ongoing projects
+        - add project to ongoing projects
     - POST /dashboard/completed
-        - add dashboard entry to completed projects
+        - add project to completed projects
     - GET /dashboard/<id>
         - (user-restricted) show dashboard <id>
-    - GET /dashboard/entry/<id>
-        - (user-restricted) show dashboard entry <id>
-    - POST /dashboard/entry/<id>
-        - (user-restricted) edit details, tasks, etc. for dashboard entry <id>
+    - GET /dashboard/project/<id>
+        - (user-restricted) show expanded project view of project <id>
+    - POST /dashboard/project/<id>
+        - (user-restricted) edit details, tasks, etc. for project <id>
+    - POST /dashboard/project/<id>/comment
+        - (user-restricted) add a comment to project <id>
 
     - GET /users
         - list of users, filterable
