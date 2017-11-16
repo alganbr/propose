@@ -26,5 +26,10 @@ popd
 sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo sh
 sudo apt-get install -y nodejs
 
+pushd /home/vagrant/propose
+npm install
+node_modules/.bin/webpack --config webpack.local.config.js
+popd
+
 # Give everything in home folder back to vagrant user
 chown -R vagrant:vagrant /home/vagrant
