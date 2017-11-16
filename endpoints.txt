@@ -1,0 +1,62 @@
+Endpoints
+    - GET /
+        - home page
+    - GET /projects
+        - list of projects, filterable
+    - POST /projects
+        - create a new project
+    - GET /projects/<id>
+        - project page of project <id>
+
+    - POST/DELETE /projects/<id>
+        - (client-only) edit details of project <id>, or delete project
+    - GET /projects/<id>/edit
+        - (client-only) page to edit details of project <id>
+    - GET/POST /projects/<id>/apply
+        - page to create an application for project <id>
+    - GET/POST /projects/<id>/request
+        - (client-only) page to create a request for a freelancer for project <id>
+
+    - GET /applications
+        - show list of applications
+    - GET/DELETE /applications/<id>
+        - (user-restricted) show application <id>, or withdraw it
+    - GET/POST /applications/<id>/respond
+        - (freelancer-only) accept or decline an offer
+        - (client-only) respond to an application
+    - GET /requests
+        - show list of work requests
+    - GET/DELETE /requests/<id>
+        - (user-restricted) show request <id>, or withdraw it
+    - GET/POST /requests/<id>/respond
+        - (freelancer-only) respond to a request by creating an application
+
+    - GET /dashboard/working
+        - show dashboard of ongoing projects
+    - GET /dashboard/completed
+        - show dashboard of completed projects
+    - POST /dashboard/working
+        - add dashboard entry to ongoing projects
+    - POST /dashboard/completed
+        - add dashboard entry to completed projects
+    - GET /dashboard/<id>
+        - (user-restricted) show dashboard <id>
+    - GET /dashboard/entry/<id>
+        - (user-restricted) show dashboard entry <id>
+    - POST /dashboard/entry/<id>
+        - (user-restricted) edit details, tasks, etc. for dashboard entry <id>
+
+    - GET /users
+        - list of users, filterable
+    - POST /users
+        - create a new user
+    - GET /users/create
+        - page to create users
+    - GET /users/<id>
+        - user page of user <id>
+    - GET/POST /users/<id>/review
+        - page to write a review of user <id>
+    - GET /profile
+        - own profile
+    - POST /profile
+        - edit profile info
