@@ -42,5 +42,5 @@ class WorkRequestViewSet(viewsets.ViewSet):
 	def retrieve(self, request, pk=None):
 		queryset = WorkRequest.objects.all()
 		work_request = get_object_or_404(queryset, pk=pk)
-		serializer = WorkRequestSerializer(work_application)
+		serializer = WorkRequestSerializer(work_request)
 		return Response(serializer.data)

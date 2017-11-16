@@ -8,6 +8,7 @@ class ApplicationDetailSerializer(serializers.ModelSerializer):
 
 	client = AccountSerializer(Account)
 	freelancer = AccountSerializer(Account)
+	project = serializers.SlugRelatedField(read_only=True, slug_field='title')
 
 	class Meta:
 		model = ApplicationDetail
@@ -26,7 +27,7 @@ class WorkOfferSerializer(serializers.ModelSerializer):
 	details = ApplicationDetailSerializer(ApplicationDetail)
 
 	class Meta:
-		model = WorkApplication
+		model = WorkOffer
 		fields = '__all__'
 
 class WorkRequestSerializer(serializers.ModelSerializer):
@@ -34,5 +35,5 @@ class WorkRequestSerializer(serializers.ModelSerializer):
 	details = ApplicationDetailSerializer(ApplicationDetail)
 
 	class Meta:
-		model = WorkApplication
+		model = WorkRequest
 		fields = '__all__'

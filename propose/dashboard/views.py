@@ -16,6 +16,6 @@ class DashboardViewSet(viewsets.ViewSet):
 	def retrieve(self, request, pk=None):
 		queryset = Dashboard.objects.all()
 		dashboard = get_object_or_404(queryset, pk=pk)
-		serializer = DashbboardSerializer(dashboard)
+		serializer = DashboardSerializer(dashboard)
 		return Response(serializer.data)
 
