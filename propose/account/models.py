@@ -5,36 +5,29 @@ from tag.models import Tag
 
 # Create your models here.
 class Account(models.Model):
-	class Meta:
-		abstract = True
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete = models.CASCADE)
 
-	user = models.OneToOneField(
-		settings.AUTH_USER_MODEL,
-		on_delete = models.CASCADE)
+    bio = models.TextField(
+        blank = True)
 
-	profile_pic = models.ImageField(
-		blank = True,
-		upload_to = 'profile_pics')
+    profile_pic = models.ImageField(
+        blank = True,
+        upload_to = 'profile_pics')
 
-	rating = models.PositiveIntegerField(
-		blank = True,
-		default = 3)
+    rating = models.FloatField(
+        blank = False,
+        default = 3.0)
 
-	def __str__(self):
-		return self.user.username
+    # Freelancer-specific
+    resume = models.FileField(
+        blank = True,
+        upload_to = 'resumes')
 
-class Freelancer(Account):
-	bio = models.TextField(
-		blank = True)
+    skills = models.ManyToManyField(
+        Tag,
+        blank = True)
 
-	resume = models.FileField(
-		blank = True,
-		upload_to = 'resumes')
-
-	skills = models.ManyToManyField(
-		Tag,
-		blank = True)
-
-class Client(Account):
-	bio = models.TextField(
-		blank = True)
+    def __str__(self):
+        return self.user.username

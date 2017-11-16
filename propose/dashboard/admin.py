@@ -3,6 +3,6 @@ from .models import Dashboard
 
 # Register your models here.
 class DashboardAdmin(admin.ModelAdmin):
-	model = Dashboard
+    model = Dashboard
 
 admin.site.register(Dashboard, DashboardAdmin)

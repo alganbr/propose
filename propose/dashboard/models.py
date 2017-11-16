@@ -1,18 +1,15 @@
 from django.db import models
 
-from account.models import Client, Freelancer
-from project.models import Project
+from account.models import Account
 
 # Create your models here.
 class Dashboard(models.Model):
-	client = models.ForeignKey(
-		Client)
+    owner = models.ForeignKey(
+        Account,
+        on_delete = models.CASCADE,
+        blank = False)   # Unowned dashboards are just lists of Projects
 
-	freelancer = models.ForeignKey(
-		Freelancer)
-
-	project = models.ForeignKey(
-		Project)
-
-	def __str__(self):
-		return "client:{0}, freelancer:{1}, project:{2}".format(self.client, self.freelancer, self.project)
+    # To distinguish between dashboards of complete projects and of ongoing projects
+    is_completed_dashboard = models.BooleanField(
+        default = False,
+        blank = False)

@@ -4,12 +4,8 @@ from django.contrib.auth.models import User
 from .models import *
 
 # Register your models here.
-class FreelancerAdmin(admin.ModelAdmin):
-	model = Freelancer
+class UserAdmin(admin.ModelAdmin):
+	model = User
 
-admin.site.register(Freelancer, FreelancerAdmin)
-
-class ClientAdmin(admin.ModelAdmin):
-	model = Client
-
-admin.site.register(Client, ClientAdmin)
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)

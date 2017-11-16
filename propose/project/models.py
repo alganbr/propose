@@ -1,64 +1,73 @@
 from django.db import models
 
-from account.models import Client
+from account.models import Account
+from dashboard.models import Dashboard
 from tag.models import Tag
 
 # Create your models here.
-class Compensation(models.Model):
-	currency = models.CharField(
-		max_length = 3,
-		blank = False)
-
-	value = models.PositiveIntegerField(
-		default = 0,
-		blank = False)
-
-	def __str__(self):
-		return "{0} {1}".format(self.currency, self.value)
-
 class Project(models.Model):
-	owner = models.ForeignKey(
-		Client,
-		on_delete = models.CASCADE,
-		blank = False)
+    client = models.ForeignKey(
+        Account,
+        on_delete = models.CASCADE,
+        blank = False)
 
-	title = models.CharField(
-		max_length = 50,
-		blank = False,
-		null = True)
+    dashboard = models.ForeignKey(
+        Dashboard,
+        on_delete = models.CASCADE,
+        blank = True)   # Belongs to a freelancer once they accept an offer
 
-	description = models.TextField(
-		blank = False)
+    title = models.CharField(
+        max_length = 50,
+        blank = False)
 
-	compensation = models.ForeignKey(
-		Compensation,
-		blank = False)
+    description = models.TextField(
+        blank = False)
 
-	requirements = models.ManyToManyField(
-		Tag,
-		blank = True)
+    tags = models.ManyToManyField(
+        Tag,
+        blank = True)
 
-	is_complete = models.BooleanField(
-			default = False,
-			null = False,
-			blank = False)
+    is_taken = models.BooleanField(
+        default = False,
+        blank = False)
 
-	def __str__(self):
-		return self.title
+    def __str__(self):
+        return self.title
+
+class Compensation(models.Model):
+    currency = models.CharField(
+        max_length = 3,
+        blank = False)
+
+    value = models.PositiveIntegerField(
+        default = 0,
+        blank = False)
+
+    project = models.OneToOneField(
+        Project,
+        on_delete = models.CASCADE,
+        blank = False)
+
+    def __str__(self):
+        return "{0} {1}".format(self.currency, self.value)
 
 class Task(models.Model):
-	project = models.ForeignKey(
-		Project,
-		on_delete = models.CASCADE,
-		blank = False)
+    project = models.ForeignKey(
+        Project,
+        on_delete = models.CASCADE,
+        blank = False)
 
-	description = models.TextField(
-		blank = False)
+    name = models.TextField(
+        max_length = 50,
+        blank = False)
 
-	is_complete = models.BooleanField(
-		default = False,
-		null = False,
-		blank = False)
+    description = models.TextField(
+        blank = False)
 
-	def __str__(self):
-		return self.description
+    is_complete = models.BooleanField(
+        default = False,
+        null = False,
+        blank = False)
+
+    def __str__(self):
+        return self.name

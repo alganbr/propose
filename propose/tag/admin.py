@@ -3,6 +3,6 @@ from .models import *
 
 # Register your models here.
 class TagAdmin(admin.ModelAdmin):
-	model = Tag
+    model = Tag
 
 admin.site.register(Tag, TagAdmin)
