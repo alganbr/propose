@@ -6,8 +6,8 @@ from account.serializers import AccountSerializer
 
 class DashboardSerializer(serializers.ModelSerializer):
 
-	owner = AccountSerializer(Account)
+    owner = AccountSerializer(Account)
 
-	class Meta:
-		model = Dashboard
-		fields = '__all__'
+    class Meta:
+        model = Dashboard
+        fields = '__all__'

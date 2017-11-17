@@ -8,26 +8,25 @@ from dashboard.serializers import DashboardSerializer
 
 class CompensationSerializer(serializers.ModelSerializer):
 
-	class Meta:
-		model = Compensation
-		fields = ('currency', 'value', )
+    class Meta:
+        model = Compensation
+        fields = ('currency', 'value', )
 
 class ProjectSerializer(serializers.ModelSerializer):
 
-	client = AccountSerializer(Account)
-	dashboard = DashboardSerializer(Dashboard)
-	tags = serializers.SlugRelatedField(read_only=True, many=True, slug_field='name')
-	compensation = CompensationSerializer(Compensation)
+    client = AccountSerializer(Account)
+    dashboard = DashboardSerializer(Dashboard)
+    tags = serializers.SlugRelatedField(read_only=True, many=True, slug_field='name')
+    compensation = CompensationSerializer(Compensation)
 
-	class Meta:
-		model = Project
-		fields = '__all__'
+    class Meta:
+        model = Project
+        fields = '__all__'
 
 class TaskSerializer(serializers.ModelSerializer):
 
-	project = serializers.SlugRelatedField(read_only=True, slug_field='title')
+    project = serializers.SlugRelatedField(read_only=True, slug_field='title')
 
-	class Meta:
-		model = Task
-		fields = '__all__'
-
+    class Meta:
+        model = Task
+        fields = '__all__'

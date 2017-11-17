@@ -5,16 +5,15 @@ from .models import *
 
 class UserSerializer(serializers.ModelSerializer):
 
-	class Meta:
-		model = User
-		exclude = ('password', )
-
+    class Meta:
+        model = User
+        exclude = ('password', )
 
 class AccountSerializer(serializers.ModelSerializer):
-	
-	user = UserSerializer(User)
-	skills = serializers.SlugRelatedField(read_only=True, many=True, slug_field='name')
+    
+    user = UserSerializer(User)
+    skills = serializers.SlugRelatedField(read_only=True, many=True, slug_field='name')
 
-	class Meta:
-		model = Account
-		fields = '__all__'
+    class Meta:
+        model = Account
+        fields = '__all__'

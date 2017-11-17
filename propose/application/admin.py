@@ -4,7 +4,7 @@ from .models import *
 
 # Register your models here.
 class ApplicationDetailAdmin(admin.ModelAdmin):
-	model = ApplicationDetail
+    model = ApplicationDetail
 
 admin.site.register(ApplicationDetail, ApplicationDetailAdmin)
 

@@ -9,8 +9,8 @@ class AccountInline(admin.StackedInline):
     model = Account
 
 class UserAdmin(admin.ModelAdmin):
-	model = User
-	inlines = (AccountInline, )
+    model = User
+    inlines = (AccountInline, )
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
