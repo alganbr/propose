@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
             name='message',
         ),
         migrations.AddField(
-            model_name='applicationdetails',
+            model_name='applicationdetail',
             name='message',
             field=models.CharField(default=b'', max_length=2000),
         ),
@@ -45,6 +45,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='workoffer',
             name='details',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='application.ApplicationDetails'),
+            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='application.ApplicationDetail'),
         ),
     ]
