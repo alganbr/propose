@@ -1,83 +1,130 @@
-Endpoints
-    - GET /
+Sitemap
+    - /
         - home page
-    - GET /projects
-        - list of projects, filterable
-    - POST /projects
-        - create a new project
-    - GET /projects/new
+    - /projects
+        - projects page
+    - /projects/new
         - page to create a new project
-    - GET /projects/<id>
-        - project page of project <id>
+    - /projects/<id>
+        - view project <id>
 
-    - POST/DELETE /projects/<id>
-        - (client-only) edit details of project <id>, or delete project
-    - GET /projects/<id>/edit
+    - /projects/<id>/edit
         - (client-only) page to edit details of project <id>
-    - GET /projects/<id>/apply
+    - /projects/<id>/apply
         - page to create an application for project <id>
         - i.e., POST to /applications
-    - GET /projects/<id>/request
+    - /projects/<id>/request
         - (client-only) page to create a request for a freelancer for project <id>
         - i.e., POST to /requests
 
-    - GET /applications
-        - show list of applications
-    - POST /applications
-        - create new application
-    - GET/DELETE /applications/<id>
-        - (user-restricted) show application <id>, or withdraw it
-    - POST /applications/<id>/offer
-        - (client-only) respond to an application with offer
-    - GET /application/<id>/offer/<id>
-        - (user-restricted) show offer details
-    - POST /application/<id>/offer/<id>
-        - (freelancer-only) accept or decline offer
-        - (client-only) edit offer for application
-    - POST /application/<id>/offer/<id>/edit
+    - /applications
+        - your applications
+    - /applications/<id>
+        - (user-restricted) view application <id>
+    - /applications/<id>/offer
+        - (client-only) respond to application
+    - /applications/<id>/offer/<id>
+        - (user-restricted) view offer <id>
+    - /application/<id>/offer/<id>/edit
         - (client-only) page to edit offer for application
-    - GET /requests
-        - show list of work requests
-    - POST /requests
-        - create new request
-    - GET/DELETE /requests/<id>
-        - (user-restricted) show request <id>, or withdraw it
-    - GET /requests/<id>/apply
+    - /requests
+        - requests page
+    - /requests/<id>
+        - (user-restricted) view request <id>
+    - /requests/<id>/apply
         - (freelancer-only) respond to a request by creating an application
         - i.e., POST to /applications
 
-    - GET /dashboard/working
-        - show dashboard of ongoing projects
-    - GET /dashboard/completed
-        - show dashboard of completed projects
-    - POST /dashboard/working
-        - add project to ongoing projects
-    - POST /dashboard/completed
-        - add project to completed projects
-    - GET /dashboard/<id>
-        - (user-restricted) show dashboard <id>
-    - GET /dashboard/project/<id>
-        - (user-restricted) show expanded project view of project <id>
-    - POST /dashboard/project/<id>
-        - (user-restricted) edit details, tasks, etc. for project <id>
-    - GET /dashboard/project/<id>/edit
+    - /dashboard/working
+        - dashboard of ongoing projects
+    - /dashboard/completed
+        - dashboard of completed projects
+    - /dashboard/<id>
+        - (user-restricted) view dashboard <id>
+    - /dashboard/project/<id>
+        - (user-restricted) expanded project view of project <id>
+    - /dashboard/project/<id>/edit
         - (client-only) page to edit details, tasks, etc. for project <id>
-    - POST /dashboard/project/<id>/comment
+
+    - /register
+        - page to register a new user
+    - /users
+        - users page
+    - /users/<id>
+        - view user <id>
+    - /users/<id>/review
+        - page to write a review of user <id>
+    - /profile
+        - own profile
+    - /profile/edit
+        - page to edit own profile
+
+API Endpoints
+    - GET /api/projects
+        - list of projects, filterable
+    - POST /api/projects
+        - create a new project
+    - GET /api/projects/<id>
+        - project <id>
+    - POST /api/projects/<id>
+        - (client-only) edit details of project <id>
+    - DELETE /api/projects/<id>
+        - (client-only) delete project <id>
+
+    - GET /api/applications
+        - show list of applications
+    - POST /api/applications
+        - create new application
+    - GET /api/applications/<id>
+        - (user-restricted) show application <id>
+    - DELETE /api/applications/<id>
+        - (client-only) withdraw application <id>
+    - GET /api/applications/<id>/offer
+        - (user-restricted) show offer details
+    - POST /api/applications/<id>/offer
+        - (client-only) respond to an application with offer
+    - POST /api/applications/<id>/offer/<id>
+        - (freelancer-only) accept or decline offer
+        - (client-only) edit offer for application
+    - GET /api/requests
+        - show list of work requests
+    - POST /api/requests
+        - create new request
+    - GET /api/requests/<id>
+        - (user-restricted) show request <id>
+    - DELETE /api/requests/<id>
+        - (user-restricted) withdraw request <id>
+
+    - GET /api/dashboard/working
+        - dashboard of ongoing projects
+    - GET /api/dashboard/completed
+        - dashboard of completed projects
+    - POST /api/dashboard/working/add
+        - add project to ongoing projects
+    - POST /api/dashboard/completed/add
+        - add project to completed projects
+    - GET /api/dashboard/<id>
+        - (user-restricted) dashboard <id>
+    - GET /api/dashboard/project/<id>
+        - (user-restricted) expanded project view of project <id>
+    - POST /api/dashboard/project/<id>
+        - (client-only) edit details, tasks, etc. for project <id>
+    - GET /api/dashboard/project/<id>/comments
+        - (user-restricted) get comments for project <id>
+    - POST /api/dashboard/project/<id>/comments
         - (user-restricted) add a comment to project <id>
 
-    - GET /users
+    - GET /api/users
         - list of users, filterable
-    - POST /users
+    - POST /api/users
         - create a new user
-    - GET /users/create
-        - page to create users
-    - GET /users/<id>
+    - GET /api/users/<id>
         - user page of user <id>
-    - GET/POST /users/<id>/review
-        - page to write a review of user <id>
-    - GET /profile
-        - own profile
-    - POST /profile
-        - edit profile info
-    - GET /profile/edit
-        - page to edit own profile
+    - GET /api/users/<id>/review
+        - get reviews of user <id>
+    - POST /api/users/<id>/review
+        - add a review of user <id>
+    - GET /api/profile
+        - own user info
+    - POST /api/profile
+        - edit own user info
