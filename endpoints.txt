@@ -108,7 +108,11 @@ API Endpoints
     - GET /api/dashboard/project/<id>
         - (user-restricted) expanded project view of project <id>
     - POST /api/dashboard/project/<id>
-        - (client-only) edit details, tasks, etc. for project <id>
+        - (client-only) edit details for project <id>
+    - GET /api/dashboard/project/<id>/tasks
+        - (user-restricted) get tasks for project <id>
+    - POST /api/dashboard/project/<id>/tasks
+        - (user-restricted) add a task to project <id>
     - GET /api/dashboard/project/<id>/comments
         - (user-restricted) get comments for project <id>
     - POST /api/dashboard/project/<id>/comments
