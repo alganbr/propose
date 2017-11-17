@@ -4,6 +4,7 @@ from .views import *
 
 app_name = 'project'
 
+# TODO currently, this uses PUT for update instead of POST
 router = DefaultRouter()
-router.register(r'project', ProjectViewSet, base_name='project')
+router.register(r'projects', ProjectViewSet, base_name='project')
 urlpatterns = router.urls
