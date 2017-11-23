@@ -48,6 +48,8 @@ Sitemap
 
     - /register
         - page to register a new user
+    - /login
+        - page to login
     - /users
         - users page
     - /users/<id>
@@ -122,6 +124,10 @@ API Endpoints
         - list of users, filterable
     - POST /api/users
         - create a new user
+    - POST /api/users/login
+        - login current user
+    - POST /api/users/login
+        - logout current user
     - GET /api/users/<id>
         - user page of user <id>
     - GET /api/users/<id>/review
