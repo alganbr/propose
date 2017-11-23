@@ -126,7 +126,7 @@ API Endpoints
         - create a new user
     - POST /api/users/login
         - login current user
-    - POST /api/users/login
+    - POST /api/users/logout
         - logout current user
     - GET /api/users/<id>
         - user page of user <id>
