@@ -4,6 +4,8 @@ from .views import *
 
 app_name = 'account'
 
-router = DefaultRouter()
-router.register(r'user', AccountViewSet, base_name='account')
-urlpatterns = router.urls
+urlpatterns = [
+	url(r'^users/$', AccountList.as_view()),
+    url(r'^users/(?P<pk>[0-9]+)/$', AccountDetail.as_view()),
+    url(r'^users/(?P<pk>[0-9]+)/review$', AccountReview.as_view()),
+]

@@ -1,20 +1,67 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets
+from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status, generics
 
 from .models import *
 from .serializers import *
 
 # Create your views here.
-class AccountViewSet(viewsets.ViewSet):
-
-    def list(self, reqruest):
-        queryset = Account.objects.all()
-        serializer = AccountSerializer(queryset, many=True)
+class AccountList(APIView):
+    """
+    /api/users
+    """
+    def get(self, request, format=None):
+        accounts = Account.objects.all()
+        serializer = AccountSerializer(accounts, many=True)
         return Response(serializer.data)
 
-    def retrieve(self, request, pk=None):
-        queryset = Account.objects.all()
-        account = get_object_or_404(queryset, pk=pk)
+    def post(self, request, format=None):
+        serializer = AccountCreateSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class AccountDetail(APIView):
+    """
+    /api/users/<id>
+    """
+    def get_object(self, pk):
+        return get_object_or_404(Account, pk=pk)
+
+    def get(self, request, pk, format=None):
+        account = self.get_object(pk)
         serializer = AccountSerializer(account)
         return Response(serializer.data)
+
+    def delete(self, request, pk, format=None):
+        account = self.get_object(pk)
+        account.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class AccountReview(APIView):
+    """
+    /api/users/<id>/review
+    """
+
+    def get_object(self, pk):
+        return get_object_or_404(Account, pk=pk)
+
+    def get(self, request, pk, format=None):
+        account = self.get_object(pk)
+        reviews = UserReview.objects.filter(reviewee=account)
+        serializer = UserReviewSerializer(reviews, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, pk, format=None):
+        account = self.get_object(pk)
+        userreview_data = request.data
+        userreview_data['reviewee'] = account.pk
+        serializer = UserReviewCreateSerializer(data=userreview_data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+

@@ -14,3 +14,9 @@ class UserAdmin(admin.ModelAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+
+
+class UserReviewAdmin(admin.ModelAdmin):
+	model = UserReview
+
+admin.site.register(UserReview, UserReviewAdmin)
