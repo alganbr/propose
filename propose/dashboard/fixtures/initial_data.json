@@ -1,0 +1,11 @@
+[
+	{
+		"model": "dashboard.dashboard",
+		"pk": 1,
+		"fields": {
+			"owner": 1,
+			"is_completed_dashboard": false
+		}
+
+	}
+]
