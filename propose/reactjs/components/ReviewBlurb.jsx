@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-// import StarRatingComponent from 'react-star-rating-component'; 
+import StarRatingComponent from 'react-star-rating-component'; 
 
 class ReviewBlurb extends React.Component {
 	static propTypes = {
@@ -22,8 +22,14 @@ class ReviewBlurb extends React.Component {
 					<div className="col-sm-4">
 						{this.props.clientName}
 					</div>
-					<div className="col-sm-8">
-						{this.props.rating}
+					<div className="col-sm-4">
+						<span>Rating</span>
+						<StarRatingComponent 
+							name="rate1"
+							value={this.props.rating}
+							emptyStarColor="#ffb400"
+						/>
+	
 					</div>
 				</div>
 				<div className="row">
