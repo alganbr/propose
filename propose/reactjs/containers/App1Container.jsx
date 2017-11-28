@@ -2,7 +2,7 @@ import React from 'react';
 
 import Headline from '../components/Headline';
 import Navbar from '../components/Navbar';
-import WorkInfo from '../components/WorkInfo';
+import WorkInfo from '../components/profile/WorkInfo';
 
 export default class App1Container extends React.Component {
   render() {
