@@ -1,0 +1,46 @@
+[
+    {
+        "model": "account.account",
+        "pk" : 2,
+        "fields": {
+            "bio": "I am client 1",
+            "profile_pic": "fixtures/profile_pics/2.jpg",
+            "rating": 5,
+            "resume": "fixtures/resumes/2.pdf",
+            "user_id": 2
+        }
+    },
+    {
+        "model": "account.account",
+        "pk" : 3,
+        "fields": {
+            "bio": "I am client 2",
+            "profile_pic": "fixtures/profile_pics/3.jpg",
+            "rating": 3.5,
+            "resume": "fixtures/resumes/3.pdf",
+            "user_id": 3
+        }
+    },
+    {
+        "model": "account.account",
+        "pk" : 4,
+        "fields": {
+            "bio": "I am freelancer 1",
+            "profile_pic": "fixtures/profile_pics/4.jpg",
+            "rating": 4,
+            "resume": "fixtures/resumes/4.pdf",
+            "user_id": 4
+        }
+    },
+    {
+        "model": "account.account",
+        "pk" : 5,
+        "fields": {
+            "bio": "I am freelancer 2",
+            "profile_pic": "fixtures/profile_pics/5.jpg",
+            "rating": 2,
+            "resume": "fixtures/resumes/5.pdf",
+            "user_id": 5
+        }
+    }
+]

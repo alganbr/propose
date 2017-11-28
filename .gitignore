@@ -110,7 +110,8 @@ node_modules
 vm/.vagrant/machines/default/virtualbox
 
 # Media folder
-media/
+propose/media/*
+!propose/media/fixtures/
 
 # React stuff
 propose/webpack-stats-local.json
