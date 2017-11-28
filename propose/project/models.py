@@ -11,8 +11,15 @@ class Project(models.Model):
         on_delete = models.CASCADE,
         blank = False)
 
-    dashboard = models.ForeignKey(
+    client_dashboard = models.ForeignKey(
         Dashboard,
+        related_name = "client",
+        on_delete = models.CASCADE,
+        blank = True)   # Belongs to a client dashboard once they accept an offer
+
+    freelancer_dashboard = models.ForeignKey(
+        Dashboard,
+        related_name = "freelancer",
         on_delete = models.CASCADE,
         blank = True)   # Belongs to a freelancer once they accept an offer
 
