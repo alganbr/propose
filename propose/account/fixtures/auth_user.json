@@ -1,0 +1,90 @@
+[
+    {
+        "model":"auth.user",
+        "pk":2,
+        "fields":{
+            "password":"client123",
+            "last_login":"2017-11-28T21:27:26Z",
+            "is_superuser":false,
+            "username":"client1",
+            "first_name":"client",
+            "last_name":"one",
+            "email":"",
+            "is_staff":false,
+            "is_active":true,
+            "date_joined":"2017-11-28T21:27:07Z",
+            "groups":[
+
+            ],
+            "user_permissions":[
+
+            ]
+        }
+    },
+    {
+        "model":"auth.user",
+        "pk":3,
+        "fields":{
+            "password":"client2",
+            "last_login":"2017-11-28T21:28:23Z",
+            "is_superuser":false,
+            "username":"client2",
+            "first_name":"client",
+            "last_name":"two",
+            "email":"",
+            "is_staff":false,
+            "is_active":true,
+            "date_joined":"2017-11-28T21:28:18Z",
+            "groups":[
+
+            ],
+            "user_permissions":[
+
+            ]
+        }
+    },
+    {
+        "model":"auth.user",
+        "pk":4,
+        "fields":{
+            "password":"freelancer1",
+            "last_login":"2017-11-28T21:28:40Z",
+            "is_superuser":false,
+            "username":"freelancer1",
+            "first_name":"freelancer",
+            "last_name":"one",
+            "email":"",
+            "is_staff":false,
+            "is_active":true,
+            "date_joined":"2017-11-28T21:28:33Z",
+            "groups":[
+
+            ],
+            "user_permissions":[
+
+            ]
+        }
+    },
+    {
+        "model":"auth.user",
+        "pk":5,
+        "fields":{
+            "password":"freelancer2",
+            "last_login":"2017-11-28T21:28:56Z",
+            "is_superuser":false,
+            "username":"freelancer2",
+            "first_name":"freelancer",
+            "last_name":"two",
+            "email":"",
+            "is_staff":false,
+            "is_active":true,
+            "date_joined":"2017-11-28T21:28:52Z",
+            "groups":[
+
+            ],
+            "user_permissions":[
+
+            ]
+        }
+    }
+]
