@@ -49,7 +49,9 @@ class AccountCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user_data = validated_data.pop('user')
         user = User.objects.create(**user_data)
+        skills_data = validated_data.pop('skills')
         account = Account.objects.create(user=user, **validated_data)
+        account.skills = skills_data
         return account
 
 class UserUpdateSerializer(serializers.ModelSerializer):

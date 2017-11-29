@@ -1,10 +1,10 @@
 from django.conf.urls import url
-from rest_framework.routers import DefaultRouter
 from .views import *
 
 app_name = 'project'
 
-# TODO currently, this uses PUT for update instead of POST
-router = DefaultRouter()
-router.register(r'projects', ProjectViewSet, base_name='project')
-urlpatterns = router.urls
+urlpatterns = [
+	url(r'^projects/$', ProjectList.as_view()),
+	url(r'^projects/(?P<pk>[0-9]+)/$', ProjectDetail.as_view()),
+	url(r'^projects/(?P<pk>[0-9]+)/tasks$', ProjectTask.as_view()),
+]
