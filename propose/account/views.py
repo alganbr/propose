@@ -64,4 +64,28 @@ class AccountReview(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class ProfileDetail(APIView):
+    """
+    /api/profile
+    """
+
+    def get(self, request, format=None):
+        if request.user.is_anonymous():
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        account = get_object_or_404(Account, user=request.user)
+        serializer = AccountSerializer(account)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        if request.user.is_anonymous():
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        account = get_object_or_404(Account, user=request.user)
+        serializer = AccountUpdateSerializer(account, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            print(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 
