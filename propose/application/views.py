@@ -5,7 +5,7 @@ from rest_framework import status, generics
 
 from .models import *
 from .serializers import *
-import datetime
+from django.utils import timezone
 
 # permissions
 def user_restricted(request, application):
@@ -133,7 +133,8 @@ class WorkOfferAccept(APIView):
         return get_object_or_404(WorkApplication, pk=pk)
 
     def work_application_valid(self, request, work_offer):
-        if work_offer.expire_time.time() > datetime.now().time():
+        time_diff = work_offer.expire_time - timezone.now()
+        if time_diff.total_seconds() > 0:
             return True # work application is still valid
         return False # work application is expired
 
@@ -151,11 +152,11 @@ class WorkOfferAccept(APIView):
             return Response(None, status=status.HTTP_401_UNAUTHORIZED)
 
         # check expire time
-        if self.work_application_valid:
+        if self.work_application_valid(request, work_offer):
             work_offer.is_accepted = True
             work_offer.save()
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(None, status=status.HTTP_400_BAD_REQUEST)
         return Response(None, status=status.HTTP_200_OK)
 
 class WorkOfferDecline(APIView):
@@ -166,7 +167,8 @@ class WorkOfferDecline(APIView):
         return get_object_or_404(WorkApplication, pk=pk)
 
     def work_application_valid(self, request, work_offer):
-        if work_offer.expire_time.time() > datetime.now().time():
+        time_diff = work_offer.expire_time - timezone.now()
+        if time_diff.total_seconds() > 0:
             return True # work application is still valid
         return False # work application is expired
 
