@@ -48,7 +48,9 @@ class AccountCreateSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user_data = validated_data.pop('user')
+        password = user_data.pop('password')
         user = User.objects.create(**user_data)
+        user.set_password(password)
         skills_data = validated_data.pop('skills')
         account = Account.objects.create(user=user, **validated_data)
         account.skills = skills_data
@@ -58,7 +60,7 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', )
+        fields = ('email', 'first_name', 'last_name', 'password', )
 
 class AccountUpdateSerializer(serializers.ModelSerializer):
     user = UserUpdateSerializer()
@@ -71,6 +73,8 @@ class AccountUpdateSerializer(serializers.ModelSerializer):
         account = Account.objects.get(pk=instance.id)
         user = User.objects.get(pk=account.user.id)
         user_data = validated_data.pop('user')
+        password = user_data.pop('password')
+        user.set_password(password)
         user.email = user_data['email']
         user.first_name = user_data['first_name']
         user.last_name = user_data['last_name']
