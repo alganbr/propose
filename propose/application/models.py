@@ -39,7 +39,7 @@ class WorkApplication(models.Model):
         on_delete = models.CASCADE,
         blank = False)
 
-    is_accepted = models.BooleanField(
+    is_declined = models.BooleanField(
         default = False,
         blank = False)
 
@@ -58,6 +58,10 @@ class WorkOffer(models.Model):
         default = False,
         blank = False)
 
+    is_declined = models.BooleanField(
+        default = False,
+        blank = False)
+
     expire_time = models.DateTimeField(
         blank = False)
 
@@ -67,6 +71,6 @@ class WorkRequest(models.Model):
         on_delete = models.CASCADE,
         blank = False)
 
-    is_accepted = models.BooleanField(
+    is_declined = models.BooleanField(
         default = False,
         blank = False)
