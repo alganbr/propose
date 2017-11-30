@@ -80,22 +80,29 @@ API Endpoints
     - GET /api/applications/<id>
         - (user-restricted) show application <id>
     - DELETE /api/applications/<id>
-        - (client-only) withdraw application <id>
+        - (freelancer-only) withdraw application <id>
+    - POST /api/applications/<id>/decline
+        - (client-only) decline an application <id>
     - GET /api/applications/<id>/offer
         - (user-restricted) show offer details
     - POST /api/applications/<id>/offer
         - (client-only) respond to an application with offer
-    - POST /api/applications/<id>/offer/<id>
-        - (freelancer-only) accept or decline offer
-        - (client-only) edit offer for application
+    - DELETE /api/applications/<id>/offer
+        - (client-only) delete an offer
+    - POST /api/applications/<id>/offer/accept
+        - (freelancer-only) accept offer
+    - POST /api/applications/<id>/offer/decline
+        - (freelancer-only) decline offer
     - GET /api/requests
         - show list of work requests
     - POST /api/requests
-        - create new request
+        - (client-only) create new request
     - GET /api/requests/<id>
         - (user-restricted) show request <id>
     - DELETE /api/requests/<id>
-        - (user-restricted) withdraw request <id>
+        - (client-only) withdraw request <id>
+    - POST /api/requests/<id>/decline
+        - (freelancer-only) decline request <id>
 
     - GET /api/dashboard/working
         - dashboard of ongoing projects

@@ -1,11 +1,15 @@
 from django.conf.urls import url
-from rest_framework.routers import DefaultRouter
 from .views import *
 
-app_name = 'applcation'
+app_name = 'application'
 
-router = DefaultRouter()
-router.register(r'work_application', WorkApplicationViewSet, base_name='work_application')
-router.register(r'work_offer', WorkOfferViewSet, base_name='work_offer')
-router.register(r'work_request', WorkRequestViewSet, base_name='work_request')
-urlpatterns = router.urls
+urlpatterns = [
+	url(r'^applications/$', WorkApplicationList.as_view()),
+    url(r'^applications/(?P<pk>[0-9]+)/$', WorkApplicationDetail.as_view()),
+    url(r'^applications/(?P<pk>[0-9]+)/offer$', WorkApplicationOffer.as_view()),
+    url(r'^applications/(?P<pk>[0-9]+)/offer/accept$', WorkOfferAccept.as_view()),
+    url(r'^applications/(?P<pk>[0-9]+)/offer/decline$', WorkOfferDecline.as_view()),
+    url(r'^requests/$', WorkRequestList.as_view()),
+    url(r'^requests/(?P<pk>[0-9]+)/$', WorkRequestDetail.as_view()),
+    url(r'^requests/(?P<pk>[0-9]+)/decline$', WorkRequestDecline.as_view()),
+]
