@@ -24,8 +24,9 @@ Instruction to run the project:
   * vagrant up
   * vagrant ssh
   * cd ~/propose
-  * python manage.py runserver 0.0.0.0:8000
-  * for front-end to see changes: run node_modules/.bin/webpack --config webpack.local.config.js
+  * node_modules/.bin/webpack --config webpack.local.config.js  // for front-end to see changes
+  * python manage.py runserver 0.0.0.0:8000 // in one terminal
+  * node server.js                          // in a separate terminal
 
 ### Testing
 
