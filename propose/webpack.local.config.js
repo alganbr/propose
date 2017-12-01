@@ -13,6 +13,21 @@ config.entry = {
     'webpack/hot/only-dev-server',
     './reactjs/App1',
   ],
+  Home: [
+    'webpack-dev-server/client?http://' + ip + ':3000',
+    'webpack/hot/only-dev-server',
+    './reactjs/Home',
+  ],
+  Login: [
+    'webpack-dev-server/client?http://' + ip + ':3000',
+    'webpack/hot/only-dev-server',
+    './reactjs/Login',
+  ],
+  Register: [
+    'webpack-dev-server/client?http://' + ip + ':3000',
+    'webpack/hot/only-dev-server',
+    './reactjs/Register',
+  ],
 }
 
 config.output.publicPath = 'http://' + ip + ':3000' + '/assets/bundles/'

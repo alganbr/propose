@@ -22,9 +22,11 @@ from django.views import generic
 from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
-    url(r'^$', generic.TemplateView.as_view(template_name='view1.html')),
+    url(r'^$', generic.TemplateView.as_view(template_name='home.html')),
     url(r'^admin/', admin.site.urls),
-    url(r'^view2/', generic.TemplateView.as_view(template_name='view2.html')),
+    url(r'^login/$', generic.TemplateView.as_view(template_name='login.html')),
+    url(r'^register/$', generic.TemplateView.as_view(template_name='register.html')),
+    url(r'^view1/', generic.TemplateView.as_view(template_name='view1.html')),
     url(r'^api/', include('account.urls', namespace='account')),
     url(r'^api/', include('application.urls', namespace='application')),
     url(r'^api/', include('dashboard.urls', namespace='dashboard')),
