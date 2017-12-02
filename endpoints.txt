@@ -133,6 +133,8 @@ API Endpoints
         - logout current user
     - GET /api/users/<id>
         - user page of user <id>
+    - DELETE /api/users/<id>
+        - (user-restricted) delete user page <id>
     - GET /api/users/<id>/review
         - get reviews of user <id>
     - POST /api/users/<id>/review
