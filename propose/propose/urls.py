@@ -19,11 +19,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from django.views import generic
+from django.views.generic.base import RedirectView
+from django.core.urlresolvers import reverse_lazy
 from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
-    url(r'^$', generic.TemplateView.as_view(template_name='view1.html')),
+    url(r'^$', RedirectView.as_view(url=reverse_lazy('rest_framework:login'))),
+    url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
+    url(r'^home/', generic.TemplateView.as_view(template_name='view1.html'), name='home'),
     url(r'^view2/', generic.TemplateView.as_view(template_name='view2.html')),
     url(r'^api/', include('account.urls', namespace='account')),
     url(r'^api/', include('application.urls', namespace='application')),
