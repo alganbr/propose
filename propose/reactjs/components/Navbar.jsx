@@ -3,7 +3,6 @@ import FontAwesome from 'react-fontawesome';
 
 export default class Navbar extends React.Component {
   render() {
-
     return (
         <nav id="mainNav" className="navbar navbar-default navbar-static-top">
           <div className="container-fluid">
@@ -24,7 +23,7 @@ export default class Navbar extends React.Component {
                   <li className="dropdown">
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">My Account <FontAwesome name="caret-down" /></a>
                     <ul className="dropdown-menu">
-                      <li><a href="">Profile</a></li>
+                      <li><a href="/profile">Profile</a></li>
                       <li><a href="">Settings</a></li>
                       <li><a href="">Switch to Client Mode</a></li>
                       <li><a href="">Logout</a></li>

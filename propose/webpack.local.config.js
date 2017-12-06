@@ -8,10 +8,10 @@ var config = require('./webpack.base.config.js')
 config.devtool = "#eval-source-map"
 
 config.entry = {
-  App1: [
+  Profile: [
     'webpack-dev-server/client?http://' + ip + ':3000',
     'webpack/hot/only-dev-server',
-    './reactjs/App1',
+    './reactjs/Profile',
   ],
   Home: [
     'webpack-dev-server/client?http://' + ip + ':3000',

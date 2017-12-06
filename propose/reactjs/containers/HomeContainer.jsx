@@ -19,7 +19,7 @@ export default class HomeContainer extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
-            <Navbar login={false}/>
+            <Navbar login={true}/>
             <Header />
           </div>
         </div>

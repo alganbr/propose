@@ -1,11 +1,10 @@
 import React from 'react';
 
-import Headline from '../components/Headline';
+import Mainbar from '../components/profile/Mainbar';
 import Navbar from '../components/Navbar';
-import ReviewBlurb from '../components/ReviewBlurb';
-import WorkInfo from '../components/profile/WorkInfo';
+import Sidebar from '../components/profile/Sidebar';
 
-export default class App1Container extends React.Component {
+export default class ProfileContainer extends React.Component {
 
   /*
   TO LOAD FIXTURE DATA run the following for accounts
@@ -17,7 +16,7 @@ export default class App1Container extends React.Component {
   */
 
   componentDidMount() {
-    let url = "api/users/";
+    let url = "/api/users/";
 
     let params = {
         username: "foo",
@@ -31,24 +30,25 @@ export default class App1Container extends React.Component {
     };
 
     fetch(url, settings)
-        .then((response) => response.json())
+        .then((response) => {
+          return response;
+        })
         .then((data) => {
-          let component = this
-          console.log(data, "Looking at data/")
+          let component = this;
+          console.log(data);
+          console.log("Looking at data");
           component.props = {data};
         });
   }
 
   render() {
-    console.log(this.props, "looking at props")
     return (
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
             <Navbar />
-            <Headline>CS130 Test!</Headline>
-            <WorkInfo previousWork={[]} resume="filler" github="filler" linkedin="filler" />
-            <ReviewBlurb clientName="John" rating={5} image="test_url" reviewText="Lorem meh"/>
+            <Sidebar />
+            <Mainbar />
           </div>
         </div>
       </div>
