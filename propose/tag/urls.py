@@ -4,6 +4,6 @@ from .views import *
 
 app_name = 'tag'
 
-router = DefaultRouter()
-router.register(r'tag', TagViewSet, base_name='tag')
-urlpatterns = router.urls
+urlpatterns = [
+    url(r'^tags/$', TagList.as_view()),
+]
