@@ -10,6 +10,7 @@ class SearchColumn extends React.Component {
 		super(props)
 
 		this.state = {
+		  projectSize: "small",
 		  tags: [
 		    { id: 1, name: "Apples" },
 		    { id: 2, name: "Pears" }
@@ -29,6 +30,10 @@ class SearchColumn extends React.Component {
 		}
 	}
 
+	onChange = (value) => {
+		this.setState({projectSize: value})
+	}
+
 	handleDelete = (i) => {
     	const tags = this.state.tags.slice(0)
     	tags.splice(i, 1)
@@ -44,40 +49,32 @@ class SearchColumn extends React.Component {
   		return (
   				<div>
   					<h2>Refine Your Search</h2>
+  					<h3>Skills</h3>
 	  				<div>
 	  					Add search tags 
 	  				</div>
-	  				<h4 style={ { marginTop: 32 } }>Horizontal Radio Buttons</h4>
-	  				<RadioGroup onChange={ this.onChange } vertical>
-	  				  <RadioButton value="apple">
-	  				    Apple
-	  				  </RadioButton>
-	  				  <RadioButton value="orange">
-	  				    Orange
-	  				  </RadioButton>
-	  				  <ReversedRadioButton value="melon">
-	  				    Melon
-	  				  </ReversedRadioButton>
-	  				</RadioGroup>
-
-	  				<RadioGroup onChange={ this.onChange } horizontal>
-	  				  <RadioButton value="small">
+	  				<ReactTags
+	  					tags={this.state.tags}
+	  					suggestions={this.state.locationSuggestions}
+	  					handleDelete={this.handleDelete}
+	  					handleAddition={this.handleAddition} />
+	  				<RadioGroup onChange={ this.onChange } horizontal={true} value={this.state.projectSize}>
+	  				  <RadioButton value="small" iconSize={20}>
 	  				    Small
 	  				  </RadioButton>
-	  				  <ReversedRadioButton value="medium">
+	  				  <ReversedRadioButton value="medium" iconSize={20}>
 	  				    Medium
 	  				  </ReversedRadioButton>
-	  				  <ReversedRadioButton value="large">
+	  				  <ReversedRadioButton value="large" iconSize={20}>
 	  				    Large
 	  				  </ReversedRadioButton>
 	  				</RadioGroup>
+	  				<h3>Location</h3>
 	  				<ReactTags
 	  					tags={this.state.tags}
-	  					suggestions={this.state.suggestions}
+	  					suggestions={this.state.locationSuggestions}
 	  					handleDelete={this.handleDelete}
 	  					handleAddition={this.handleAddition} />
-
-
   				</div>
   			)
   	}
