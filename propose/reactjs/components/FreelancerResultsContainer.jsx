@@ -53,7 +53,6 @@ export default class FreelancerResultsContainer extends React.Component {
 			<Grid fluid>
 			  <Row>
 			    <Col xs>
-			      Hello, world!
 			      <SearchColumn/>   
 			    </Col>
 			    <Col xs>
