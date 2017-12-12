@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import Headline from '../components/Headline';
 import Navbar from '../components/Navbar';
 import FreelancerCard from '../components/FreelancerCard';
+import FreelancerResultsContainer from '../components/FreelancerResultsContainer';
 import ReviewBlurb from '../components/ReviewBlurb';
-import SearchColumn from '../components/freelancer_search/SearchColumn';
 import WorkInfo from '../components/profile/WorkInfo';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
@@ -78,40 +78,6 @@ export default class App1Container extends React.Component {
         });
   }
 
-  _renderCardsTwoColumn = (users) => {
-    const cards = users.map(user => {
-      console.log(user)
-      return (<FreelancerCard 
-        name={user.user.first_name + " " + user.user.last_name}
-        rating={user.rating}
-        reviewCount={109}
-        skills={user.skills}
-        description={user.bio}
-        tags={[]}
-        isTaken={false}/>);
-    });
-    const leftCol = []
-    const rightCol = []
-    for (var i = 0; i<cards.length; i++) {
-      if (i%2==0) {
-        leftCol.push(cards[i])
-      }
-      else {
-        rightCol.push(cards[i])
-      }
-    }
-    return (
-      <Row>
-        <Col xs> 
-          {leftCol}
-        </Col>
-        <Col xs>
-          {rightCol}
-        </Col>
-      </Row>
-      )
-  }
-
   render() {
     const dummy_lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis diam neque, maximus quis lacus vel, tempor condimentum nisl. Aenean vel enim non sapien consectetur suscipit. Phasellus vel lorem nibh. Aliquam vestibulum convallis interdum. Aenean vitae massa justo. Etiam et laoreet augue, eget vehicula massa. Ut aliquam nec est quis commodo. Vivamus fermentum enim id iaculis dictum. Nam non vulputate mauris.";
     console.log(this.state, "looking at props")
@@ -128,17 +94,7 @@ export default class App1Container extends React.Component {
           </div>
         </div>
       </div>
-      <Grid fluid>
-        <Row>
-          <Col xs>
-            Hello, world!
-            <SearchColumn/>   
-          </Col>
-          <Col xs>
-            {this._renderCardsTwoColumn(this.state.users)}
-          </Col>
-        </Row>
-      </Grid>
+      <FreelancerResultsContainer freelancers={this.state.users}/>
       </div>
     )
   }
