@@ -27,4 +27,6 @@ config.module.loaders.push(
   { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot-loader/webpack', 'babel-loader'] }
 )
 
+config.module.loaders.push(  {test: /\.css$/, loader: 'style-loader!css-loader?modules', include: /flexboxgrid/})
+
 module.exports = config

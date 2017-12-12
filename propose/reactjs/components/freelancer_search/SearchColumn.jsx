@@ -59,9 +59,9 @@ class SearchColumn extends React.Component {
 	  					handleDelete={this.handleDelete}
 	  					handleAddition={this.handleAddition} />
 	  				<RadioGroup onChange={ this.onChange } horizontal={true} value={this.state.projectSize}>
-	  				  <RadioButton value="small" iconSize={20}>
+	  				  <ReversedRadioButton value="small" iconSize={20}>
 	  				    Small
-	  				  </RadioButton>
+	  				  </ReversedRadioButton>
 	  				  <ReversedRadioButton value="medium" iconSize={20}>
 	  				    Medium
 	  				  </ReversedRadioButton>
