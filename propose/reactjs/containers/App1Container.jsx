@@ -74,7 +74,6 @@ export default class App1Container extends React.Component {
         .then((data) => {
           console.log(data, "Looking at data")
           component.setState({users:data});
-          component.users = {data}
         });
   }
 
