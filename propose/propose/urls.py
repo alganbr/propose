@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^view2/', generic.TemplateView.as_view(template_name='view2.html')),
     url(r'^freelancer_search/', generic.TemplateView.as_view(template_name='freelancer_search.html')),
+    url(r'^project_search/', generic.TemplateView.as_view(template_name='project_search.html')),
     url(r'^api/', include('account.urls', namespace='account')),
     url(r'^api/', include('application.urls', namespace='application')),
     url(r'^api/', include('dashboard.urls', namespace='dashboard')),

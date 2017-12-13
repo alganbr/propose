@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import ProjectSearchContainer from './containers/ProjectSearchContainer';
+import FreelancerSearchContainer from './containers/FreelancerSearchContainer';
 
 class App2 extends React.Component {
   render() {
     return (
-      <ProjectSearchContainer />
+      <FreelancerSearchContainer />
     )
   }
 }
