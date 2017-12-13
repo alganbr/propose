@@ -18,13 +18,13 @@ export default class Navbar extends React.Component {
                   <a href="/freelancer_search">Freelancer Search</a>
                 </li>
                 <li>
-                  <a href="">Project Search</a>
+                  <a href="/project_search">Project Search</a>
                 </li>
                 <li>
                   <a href="">Dashboard</a>
                 </li>
                 <li>
-                  <a href="">Projects</a>
+                  <a href="/client_project_view">Projects</a>
                 </li>
                 <li className="dropdown">
                   <a href="#" className="dropdown-toggle" data-toggle="dropdown">My Account <FontAwesome name="caret-down" /></a>

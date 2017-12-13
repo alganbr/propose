@@ -1,17 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FreelancerCard from './FreelancerCard';
+import FreelancerCard from '../components/FreelancerCard';
+import Navbar from '../components/Navbar';
 import SearchColumn from '../components/freelancer_search/SearchColumn';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
-export default class FreelancerResultsContainer extends React.Component {
-	static propTypes = {
-		freelancers: PropTypes.array
-	}
+export default class ClientProjectContainer extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state=({
+			users:[]
+		})
+	}
+
+	 componentDidMount() {
+	  let component = this
+	  let url = "/api/users/";
+
+	  let params = {
+	      username: "foo",
+	      password: "bar",
+	      email: "test@test.com"
+	  };
+
+	  let settings = {
+	      method: "GET",
+	      // body: params,
+	  };
+
+	  fetch(url, settings)
+	      .then((response) => response.json())
+	      .then((data) => {
+	        console.log(data, "Looking at data")
+	        component.setState({users:data});
+	      });
 	}
 
 	_renderCardsTwoColumn = (users) => {
@@ -50,17 +74,25 @@ export default class FreelancerResultsContainer extends React.Component {
 
 	render() {
 		return (
+			<div>
+			<div className="container">
+			  <div className="row">
+			    <div className="col-sm-12">
+			      <Navbar />
+			    </div>
+			  </div>
+			</div>
 			<Grid fluid>
 			  <Row>
-			    <Col xs>
-			      Hello, world!
-			      <SearchColumn/>   
+			    <Col xs> 
 			    </Col>
 			    <Col xs>
-			      {this._renderCardsTwoColumn(this.props.freelancers)}
+			    	Hello
 			    </Col>
 			  </Row>
 			</Grid>
+			</div>
+
 		);
 	}
 

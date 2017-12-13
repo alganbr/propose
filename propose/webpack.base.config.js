@@ -9,6 +9,7 @@ module.exports = {
     App1: './reactjs/App1',
     App2: './reactjs/App2',
     App3: './reactjs/App3',
+    App4: './reactjs/App4',
     vendors: ['react'],
   },
 
