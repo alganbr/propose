@@ -10,7 +10,6 @@ import ReviewBlurb from '../components/ReviewBlurb';
 import WorkInfo from '../components/profile/WorkInfo';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
-import Cookies from 'js-cookie';
 
 
 export default class App1Container extends React.Component {
@@ -57,7 +56,6 @@ export default class App1Container extends React.Component {
   }
 
     componentDidMount() {
-    const csrftoken = Cookies.get('csrftoken');
     let component = this
     let url = "/api/users/";
 
@@ -84,7 +82,7 @@ export default class App1Container extends React.Component {
 
   render() {
     const dummy_lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis diam neque, maximus quis lacus vel, tempor condimentum nisl. Aenean vel enim non sapien consectetur suscipit. Phasellus vel lorem nibh. Aliquam vestibulum convallis interdum. Aenean vitae massa justo. Etiam et laoreet augue, eget vehicula massa. Ut aliquam nec est quis commodo. Vivamus fermentum enim id iaculis dictum. Nam non vulputate mauris.";
-    console.log(this.state, "looking at props")
+    console.log(this.props, "looking at props")
     return (
       <div>
       <div className="container">

@@ -27,6 +27,11 @@ config.entry = {
     'webpack-dev-server/client?http://' + ip + ':3000',
     'webpack/hot/only-dev-server',
     './reactjs/App4',
+  ],
+  ProjectViewApp: [
+    'webpack-dev-server/client?http://' + ip + ':3000',
+    'webpack/hot/only-dev-server',
+    './reactjs/ProjectViewApp',
   ]
 }
 
