@@ -39,7 +39,40 @@ config.plugins = config.plugins.concat([
 ])
 
 config.module.loaders.push(
-  { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot-loader/webpack', 'babel-loader'] }
+  {
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    loaders: [
+      'react-hot-loader/webpack',
+      'babel-loader'
+    ]
+  }
+)
+
+config.module.loaders.push(
+  {
+    test: /\.css$/,
+    use: [
+      require.resolve('style-loader'),
+      {
+        loader: require.resolve('css-loader'),
+        options: {
+          importLoaders: 1,
+        }
+      }
+    ]
+  }
+)
+
+config.module.loaders.push(
+  {
+    test: /\.scss$/,
+    loaders: [
+      require.resolve('style-loader'),
+      require.resolve('css-loader'),
+      require.resolve('sass-loader')
+    ]
+  }
 )
 
 module.exports = config
