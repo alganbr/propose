@@ -14,7 +14,9 @@ export default class ProjectCard extends React.Component {
 
 	render() {
 		const project = this.props.project
+		const projectUrl = "/projects/" + project.id.toString();
 		return (
+			<a href={projectUrl}>
 			<Card>
 				<CardBody>
 					<div>
@@ -28,6 +30,7 @@ export default class ProjectCard extends React.Component {
 					</div>
 				</CardBody>
 			</Card>
+			</a>
 		)
 	}
 }

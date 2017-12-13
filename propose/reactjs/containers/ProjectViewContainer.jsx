@@ -10,7 +10,7 @@ export default class ProjectViewContainer extends React.Component {
 
 	constructor(props) {
 	  super(props)
-	  this.state = {project: {}}
+	  this.state = {project: {}, user: {}}
 	}
 
 	 componentDidMount() {
@@ -29,6 +29,14 @@ export default class ProjectViewContainer extends React.Component {
 	        console.log(data, "Looking at data")
 	        component.setState({project:data});
 	      });
+
+	  const userUrl = "/api/profile/"
+	  fetch(userUrl, settings) 
+	  	.then((response) => response.json())
+	  	.then((data) => {
+	  		console.log(data, "looking at user data")
+	  		component.setState({user:data})
+	  	})
 	}
 
 	_renderSkills = (project) => {
