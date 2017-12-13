@@ -10,6 +10,8 @@ import ReviewBlurb from '../components/ReviewBlurb';
 import WorkInfo from '../components/profile/WorkInfo';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
+import Cookies from 'js-cookie';
+
 
 export default class App1Container extends React.Component {
 
@@ -55,18 +57,21 @@ export default class App1Container extends React.Component {
   }
 
     componentDidMount() {
+    const csrftoken = Cookies.get('csrftoken');
     let component = this
-    let url = "api/users/";
+    let url = "/api/users/";
 
     let params = {
-        username: "foo",
-        password: "bar",
-        email: "test@test.com"
+        // username: "foo",
+        // password: "bar",
+        // email: "test@test.com",
+        credentials: 'same-origin'
     };
 
     let settings = {
         method: "GET",
-        // body: params,
+        body: params,
+        credentials: 'same-origin'
     };
 
     fetch(url, settings)

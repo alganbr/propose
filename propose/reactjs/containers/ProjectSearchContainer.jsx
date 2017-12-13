@@ -25,6 +25,7 @@ export default class ProjectSearchContainer extends React.Component {
 		let url = "/api/projects"
 		let settings = {
 			method: "GET",
+			credentials: 'same-origin'
 		}
 
 		fetch(url, settings)

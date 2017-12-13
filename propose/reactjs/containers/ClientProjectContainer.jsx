@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FreelancerCard from '../components/FreelancerCard';
+import ProjectCard from '../components/ProjectCard';
 import Navbar from '../components/Navbar';
 import SearchColumn from '../components/freelancer_search/SearchColumn';
 import { Grid, Row, Col } from 'react-flexbox-grid';
@@ -11,44 +11,30 @@ export default class ClientProjectContainer extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state=({
-			users:[]
+			projects:[]
 		})
 	}
 
-	 componentDidMount() {
-	  let component = this
-	  let url = "/api/users/";
+	componentDidMount() {
+		let component = this
+		let url = "/api/projects"
+		let settings = {
+			method: "GET",
+			credentials: 'same-origin'
+		}
 
-	  let params = {
-	      username: "foo",
-	      password: "bar",
-	      email: "test@test.com"
-	  };
-
-	  let settings = {
-	      method: "GET",
-	      // body: params,
-	  };
-
-	  fetch(url, settings)
-	      .then((response) => response.json())
-	      .then((data) => {
-	        console.log(data, "Looking at data")
-	        component.setState({users:data});
-	      });
+		fetch(url, settings)
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data)
+				component.setState({projects:data})
+			})
 	}
 
-	_renderCardsTwoColumn = (users) => {
-	  const cards = users.map(user => {
-	    console.log(user)
-	    return (<FreelancerCard 
-	      name={user.user.first_name + " " + user.user.last_name}
-	      rating={user.rating}
-	      reviewCount={109}
-	      skills={user.skills}
-	      description={user.bio}
-	      tags={[]}
-	      isTaken={false}/>);
+	_renderCardsTwoColumn = (projects) => {
+	  const cards = projects.map(project => {
+	  	console.log(project)
+	    return (<ProjectCard project={project}/>);
 	  });
 	  const leftCol = []
 	  const rightCol = []
@@ -84,10 +70,17 @@ export default class ClientProjectContainer extends React.Component {
 			</div>
 			<Grid fluid>
 			  <Row>
-			    <Col xs> 
+			    <Col xs>
+			    	<h3>View Projects</h3> 
+			    	<ul>
+			    		<li>Saved</li>
+			    		<li>Pending</li>
+			    		<li>Invites</li>
+			    		<li>Completed</li>
+			    	</ul>
 			    </Col>
 			    <Col xs>
-			    	Hello
+			    	{this._renderCardsTwoColumn(this.state.projects)}
 			    </Col>
 			  </Row>
 			</Grid>
