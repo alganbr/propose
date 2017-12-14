@@ -6,7 +6,7 @@ import ProjectViewContainer from './containers/ProjectViewContainer';
 import './styles/global.scss';
 import './styles/navbar.scss';
 
-class ProjectViewApp extends React.Component {
+class ProjectView extends React.Component {
   render() {
     const splitHref = window.location.href.split("/")
     const cleanHref = new Array();
@@ -22,4 +22,4 @@ class ProjectViewApp extends React.Component {
   }
 }
 
-render(<ProjectViewApp/>, document.getElementById('ProjectView'))
+render(<ProjectView/>, document.getElementById('ProjectView'))
