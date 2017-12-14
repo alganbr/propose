@@ -72,25 +72,28 @@ export default class ProjectViewContainer extends React.Component {
   }
 
   onSubmit = (model) => {
+    var headers = new Headers();
+
+    headers.append('Accept', 'application/json'); // This one is enough for GET requests
+    headers.append('Content-Type', 'application/json'); // This one sends body
     const applyUrl = "/api/applications/"
     const details = {
+        details: {
                project: this.state.project.id,
                freelancer: this.state.user.id,
                client: this.state.project.client.id,
                message: model.message,
-           };
+           }};
+    console.log("looking at the detials", details)
     const settings = {
         method: "POST",
         credentials: 'same-origin',
-        body: {
-            details: JSON.stringify(details)
-        }
+        headers: headers,
+        body: JSON.stringify(details)
     };
-    fetch(applyUrl, settings)
+    fetch(applyUrl,  settings)
         .then((response) => response.json())
-        .then((data) => {
-            console.log(data,"Looking at data")
-        })
+        .then((data) => {})
     this.setState({modalIsOpen: false})
   }
 

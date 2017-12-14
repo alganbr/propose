@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^register/$', RegisterView.as_view(), name='register'),
     url(r'^logout/$', LogoutView.as_view(redirect_field_name='login'), name='logout'),
     url(r'^profile/', generic.TemplateView.as_view(template_name='profile.html')),
+    url(r'^user/(?P<pk>[0-9]+)/$', generic.TemplateView.as_view(template_name='otherprofile.html')),
     url(r'^admin/', admin.site.urls),
     url(r'^home/', generic.TemplateView.as_view(template_name='home.html'), name='home'),
     url(r'^freelancer_search/', generic.TemplateView.as_view(template_name='freelancer_search.html')),

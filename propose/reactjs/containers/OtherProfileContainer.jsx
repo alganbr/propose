@@ -1,0 +1,64 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import Mainbar from '../components/profile/Mainbar';
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/profile/Sidebar';
+
+export default class OtherProfileContainer extends React.Component {
+
+  /*
+  TO LOAD FIXTURE DATA run the following for accounts
+
+  python ../../manage.py loaddata initial_data.json
+  This is in propose/account/fixtures
+  */
+
+  static propTypes = {
+    userId: PropTypes.number,
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      profile_pic: "",
+      skills: [],
+    }
+  }
+
+  componentWillMount() {
+    let url = "/api/users/" + this.props.userId.toString();
+    let settings = {
+        method: "GET",
+        credentials: 'same-origin',
+    };
+    let component = this;
+    fetch(url, settings)
+        .then((response) => response.json())
+        .then((data) => {
+          component.setState(data);
+        });
+  }
+
+  render() {
+    console.log(this.props)
+    return (
+      <div className="profile">
+        <Navbar />
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-4">
+              <Sidebar
+                profilePicture={this.state.profile_pic}
+                skills={this.state.skills}
+              />
+            </div>
+            <div className="col-sm-8">
+              <Mainbar user={this.state} />
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
