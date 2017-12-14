@@ -8,4 +8,5 @@ djangorestframework==3.7.3
 markdown==2.6.9
 django-filter==1.1.0
 requests==2.18.4
+factory_boy==2.9.2
 npm
