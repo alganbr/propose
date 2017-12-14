@@ -23,9 +23,11 @@ from django.views.generic.base import RedirectView
 from django.core.urlresolvers import reverse_lazy
 
 urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^login/$', generic.TemplateView.as_view(template_name='login.html')),
+    url(r'^profile/', generic.TemplateView.as_view(template_name='profile.html')),
     url(r'^$', RedirectView.as_view(url=reverse_lazy('rest_framework:login'))),
     url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^admin/', admin.site.urls),
     url(r'^home/', generic.TemplateView.as_view(template_name='view1.html'), name='home'),
     url(r'^view2/', generic.TemplateView.as_view(template_name='view2.html')),
     url(r'^freelancer_search/', generic.TemplateView.as_view(template_name='freelancer_search.html')),

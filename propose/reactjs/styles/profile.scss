@@ -1,0 +1,85 @@
+.profile {
+  width: 100%;
+  .sidebar {
+    display: inline-block;
+    .profile-picture {
+      height: 50%;
+      width: 75%;
+      border-radius: 100%;
+      margin: 0 auto;
+    }
+    .buttons {
+      width: 100%;
+      margin: 0 auto;
+      .btn {
+        display: block;
+        width: 200px;
+        border-radius: 0;
+        border: 0;
+        transition: all 0.3s;
+        background-color: #EFEFEF;
+        color: #212121;
+        text-align: left;
+        padding-left: 60px;
+        &:hover {
+          background-color: #CECECE
+        }
+        .btn-icon {
+          position: absolute;
+          left: 40px;
+          margin-top: 3px;
+        }
+      }
+
+    }
+    .completed-projects, .skills {
+      ul {
+        list-style: none;
+      }
+    }
+  }
+  .mainbar {
+    width: 100%;
+    .profile-information {
+      .rating {
+        font-weight: 700;
+        color: #757575;
+        margin-right: 20px;
+      }
+      .star {
+        color: #4DB6AB;
+      }
+    }
+    .work-info {
+      .table-header {
+        font-weight: 700;
+      }
+    }
+    .review-blurb {
+      margin-bottom: 10px;
+      .picture {
+        .review-picture {
+          width: 70%;
+          border-radius: 50%;
+        }
+      }
+      .review {
+        margin-left: 0;
+        .text-main {
+          font-size: 16px;
+          font-weight: 500;
+        }
+        .rating {
+          margin-top: 1px;
+          margin-left: 15px;
+          .star {
+            color: #4DB6AB;
+          }
+        }
+        .review-description {
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+}

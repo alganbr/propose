@@ -6,6 +6,10 @@ module.exports = {
 
   entry: {
     // Add as many entry points as you have container-react-components here
+    Profile: './reactjs/Profile',
+    Home: './reactjs/Home',
+    Login: './reactjs/Login',
+    Register: './reactjs/Register',
     App1: './reactjs/App1',
     App2: './reactjs/App2',
     App3: './reactjs/App3',

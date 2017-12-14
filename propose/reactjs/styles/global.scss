@@ -1,0 +1,19 @@
+body {
+  font-family: 'Avenir Next';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700px;
+}
+
+a {
+  transition: all 0.3s;
+  &:hover {
+    text-decoration: none;
+  }
+}
