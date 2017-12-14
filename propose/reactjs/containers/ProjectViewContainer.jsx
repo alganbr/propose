@@ -5,6 +5,8 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Form, TextField, SubmitField } from 'react-components-form';
 import Schema from 'form-schema-validation';
 
+import Navbar from '../components/Navbar';
+
 const applyProjectSchema = new Schema({
   message: {
     login: String,
@@ -104,6 +106,7 @@ export default class ProjectViewContainer extends React.Component {
     }
     return (
       <div>
+      <Navbar />
       <Grid fluid>
         <Row>
           <Col xs>

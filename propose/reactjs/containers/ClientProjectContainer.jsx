@@ -77,32 +77,25 @@ export default class ClientProjectContainer extends React.Component {
   render() {
     return (
      <div>
-     <div className="container">
-       <div className="row">
-         <div className="col-sm-12">
-           <Navbar />
-         </div>
-       </div>
-     </div>
-     <Grid fluid>
-       <Row>
-         <Col xs>
-           <h3>View Projects</h3>
-           <ul>
-             <li>Saved</li>
-             <li>Pending</li>
-             <li>Invites</li>
-             <li>Completed</li>
-           </ul>
-         </Col>
-         <Col xs>
-           {this._renderCardsTwoColumn(this.state.projects)}
-         </Col>
-       </Row>
-     </Grid>
-     </div>
+      <Navbar />
 
+       <Grid fluid>
+         <Row>
+           <Col xs>
+             <h3>View Projects</h3>
+             <ul>
+               <li>Saved</li>
+               <li>Pending</li>
+               <li>Invites</li>
+               <li>Completed</li>
+             </ul>
+           </Col>
+           <Col xs>
+             {this._renderCardsTwoColumn(this.state.projects)}
+           </Col>
+         </Row>
+       </Grid>
+     </div>
     );
   }
-
 }

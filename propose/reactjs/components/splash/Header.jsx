@@ -6,7 +6,7 @@ export default class Header extends React.Component {
     return(
       <header className="masthead text-center">
         <div className="container">
-          <img src="/media/jonathan.png" />
+          <img src="https://i.imgur.com/0Qsbhmo.png" />
           <Typist
             className="title"
             blink={true}
