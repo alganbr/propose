@@ -39,8 +39,6 @@ Sitemap
         - dashboard of ongoing projects
     - /dashboard/completed
         - dashboard of completed projects
-    - /dashboard/<id>
-        - (user-restricted) view dashboard <id>
     - /dashboard/project/<id>
         - (user-restricted) expanded project view of project <id>
     - /dashboard/project/<id>/edit
@@ -116,8 +114,6 @@ API Endpoints
         - dashboard of ongoing projects
     - GET /api/dashboard/completed
         - dashboard of completed projects
-    - GET /api/dashboard/<id>
-        - (user-restricted) dashboard <id>
 
     - GET /api/users
         - list of users, filterable
