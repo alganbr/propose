@@ -11,7 +11,8 @@ export default class ClientProjectContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      projects: []
+      projects: [],
+      projectFilter: 'none'
     }
   }
 
@@ -33,7 +34,7 @@ export default class ClientProjectContainer extends React.Component {
 
   componentDidMount() {
     const component = this;
-    const url = "/api/projects/1"
+    const url = "/api/projects"
     const settings = {
       method: "GET",
       credentials: 'same-origin'
@@ -42,7 +43,7 @@ export default class ClientProjectContainer extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
-
+        this.setState({projects: data})
       })
   }
 
@@ -75,53 +76,33 @@ export default class ClientProjectContainer extends React.Component {
 
   render() {
     return (
-        <div className="client-project-view">
-          <Navbar />
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-12">
+     <div>
+     <div className="container">
+       <div className="row">
+         <div className="col-sm-12">
+           <Navbar />
+         </div>
+       </div>
+     </div>
+     <Grid fluid>
+       <Row>
+         <Col xs>
+           <h3>View Projects</h3>
+           <ul>
+             <li>Saved</li>
+             <li>Pending</li>
+             <li>Invites</li>
+             <li>Completed</li>
+           </ul>
+         </Col>
+         <Col xs>
+           {this._renderCardsTwoColumn(this.state.projects)}
+         </Col>
+       </Row>
+     </Grid>
+     </div>
 
-              </div>
-            </div>
-          </div>
-          <Grid fluid>
-            <Row>
-              <Col xs>
-              </Col>
-              <Col xs>
-              </Col>
-            </Row>
-          </Grid>
-        </div>
-      )
-    // return (
-    //  <div>
-    //  <div className="container">
-    //    <div className="row">
-    //      <div className="col-sm-12">
-    //        <Navbar />
-    //      </div>
-    //    </div>
-    //  </div>
-    //  <Grid fluid>
-    //    <Row>
-    //      <Col xs>
-    //        <h3>View Projects</h3>
-    //        <ul>
-    //          <li>Saved</li>
-    //          <li>Pending</li>
-    //          <li>Invites</li>
-    //          <li>Completed</li>
-    //        </ul>
-    //      </Col>
-    //      <Col xs>
-    //        {this._renderCardsTwoColumn(this.state.projects)}
-    //      </Col>
-    //    </Row>
-    //  </Grid>
-    //  </div>
-
-    // );
+    );
   }
 
 }
