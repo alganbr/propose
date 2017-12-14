@@ -28,25 +28,25 @@ config.entry = {
     'webpack/hot/only-dev-server',
     './reactjs/Register',
   ],
-  App2: [
+  ClientProject: [
 	  'webpack-dev-server/client?http://' + ip + ':3000',
 	  'webpack/hot/only-dev-server',
-	  './reactjs/App2',
+	  './reactjs/ClientProject',
   ],
-  App3:[
+  FreelancerSearch:[
 	  'webpack-dev-server/client?http://' + ip + ':3000',
 	  'webpack/hot/only-dev-server',
-	  './reactjs/App3',
+	  './reactjs/FreelancerSearch',
   ],
-  App4: [
+  ProjectSearch: [
     'webpack-dev-server/client?http://' + ip + ':3000',
     'webpack/hot/only-dev-server',
-    './reactjs/App4',
+    './reactjs/ProjectSearch',
   ],
-  ProjectViewApp: [
+  ProjectView: [
     'webpack-dev-server/client?http://' + ip + ':3000',
     'webpack/hot/only-dev-server',
-    './reactjs/ProjectViewApp',
+    './reactjs/ProjectView',
   ]
 }
 
