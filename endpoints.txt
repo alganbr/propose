@@ -39,6 +39,8 @@ Sitemap
         - dashboard of ongoing projects
     - /dashboard/completed
         - dashboard of completed projects
+    - /dashboard/<id>
+        - (user-restricted) view dashboard <id>
     - /dashboard/project/<id>
         - (user-restricted) expanded project view of project <id>
     - /dashboard/project/<id>/edit
@@ -96,7 +98,7 @@ API Endpoints
     - DELETE /api/applications/<id>/offer
         - (client-only) delete an offer
     - POST /api/applications/<id>/offer/accept
-        - (freelancer-only) accept offer
+        - (freelancer-only) accept offer, create the project and add it to corresponding dashboards
     - POST /api/applications/<id>/offer/decline
         - (freelancer-only) decline offer
     - GET /api/requests
@@ -114,6 +116,8 @@ API Endpoints
         - dashboard of ongoing projects
     - GET /api/dashboard/completed
         - dashboard of completed projects
+    - GET /api/dashboard/<id>
+        - (user-restricted) dashboard <id>
 
     - GET /api/users
         - list of users, filterable

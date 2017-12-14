@@ -4,6 +4,9 @@ from .models import *
 from account.models import Account
 from account.serializers import AccountSerializer
 
+"""
+GET
+"""
 class DashboardSerializer(serializers.ModelSerializer):
 
     owner = AccountSerializer(Account)

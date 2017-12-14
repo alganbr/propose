@@ -2,9 +2,14 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, generics
+from django.db.models import Q
 
 from .models import *
 from .serializers import *
+from project.models import *
+from project.serializers import *
+from dashboard.models import *
+from dashboard.serializers import *
 from django.utils import timezone
 
 # permissions
@@ -152,11 +157,20 @@ class WorkOfferAccept(APIView):
             return Response(None, status=status.HTTP_401_UNAUTHORIZED)
 
         # check expire time
-        if self.work_application_valid(request, work_offer):
-            work_offer.is_accepted = True
-            work_offer.save()
-        else:
+        if not self.work_application_valid(request, work_offer):
             return Response(None, status=status.HTTP_400_BAD_REQUEST)
+
+        work_offer.is_accepted = True
+        work_offer.save()
+
+        # add project to corresponding dashboards
+        project = get_object_or_404(Project, pk=work_offer.details.project.pk)
+        client_dashboard = get_object_or_404(Dashboard, owner=work_offer.details.client.pk, is_completed_dashboard=False)
+        freelancer_dashboard = get_object_or_404(Dashboard, owner=work_offer.details.freelancer.pk, is_completed_dashboard=False)
+        project.client_dashboard=client_dashboard
+        project.freelancer_dashboard=freelancer_dashboard
+        project.save()
+
         return Response(None, status=status.HTTP_200_OK)
 
 class WorkOfferDecline(APIView):
@@ -186,11 +200,13 @@ class WorkOfferDecline(APIView):
             return Response(None, status=status.HTTP_401_UNAUTHORIZED)
 
         # check expire time
-        if self.work_application_valid:
-            work_offer.is_accepted = True
-            work_offer.save()
-        else:
-            return Response(None, status=status.HTTP_200_OK)
+        if not self.work_application_valid(request, work_offer):
+            return Response(None, status=status.HTTP_400_BAD_REQUEST)
+
+        work_offer.is_declined = True
+        work_offer.save()
+
+        return Response(None, status=status.HTTP_200_OK)
 
 class WorkRequestList(APIView):
     """
