@@ -1,0 +1,37 @@
+header {
+  text-align: center;
+  color: white;
+  .container {
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  header {
+    .container {
+      vertical-align: middle;
+      height: calc(100vh-50px);
+      .title {
+        font-size: 3em;
+      }
+      .Typist .Cursor {
+        display: inline-block;
+
+        &--blinking {
+          opacity: 1;
+          animation: blink 1s linear infinite;
+          @keyframes blink {
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  background-color: #4DB6AB;
+}

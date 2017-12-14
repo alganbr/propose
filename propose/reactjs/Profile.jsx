@@ -15,4 +15,4 @@ class Profile extends React.Component {
   }
 }
 
-render(<Profile/>, document.getElementById('profile'))
+render(<Profile/>, document.getElementById('Profile'))

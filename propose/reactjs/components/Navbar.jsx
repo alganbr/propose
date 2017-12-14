@@ -21,18 +21,17 @@ export default class Navbar extends React.Component {
                   <a href="/project_search">Project Search</a>
                 </li>
                 <li>
-                  <a href="">Dashboard</a>
+                  <a href="/client_project_view">My Projects</a>
                 </li>
                 <li>
-                  <a href="/client_project_view">Projects</a>
+                  <a href="">My Proposals</a>
                 </li>
                 <li className="dropdown">
                   <a href="#" className="dropdown-toggle" data-toggle="dropdown">My Account <FontAwesome name="caret-down" /></a>
                   <ul className="dropdown-menu">
                     <li><a href="/profile">Profile</a></li>
                     <li><a href="">Settings</a></li>
-                    <li><a href="">Switch to Client Mode</a></li>
-                    <li><a href="">Logout</a></li>
+                    <li><a href="/logout">Logout</a></li>
                   </ul>
                 </li>
               </ul>

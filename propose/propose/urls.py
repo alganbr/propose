@@ -21,15 +21,20 @@ from django.contrib import admin
 from django.views import generic
 from django.views.generic.base import RedirectView
 from django.core.urlresolvers import reverse_lazy
+from django.contrib.auth.views import LoginView, LogoutView
+
+from .forms import *
+from .views import *
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^login/$', generic.TemplateView.as_view(template_name='login.html')),
+    url(r'^$', RedirectView.as_view(url=reverse_lazy('login'))),
+    # url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^login$', LoginView.as_view(template_name='login.html', redirect_field_name='home', form_class=LoginForm, redirect_authenticated_user=True), name='login'),
+    url(r'^register/$', RegisterView.as_view(), name='register'),
+    url(r'^logout/$', LogoutView.as_view(redirect_field_name='login'), name='logout'),
     url(r'^profile/', generic.TemplateView.as_view(template_name='profile.html')),
-    url(r'^$', RedirectView.as_view(url=reverse_lazy('rest_framework:login'))),
-    url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^admin/', admin.site.urls),
     url(r'^home/', generic.TemplateView.as_view(template_name='home.html'), name='home'),
-    url(r'^view2/', generic.TemplateView.as_view(template_name='view2.html')),
     url(r'^freelancer_search/', generic.TemplateView.as_view(template_name='freelancer_search.html')),
     url(r'^project_search/', generic.TemplateView.as_view(template_name='project_search.html')),
     url(r'^client_project_view/', generic.TemplateView.as_view(template_name='client_project_view.html')),

@@ -3,7 +3,11 @@ import { render } from 'react-dom';
 
 import FreelancerSearchContainer from './containers/FreelancerSearchContainer';
 
-class App2 extends React.Component {
+import './styles/global.scss';
+import './styles/navbar.scss';
+import './styles/search.scss';
+
+class FreelancerSearch extends React.Component {
   render() {
     return (
       <FreelancerSearchContainer />
@@ -11,4 +15,4 @@ class App2 extends React.Component {
   }
 }
 
-render(<App2/>, document.getElementById('App2'))
+render(<FreelancerSearch/>, document.getElementById('FreelancerSearch'))

@@ -3,7 +3,10 @@ import { render } from 'react-dom';
 
 import ClientProjectContainer from './containers/ClientProjectContainer';
 
-class App4 extends React.Component {
+import './styles/global.scss';
+import './styles/navbar.scss';
+
+class ClientProject extends React.Component {
   render() {
     return (
       <ClientProjectContainer />
@@ -11,4 +14,4 @@ class App4 extends React.Component {
   }
 }
 
-render(<App4/>, document.getElementById('App4'))
+render(<ClientProject/>, document.getElementById('ClientProject'))

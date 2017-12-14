@@ -14,4 +14,4 @@ class Register extends React.Component {
   }
 }
 
-render(<Register/>, document.getElementById('register'))
+render(<Register/>, document.getElementById('Register'))

@@ -51,8 +51,8 @@ class AccountCreateSerializer(serializers.ModelSerializer):
         password = user_data.pop('password')
         user = User.objects.create(**user_data)
         user.set_password(password)
-        skills_data = validated_data.pop('skills')
-        account = Account.objects.create(user=user, **validated_data)
+        skills_data = validated_data.pop('skills', [])
+        account = Account.objects.update_or_create(user=user, **validated_data)[0]
         account.skills = skills_data
         return account
 

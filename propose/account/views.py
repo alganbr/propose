@@ -63,9 +63,11 @@ class AccountReview(APIView):
         return Response(serializer.data)
 
     def post(self, request, pk, format=None):
-        account = self.get_object(pk)
+        reviewee_account = self.get_object(pk)
+        reviewer_account = self.get_object(request.user.pk)
         userreview_data = request.data
-        userreview_data['reviewee'] = account.pk
+        userreview_data['reviewee'] = reviewee_account.pk
+        userreview_data['reviewer'] = reviewer_account.pk
         serializer = UserReviewCreateSerializer(data=userreview_data)
         if serializer.is_valid():
             serializer.save()
@@ -91,7 +93,6 @@ class ProfileDetail(APIView):
         serializer = AccountUpdateSerializer(account, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            print(serializer.data)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

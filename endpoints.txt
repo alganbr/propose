@@ -72,6 +72,14 @@ API Endpoints
         - (client-only) edit details of project <id>
     - DELETE /api/projects/<id>
         - (client-only) delete project <id>
+    - GET /api/project/<id>/comments
+        - (user-restricted) get comments for project <id>
+    - POST /api/project/<id>/comments
+        - (user-restricted) add a comment to project <id>
+    - GET /api/project/<id>/tasks
+        - (user-restricted) get tasks for project <id>
+    - POST /api/project/<id>/tasks
+        - (user-restricted) add a task to project <id>
 
     - GET /api/applications
         - show list of applications
@@ -90,7 +98,7 @@ API Endpoints
     - DELETE /api/applications/<id>/offer
         - (client-only) delete an offer
     - POST /api/applications/<id>/offer/accept
-        - (freelancer-only) accept offer
+        - (freelancer-only) accept offer, create the project and add it to corresponding dashboards
     - POST /api/applications/<id>/offer/decline
         - (freelancer-only) decline offer
     - GET /api/requests
@@ -110,27 +118,11 @@ API Endpoints
         - dashboard of completed projects
     - GET /api/dashboard/<id>
         - (user-restricted) dashboard <id>
-    - GET /api/dashboard/project/<id>
-        - (user-restricted) expanded project view of project <id>
-    - POST /api/dashboard/project/<id>
-        - (client-only) edit details for project <id>
-    - GET /api/dashboard/project/<id>/tasks
-        - (user-restricted) get tasks for project <id>
-    - POST /api/dashboard/project/<id>/tasks
-        - (user-restricted) add a task to project <id>
-    - GET /api/dashboard/project/<id>/comments
-        - (user-restricted) get comments for project <id>
-    - POST /api/dashboard/project/<id>/comments
-        - (user-restricted) add a comment to project <id>
 
     - GET /api/users
         - list of users, filterable
     - POST /api/users
         - create a new user
-    - POST /api/users/login
-        - login current user
-    - POST /api/users/logout
-        - logout current user
     - GET /api/users/<id>
         - user page of user <id>
     - DELETE /api/users/<id>

@@ -1,8 +1,42 @@
 {% extends "base.html" %}
-{% load render_bundle from webpack_loader %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login-register.css' %}">
+{% endblock extrastyle %}
 
 {% block main %}
-<div id="login"></div>
-{% render_bundle 'vendors' %}
-{% render_bundle 'Login' %}
-{% endblock %}
+<body>
+  <div class="container">
+    <div class="middlePage">
+
+      <div class="page-header">
+        <h1 class="logo">Propose</h1>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Please Sign In</h3>
+        </div>
+        <div class="panel-body">
+
+          <div class="row">
+
+            <div class="col-md-12" style="border-left:1px solid #ccc;height:auto">
+              <form method="POST">
+                {% crispy form %}
+                <div class="spacing"><small>Don't have an account? </small><a href="{% url 'register' %}" ><small>Register</small></a><br/></div>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+{% endblock main %}

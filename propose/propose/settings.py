@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'account',
     'application',
     'bootstrap3',
+    'crispy_forms',
     'dashboard',
     'project',
     'rest_framework',
@@ -141,7 +142,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = MEDIA_DIR
 
 LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'rest_framework:login'
+LOGOUT_REDIRECT_URL = 'login'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
