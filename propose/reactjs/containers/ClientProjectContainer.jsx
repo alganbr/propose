@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import FontAwesome from 'react-fontawesome';
 
 import ProjectCard from '../components/ProjectCard';
 import Navbar from '../components/Navbar';
 import SearchColumn from '../components/freelancer_search/SearchColumn';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 
 export default class ClientProjectContainer extends React.Component {
 
@@ -15,22 +16,6 @@ export default class ClientProjectContainer extends React.Component {
       projectFilter: 'none'
     }
   }
-
-  // componentDidMount() {
-  //  let component = this
-  //  let url = "/api/projects"
-  //  let settings = {
-  //    method: "GET",
-  //    credentials: 'same-origin'
-  //  }
-
-  //  fetch(url, settings)
-  //    .then((response) => response.json())
-  //    .then((data) => {
-  //      console.log(data)
-  //      component.setState({projects:data})
-  //    })
-  // }
 
   componentDidMount() {
     const component = this;
@@ -76,21 +61,28 @@ export default class ClientProjectContainer extends React.Component {
 
   render() {
     return (
-     <div>
+     <div className="client-project">
       <Navbar />
-
        <Grid fluid>
          <Row>
-           <Col xs>
+           <Col className="sidebar" xs={3}>
              <h3>View Projects</h3>
-             <ul>
-               <li>Saved</li>
-               <li>Pending</li>
-               <li>Invites</li>
-               <li>Completed</li>
+             <ul className="projects-list">
+              <li className="category">
+                <FontAwesome className="icon" name="bookmark" />Saved
+              </li>
+              <li className="category">
+                <FontAwesome className="icon" name="clock-o" />Pending
+              </li>
+              <li className="category">
+                <FontAwesome className="icon" name="envelope-o" />Invites
+              </li>
+              <li className="category">
+                <FontAwesome className="icon" name="check" />Completed
+              </li>
              </ul>
            </Col>
-           <Col xs>
+           <Col className="mainbar" xs={9}>
              {this._renderCardsTwoColumn(this.state.projects)}
            </Col>
          </Row>

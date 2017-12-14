@@ -5,6 +5,7 @@ import ClientProjectContainer from './containers/ClientProjectContainer';
 
 import './styles/global.scss';
 import './styles/navbar.scss';
+import './styles/project.scss';
 
 class ClientProject extends React.Component {
   render() {
