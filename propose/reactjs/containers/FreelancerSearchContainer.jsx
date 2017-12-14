@@ -12,7 +12,6 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 
 
 export default class FreelancerSearchContainer extends React.Component {
-
   /*
   TO LOAD FIXTURE DATA run the following for accounts
 
