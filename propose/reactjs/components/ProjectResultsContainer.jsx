@@ -44,10 +44,10 @@ export default class ProjectResultsContainer extends React.Component {
     return (
       <Grid fluid>
         <Row>
-          <Col className="search-sidebar" xs>
+          <Col className="sidebar" xs={4}>
             <SearchColumn/>
           </Col>
-          <Col xs>
+          <Col className="mainbar" xs={8}>
             {this._renderCardsTwoColumn(this.props.projects)}
           </Col>
         </Row>

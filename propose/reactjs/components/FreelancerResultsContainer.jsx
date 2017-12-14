@@ -16,14 +16,17 @@ export default class FreelancerResultsContainer extends React.Component {
 
   _renderCardsTwoColumn = (users) => {
     const cards = users.map(user => {
-      return (<FreelancerCard
-        name={user.user.first_name + " " + user.user.last_name}
-        rating={user.rating}
-        reviewCount={109}
-        skills={user.skills}
-        description={user.bio}
-        tags={[]}
-        isTaken={false}/>);
+      return (
+        <FreelancerCard
+          name={user.user.first_name + " " + user.user.last_name}
+          rating={user.rating}
+          reviewCount={109}
+          skills={user.skills}
+          bio={user.bio}
+          tags={[]}
+          isTaken={false}
+        />
+      );
     });
     const leftCol = []
     const rightCol = []
@@ -51,10 +54,10 @@ export default class FreelancerResultsContainer extends React.Component {
     return (
       <Grid fluid>
         <Row>
-          <Col className="search-sidebar" xs>
+          <Col className="sidebar" xs={4}>
             <SearchColumn/>
           </Col>
-          <Col xs>
+          <Col className="mainbar" xs={8}>
             {this._renderCardsTwoColumn(this.props.freelancers)}
           </Col>
         </Row>

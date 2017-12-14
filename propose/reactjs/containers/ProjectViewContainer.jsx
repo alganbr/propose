@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { Grid, Row, Col } from 'react-flexbox-grid';
+
+import Navbar from '../components/Navbar';
 
 export default class ProjectViewContainer extends React.Component {
 	static propTypes = {
@@ -31,7 +32,7 @@ export default class ProjectViewContainer extends React.Component {
 	      });
 
 	  const userUrl = "/api/profile/"
-	  fetch(userUrl, settings) 
+	  fetch(userUrl, settings)
 	  	.then((response) => response.json())
 	  	.then((data) => {
 	  		console.log(data, "looking at user data")
@@ -60,34 +61,37 @@ export default class ProjectViewContainer extends React.Component {
 			clientName = this.state.project.client.user.first_name + " " + this.state.project.client.user.last_name;
 		}
 		return (
-			<Grid fluid>
-			  <Row>
-			    <Col xs>
-			    	<h3>{this.state.project.title}</h3>
-			    	<Row>
-			    		<Col xs>
-			    			{"by" + " " + clientName}
-			    		</Col>
-			    		<Col xs>
-			    			<button>Apply</button>
-			    		</Col>
-			    	</Row>
-			    	<span/>
+      <div className="project-view">
+        <Navbar />
+  			<Grid fluid>
+  			  <Row>
+  			    <Col xs>
+  			    	<h3>{this.state.project.title}</h3>
+  			    	<Row>
+  			    		<Col xs>
+  			    			{"by" + " " + clientName}
+  			    		</Col>
+  			    		<Col xs>
+  			    			<button>Apply</button>
+  			    		</Col>
+  			    	</Row>
+  			    	<span/>
 
-			    	<span/>
-			    	<h4>Project Summary</h4>
-			    	{this.state.project.description}
+  			    	<span/>
+  			    	<h4>Project Summary</h4>
+  			    	{this.state.project.description}
 
-			    </Col>
-			    <Col xs>
-			    	<h3>Similar Projects</h3>
-			    	<hr/>
-			    	<h3>Skills</h3>
-			    	<hr/>
-			    	{this._renderSkills(this.state.project)}
-			    </Col>
-			  </Row>
-			</Grid>
+  			    </Col>
+  			    <Col xs>
+  			    	<h3>Similar Projects</h3>
+  			    	<hr/>
+  			    	<h3>Skills</h3>
+  			    	<hr/>
+  			    	{this._renderSkills(this.state.project)}
+  			    </Col>
+  			  </Row>
+  			</Grid>
+      </div>
 		)
 	}
 

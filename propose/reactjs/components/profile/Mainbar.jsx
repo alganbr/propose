@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
+import About from './About';
 import ProfileInformation from './ProfileInformation';
 import ReviewBlurb from './ReviewBlurb';
 import WorkInfo from './WorkInfo';
@@ -30,7 +31,15 @@ export default class Mainbar extends React.Component {
             <Tab>Work Info </Tab>
             <Tab>Reviews</Tab>
           </TabList>
-          <TabPanel>About</TabPanel>
+          <TabPanel>
+            <About
+              phone="9256819639"
+              email="fkennedy@ucla.edu"
+              facebook="https://www.facebook.com/fwedeorange"
+              twitter="https://twitter.com/fwedeorange_"
+              website="https://fkennedy.co"
+            />
+          </TabPanel>
           <TabPanel>
             <WorkInfo
               previousWork={[]}
