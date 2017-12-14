@@ -18,13 +18,7 @@ export default class HomeContainer extends React.Component {
     return (
       <div className="home">
         <Navbar login={true} />
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12">
-              <Header />
-            </div>
-          </div>
-        </div>
+        <Header />
       </div>
     )
   }

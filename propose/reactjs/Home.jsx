@@ -5,6 +5,7 @@ import HomeContainer from './containers/HomeContainer';
 
 import './styles/global.scss';
 import './styles/navbar.scss';
+import './styles/header.scss';
 
 class Home extends React.Component {
   render() {
