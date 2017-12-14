@@ -5,11 +5,7 @@ import { Card, CardHeader, CardBody, CardFooter } from "react-simple-card";
 
 export default class FreelancerCard extends React.Component {
   static propTypes = {
-    name: PropTypes.string,
-    rating: PropTypes.number,
-    reveiwCount: PropTypes.number,
-    bio: PropTypes.string,
-    skills: PropTypes.array,
+  	freelancer: PropTypes.object,
   }
 
   constructor(props) {
@@ -24,28 +20,32 @@ export default class FreelancerCard extends React.Component {
   };
 
   render() {
+  	console.log(this.props.freelancer)
+  	const freelancer = this.props.freelancer;
     let bio ="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mattis nulla id scelerisque molestie. Pellentesque non tristique mauris. Vivamus a blandit turpis. Pellentesque tempus elit sit amet magna bibendum ullamcorper. Fusce nisl augue, laoreet a fringilla quis, viverra a leo. Phasellus aliquam tempor nisi.";
     return (
+    <a href={"/user/" + freelancer.id.toString()}>
       <Card className="card">
         <CardBody className="body">
           <span className="name">
-            {this.props.name}
+            {freelancer.user.first_name + " " + freelancer.user.last_name}
           </span>
           <div className="reviews">
-            {this.props.reviewCount}
+            {freelancer.reviewCount}
           </div>
           <div className="rating">
             <StarRatingComponent
               name="rate1"
-              starCount={this.props.rating}
+              starCount={freelancer.rating}
               emptyStarColor="#ffb400"
             />
           </div>
           <div className="bio">
-            {this.truncate(this.props.bio)}
+            {this.truncate(freelancer.bio)}
           </div>
         </CardBody>
       </Card>
+      </a>
     )
   }
 }
