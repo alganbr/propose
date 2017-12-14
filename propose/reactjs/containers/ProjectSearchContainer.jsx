@@ -11,44 +11,40 @@ import WorkInfo from '../components/profile/WorkInfo';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 export default class ProjectSearchContainer extends React.Component {
-	static propTypes = {
-		data: PropTypes.array
-	}
+  static propTypes = {
+    data: PropTypes.array
+  }
 
-	constructor(props) {
-		super(props)
-		this.state = {projects: []}
-	}
+  constructor(props) {
+    super(props)
+    this.state = {projects: []}
+  }
 
-	componentDidMount() {
-		let component = this
-		let url = "/api/projects"
-		let settings = {
-			method: "GET",
-			credentials: 'same-origin'
-		}
+  componentWillMount() {
+    let component = this
+    let url = "/api/projects"
+    let settings = {
+      method: "GET",
+      credentials: 'same-origin'
+    }
 
-		fetch(url, settings)
-			.then((response) => response.json())
-			.then((data) => {
-				console.log(data)
-				component.setState({projects:data})
-			})
-	}
+    fetch(url, settings)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        component.setState({projects:data})
+      })
+  }
 
-	render() {
-		return (
-			<div className="container">
-			  <div className="row">
-			    <div className="col-sm-12">
-			      <Navbar />
-			      <Headline>Search for a Free Lancer</Headline>
-			    </div>
-			  </div>
-			  <ProjectResultsContainer projects={this.state.projects}/>
-			</div>
-			)
-
-
-	}
+  render() {
+    return (
+      <div className="project-search">
+        <Navbar />
+        <div className="container">
+          <Headline>Search for a Project</Headline>
+          <ProjectResultsContainer projects={this.state.projects}/>
+        </div>
+      </div>
+    )
+  }
 }

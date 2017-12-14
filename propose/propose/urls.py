@@ -35,7 +35,6 @@ urlpatterns = [
     url(r'^profile/', generic.TemplateView.as_view(template_name='profile.html')),
     url(r'^admin/', admin.site.urls),
     url(r'^home/', generic.TemplateView.as_view(template_name='home.html'), name='home'),
-    url(r'^view2/', generic.TemplateView.as_view(template_name='view2.html')),
     url(r'^freelancer_search/', generic.TemplateView.as_view(template_name='freelancer_search.html')),
     url(r'^project_search/', generic.TemplateView.as_view(template_name='project_search.html')),
     url(r'^client_project_view/', generic.TemplateView.as_view(template_name='client_project_view.html')),

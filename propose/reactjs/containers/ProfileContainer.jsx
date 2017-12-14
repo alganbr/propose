@@ -21,9 +21,10 @@ export default class ProfileContainer extends React.Component {
   }
 
   componentWillMount() {
-    let url = "/api/users/1";
+    let url = "/api/profile";
     let settings = {
         method: "GET",
+        credentials: 'same-origin',
     };
     let component = this;
     fetch(url, settings)

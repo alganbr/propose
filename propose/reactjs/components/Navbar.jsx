@@ -32,7 +32,7 @@ export default class Navbar extends React.Component {
                     <li><a href="/profile">Profile</a></li>
                     <li><a href="">Settings</a></li>
                     <li><a href="">Switch to Client Mode</a></li>
-                    <li><a href="">Logout</a></li>
+                    <li><a href="/logout">Logout</a></li>
                   </ul>
                 </li>
               </ul>
