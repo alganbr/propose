@@ -3,12 +3,11 @@
       "model":"project.project",
       "pk":1,
       "fields":{  
-      	 "dashboard_id": 1,
          "client": 1,
          "title": "sample project",
          "description": "this is a project",
-         "is_taken": false
-         
+         "is_taken": false,
+         "compensation": { "currency": "$","value" : 50},
       }
    }
 ]

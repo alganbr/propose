@@ -28,6 +28,26 @@ config.entry = {
     'webpack/hot/only-dev-server',
     './reactjs/Register',
   ],
+  App2: [
+	  'webpack-dev-server/client?http://' + ip + ':3000',
+	  'webpack/hot/only-dev-server',
+	  './reactjs/App2',
+  ],
+  App3:[
+	  'webpack-dev-server/client?http://' + ip + ':3000',
+	  'webpack/hot/only-dev-server',
+	  './reactjs/App3',
+  ],
+  App4: [
+    'webpack-dev-server/client?http://' + ip + ':3000',
+    'webpack/hot/only-dev-server',
+    './reactjs/App4',
+  ],
+  ProjectViewApp: [
+    'webpack-dev-server/client?http://' + ip + ':3000',
+    'webpack/hot/only-dev-server',
+    './reactjs/ProjectViewApp',
+  ]
 }
 
 config.output.publicPath = 'http://' + ip + ':3000' + '/assets/bundles/'
@@ -52,6 +72,8 @@ config.module.loaders.push(
 config.module.loaders.push(
   {
     test: /\.css$/,
+    loader: 'style-loader!css-loader?modules',
+    include: /flexboxgrid/,
     use: [
       require.resolve('style-loader'),
       {

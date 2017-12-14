@@ -14,22 +14,27 @@ export default class Navbar extends React.Component {
             </div>
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav navbar-right">
-                <li><a href="">Search</a></li>
-                {!this.props.login && <li><a href="/login">Login</a></li>}
-                {this.props.login && <li> <a href="">Dashboard</a></li>}
-                {this.props.login && <li><a href="">Projects</a></li>}
-                {
-                  this.props.login &&
-                  <li className="dropdown">
-                    <a href="#" className="dropdown-toggle" data-toggle="dropdown">My Account <FontAwesome name="caret-down" /></a>
-                    <ul className="dropdown-menu">
-                      <li><a href="/profile">Profile</a></li>
-                      <li><a href="">Settings</a></li>
-                      <li><a href="">Switch to Client Mode</a></li>
-                      <li><a href="">Logout</a></li>
-                    </ul>
-                  </li>
-                }
+                <li>
+                  <a href="/freelancer_search">Freelancer Search</a>
+                </li>
+                <li>
+                  <a href="/project_search">Project Search</a>
+                </li>
+                <li>
+                  <a href="">Dashboard</a>
+                </li>
+                <li>
+                  <a href="/client_project_view">Projects</a>
+                </li>
+                <li className="dropdown">
+                  <a href="#" className="dropdown-toggle" data-toggle="dropdown">My Account <FontAwesome name="caret-down" /></a>
+                  <ul className="dropdown-menu">
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="">Settings</a></li>
+                    <li><a href="">Switch to Client Mode</a></li>
+                    <li><a href="">Logout</a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>

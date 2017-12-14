@@ -10,6 +10,11 @@ module.exports = {
     Home: './reactjs/Home',
     Login: './reactjs/Login',
     Register: './reactjs/Register',
+    App1: './reactjs/App1',
+    App2: './reactjs/App2',
+    App3: './reactjs/App3',
+    App4: './reactjs/App4',
+    ProjectViewApp: './reactjs/ProjectViewApp',
     vendors: ['react'],
   },
 

@@ -108,10 +108,6 @@ API Endpoints
         - dashboard of ongoing projects
     - GET /api/dashboard/completed
         - dashboard of completed projects
-    - POST /api/dashboard/working/add
-        - add project to ongoing projects
-    - POST /api/dashboard/completed/add
-        - add project to completed projects
     - GET /api/dashboard/<id>
         - (user-restricted) dashboard <id>
     - GET /api/dashboard/project/<id>
@@ -137,6 +133,8 @@ API Endpoints
         - logout current user
     - GET /api/users/<id>
         - user page of user <id>
+    - DELETE /api/users/<id>
+        - (user-restricted) delete user page <id>
     - GET /api/users/<id>/review
         - get reviews of user <id>
     - POST /api/users/<id>/review
@@ -145,3 +143,8 @@ API Endpoints
         - own user info
     - POST /api/profile
         - edit own user info
+
+    - GET /api/tags
+        - get list of tags
+    - POST /api/tags
+        - create new tag
