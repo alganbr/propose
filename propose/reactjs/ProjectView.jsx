@@ -3,6 +3,9 @@ import { render } from 'react-dom';
 
 import ProjectViewContainer from './containers/ProjectViewContainer';
 
+import './styles/global.scss';
+import './styles/navbar.scss';
+
 class ProjectView extends React.Component {
   render() {
     const splitHref = window.location.href.split("/")

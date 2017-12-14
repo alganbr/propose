@@ -1,7 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
-
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Form, TextField, SubmitField } from 'react-components-form';
 import Schema from 'form-schema-validation';
@@ -153,5 +152,4 @@ export default class ProjectViewContainer extends React.Component {
 
     )
   }
-
 }

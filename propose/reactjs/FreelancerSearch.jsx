@@ -5,6 +5,7 @@ import FreelancerSearchContainer from './containers/FreelancerSearchContainer';
 
 import './styles/global.scss';
 import './styles/navbar.scss';
+import './styles/search.scss';
 
 class FreelancerSearch extends React.Component {
   render() {

@@ -1,33 +1,34 @@
 header {
-  margin-top: -50px;
   text-align: center;
   color: white;
+  .container {
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
 }
-header .container {
-  padding-top: 100px;
-  padding-bottom: 50px;
-}
-header .intro-text .name {
-  display: block;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 2em;
-}
-header .intro-text .skills {
-  font-size: 1.25em;
-  font-weight: 300;
-}
+
 @media (min-width: 768px) {
-  header .container {
-    padding-top: 200px;
-    padding-bottom: 100px;
-  }
-  header .intro-text .name {
-    font-size: 4.75em;
-  }
-  header .intro-text .skills {
-    font-size: 1.75em;
+  header {
+    .container {
+      vertical-align: middle;
+      height: calc(100vh-50px);
+      .title {
+        font-size: 3em;
+      }
+      .Typist .Cursor {
+        display: inline-block;
+
+        &--blinking {
+          opacity: 1;
+          animation: blink 1s linear infinite;
+          @keyframes blink {
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+          }
+        }
+      }
+    }
   }
 }
 
