@@ -1,10 +1,10 @@
-from django.contrib.auth.models import User
+import django.contrib.auth.models as auth_models
 import factory
 from . import models
 
 class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = User
+        model = auth_models.User
 
     username = factory.Sequence(lambda n: 'user%d' % n)
     password = factory.PostGenerationMethodCall('set_password', 'test')
