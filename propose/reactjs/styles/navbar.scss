@@ -11,6 +11,19 @@
       color: #FFFFFF;
     }
   }
+  .navbar-toggle {
+    border: none;
+    color: #FFFFFF;
+    transition: all 0.3s;
+    &:hover, &:focus {
+      background-color: #80CBC4;
+      color: #FFFFFF;
+    }
+    &:active {
+      background-color: #4DB6AB;
+      color: #FFFFFF;
+    }
+  }
   .navbar-nav {
     li a {
       font-size: 16px;

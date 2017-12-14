@@ -22,7 +22,8 @@ export default class ProfileInformation extends React.Component {
         <h4>Profile Summary</h4>
         {this.props.bio}
         <h4>Rating</h4>
-        {this.props.rating}/5<Rating rating={this.props.rating} />
+        <span className="rating">{this.props.rating}/5</span>
+        <Rating rating={this.props.rating} size="lg" />
       </div>
     )
   }
