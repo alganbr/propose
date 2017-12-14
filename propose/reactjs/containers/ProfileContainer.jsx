@@ -11,44 +11,43 @@ export default class ProfileContainer extends React.Component {
 
   python ../../manage.py loaddata initial_data.json
   This is in propose/account/fixtures
-
-
   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      profile_pic: "",
+      skills: [],
+    }
+  }
 
-  componentDidMount() {
-    let url = "/api/users/";
-
-    let params = {
-        username: "foo",
-        password: "bar",
-        email: "test@test.com"
-    };
-
+  componentWillMount() {
+    let url = "/api/users/1";
     let settings = {
         method: "GET",
-        // body: params,
     };
-
+    let component = this;
     fetch(url, settings)
-        .then((response) => {
-          return response;
-        })
+        .then((response) => response.json())
         .then((data) => {
-          let component = this;
-          console.log(data);
-          console.log("Looking at data");
-          component.props = {data};
+          component.setState(data);
         });
   }
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-12">
-            <Navbar />
-            <Sidebar />
-            <Mainbar />
+      <div className="profile">
+        <Navbar />
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-4">
+              <Sidebar
+                profilePicture={this.state.profile_pic}
+                skills={this.state.skills}
+              />
+            </div>
+            <div className="col-sm-8">
+              <Mainbar user={this.state} />
+            </div>
           </div>
         </div>
       </div>

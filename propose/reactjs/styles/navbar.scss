@@ -1,0 +1,39 @@
+.navbar-default {
+  background-color: #4DB6AB;
+  .navbar-brand {
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    transition: all 0.3s;
+    &:hover {
+      background-color: #099688;
+      color: #FFFFFF;
+    }
+  }
+  .navbar-nav {
+    li a {
+      font-size: 16px;
+      font-weight: 500;
+      color: #FFFFFF;
+      transition: all 0.3s;
+      &:hover {
+        background-color: #099688;
+        color: #FFFFFF;
+      }
+
+    }
+    .dropdown {
+      .dropdown-menu {
+        background-color: #4DB6AB !important;
+        li a {
+          color: #FFFFFF;
+          &:hover {
+            background-color: #80CBC4;
+            color: #FFFFFF;
+          }
+        }
+      }
+    }
+  }
+}
