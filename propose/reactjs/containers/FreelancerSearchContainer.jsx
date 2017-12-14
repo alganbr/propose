@@ -21,30 +21,6 @@ export default class FreelancerSearchContainer extends React.Component {
 
 
   */
-
-  // componentDidMount() {
-  //   let url = "api/users/";
-
-  //   let params = {
-  //       username: "foo",
-  //       password: "bar",
-  //       email: "test@test.com"
-  //   };
-
-  //   let settings = {
-  //       method: "GET",
-  //       // body: params,
-  //   };
-
-  //   fetch(url, settings)
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         let component = this
-  //         console.log(data, "Looking at data/")
-  //         component.props = {data};
-  //       });
-  // }
-
   static propTypes = {
     data: PropTypes.array
   }
@@ -80,16 +56,12 @@ export default class FreelancerSearchContainer extends React.Component {
 
   render() {
     return (
-      <div>
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-12">
-            <Navbar />
-            <Headline>Search for a Free Lancer</Headline>
-          </div>
+      <div className="freelancer-search">
+        <Navbar />
+        <div className="container">
+          <Headline>Search for a Freelancer</Headline>
         </div>
-      </div>
-      <FreelancerResultsContainer freelancers={this.state.users}/>
+        <FreelancerResultsContainer freelancers={this.state.users}/>
       </div>
     )
   }
