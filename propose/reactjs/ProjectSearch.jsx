@@ -5,6 +5,7 @@ import ProjectSearchContainer from './containers/ProjectSearchContainer';
 
 import './styles/global.scss';
 import './styles/navbar.scss';
+import './styles/search.scss';
 
 class ProjectSearch extends React.Component {
   render() {

@@ -44,7 +44,7 @@ export default class ProjectResultsContainer extends React.Component {
     return (
       <Grid fluid>
         <Row>
-          <Col xs>
+          <Col className="search-sidebar" xs>
             <SearchColumn/>
           </Col>
           <Col xs>

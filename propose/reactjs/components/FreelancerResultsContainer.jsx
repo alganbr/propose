@@ -16,7 +16,6 @@ export default class FreelancerResultsContainer extends React.Component {
 
   _renderCardsTwoColumn = (users) => {
     const cards = users.map(user => {
-      console.log(user)
       return (<FreelancerCard
         name={user.user.first_name + " " + user.user.last_name}
         rating={user.rating}
@@ -52,8 +51,7 @@ export default class FreelancerResultsContainer extends React.Component {
     return (
       <Grid fluid>
         <Row>
-          <Col xs>
-            Hello, world!
+          <Col className="search-sidebar" xs>
             <SearchColumn/>
           </Col>
           <Col xs>

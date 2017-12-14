@@ -29,7 +29,7 @@ class FreelancerCard extends React.Component {
           <div>
             <StarRatingComponent
               name="rate1"
-              value={this.props.rating}
+              starCount={this.props.rating}
               emptyStarColor="#ffb400"
             />
           </div>
