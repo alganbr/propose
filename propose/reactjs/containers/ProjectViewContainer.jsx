@@ -1,8 +1,17 @@
 import React from 'react';
+import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Form, TextField, SubmitField } from 'react-components-form';
+import Schema from 'form-schema-validation';
 
+const applyProjectSchema = new Schema({
+	message: {
+		login: String, 
+		required: true
+	}
+})
 export default class ProjectViewContainer extends React.Component {
 	static propTypes = {
 		projectsId: PropTypes.number,
@@ -10,7 +19,7 @@ export default class ProjectViewContainer extends React.Component {
 
 	constructor(props) {
 	  super(props)
-	  this.state = {project: {}, user: {}}
+	  this.state = {project: {}, user: {},modalIsOpen: false}
 	}
 
 	 componentDidMount() {
@@ -53,6 +62,41 @@ export default class ProjectViewContainer extends React.Component {
 			)
 	}
 
+	openModel = () => {
+		this.setState({modalIsOpen: true})
+	}
+
+	closeModal = () => {
+		this.setState({modalIsOpen: false})
+	}
+
+    onSubmit = (model) => {
+        console.log(model, 'Submitted!')
+        console.log('HELLO WORLD')
+        const applyUrl = "/api/applications/"
+        const details = {
+                   project: this.state.project.id, 
+                   freelancer: this.state.user.id,
+                   client: this.state.project.client.id,
+                   message: model.message, 
+               };
+        console.log("looking at the detials", details)
+        const settings = {
+            method: "POST",
+            credentials: 'same-origin',
+            body: {
+                details: JSON.stringify(details)
+            }
+        };
+        fetch(applyUrl, settings) 
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data,"Looking at data")
+            })
+        this.setState({modalIsOpen: false})
+
+    }
+
 	render() {
 		console.log(this.state)
 		let clientName = "";
@@ -60,6 +104,7 @@ export default class ProjectViewContainer extends React.Component {
 			clientName = this.state.project.client.user.first_name + " " + this.state.project.client.user.last_name;
 		}
 		return (
+			<div>
 			<Grid fluid>
 			  <Row>
 			    <Col xs>
@@ -69,7 +114,7 @@ export default class ProjectViewContainer extends React.Component {
 			    			{"by" + " " + clientName}
 			    		</Col>
 			    		<Col xs>
-			    			<button>Apply</button>
+			    			<button onClick={this.openModel}>Apply</button>
 			    		</Col>
 			    	</Row>
 			    	<span/>
@@ -86,8 +131,26 @@ export default class ProjectViewContainer extends React.Component {
 			    	<hr/>
 			    	{this._renderSkills(this.state.project)}
 			    </Col>
+
 			  </Row>
 			</Grid>
+			<Modal 
+				isOpen={this.state.modalIsOpen}
+				onAfterOpen={() => {}}
+				onRequestClose={this.closeModal}
+				contentLabel="Application Form"
+                ariaHideApp={false}
+			>
+				<h3>Project Application</h3>
+                <Form 
+                    onSubmit={this.onSubmit}
+                    onError={(errors, model) => console.log('error', errors, model)}>
+                    <TextField name="message" label="Message" type="text"/>
+                    <SubmitField value="Submit"/>
+                </Form>
+			</Modal>
+			</div>
+
 		)
 	}
 
