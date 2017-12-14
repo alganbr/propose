@@ -6,7 +6,7 @@ import Headline from '../components/Headline';
 import Navbar from '../components/Navbar';
 import FreelancerCard from '../components/FreelancerCard';
 import ProjectResultsContainer from '../components/ProjectResultsContainer';
-import ReviewBlurb from '../components/ReviewBlurb';
+import ReviewBlurb from '../components/profile/ReviewBlurb';
 import WorkInfo from '../components/profile/WorkInfo';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 

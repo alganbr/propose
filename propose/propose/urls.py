@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^profile/', generic.TemplateView.as_view(template_name='profile.html')),
     url(r'^$', RedirectView.as_view(url=reverse_lazy('rest_framework:login'))),
     url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^home/', generic.TemplateView.as_view(template_name='view1.html'), name='home'),
+    url(r'^home/', generic.TemplateView.as_view(template_name='home.html'), name='home'),
     url(r'^view2/', generic.TemplateView.as_view(template_name='view2.html')),
     url(r'^freelancer_search/', generic.TemplateView.as_view(template_name='freelancer_search.html')),
     url(r'^project_search/', generic.TemplateView.as_view(template_name='project_search.html')),

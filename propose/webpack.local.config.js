@@ -72,7 +72,6 @@ config.module.loaders.push(
 config.module.loaders.push(
   {
     test: /\.css$/,
-    loader: 'style-loader!css-loader?modules',
     include: /flexboxgrid/,
     use: [
       require.resolve('style-loader'),
