@@ -13,6 +13,14 @@ class AccountList(APIView):
     """
     def get(self, request, format=None):
         accounts = Account.objects.all()
+        alltags = self.request.query_params.get('tag', None)
+        if alltags is not None:
+            tag_list = alltags.split(u',')
+            accounts = accounts.filter(tag__in=tag_list)
+        allterms = self.request.query_params.get('search_term', None)
+        if allterms is not None:
+            term_list = allterms.split(u' ')
+            accounts = accounts.filter(search_term__in=term_list)
         serializer = AccountSerializer(accounts, many=True)
         return Response(serializer.data)
 

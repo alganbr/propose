@@ -14,6 +14,14 @@ class ProjectList(APIView):
     def get(self, request, format=None):
         projects = Project.objects.all()
         serializer = ProjectSerializer(projects, many=True)
+        alltags = self.request.query_params.get('tag', None)
+        if alltags is not None:
+            tag_list = alltags.split(u',')
+            projects = projects.filter(tag__in=tag_list)
+        allterms = self.request.query_params.get('search_term', None)
+        if allterms is not None:
+            term_list = allterms.split(u' ')
+            projects = projects.filter(search_term__in=term_list)
         return Response(serializer.data)
 
     def post(self, request, format=None):
