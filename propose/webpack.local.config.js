@@ -86,7 +86,8 @@ config.module.loaders.push(
       'react-hot-loader/webpack',
       'babel-loader'
     ]
-  }
+  },
+
 )
 
 config.module.loaders.push(
@@ -115,5 +116,7 @@ config.module.loaders.push(
     ]
   }
 )
+
+
 
 module.exports = config

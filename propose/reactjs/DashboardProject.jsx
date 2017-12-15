@@ -18,7 +18,7 @@ class DashboardProject extends React.Component {
     }
     const projectId = cleanHref[cleanHref.length - 1];
     return (
-      <DashboardProjectContainer projectId={projectId}/>
+      <DashboardProjectContainer projectId={Number(projectId)}/>
     )
   }
 }

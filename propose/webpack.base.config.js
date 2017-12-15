@@ -41,4 +41,6 @@ module.exports = {
     modules: ['node_modules', 'bower_components'],
     extensions: ['.js', '.jsx']
   },
+
+  node: { fs: 'empty' }
 }
