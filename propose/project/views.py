@@ -28,12 +28,16 @@ class ProjectList(APIView):
         if alltags is not None:
             tag_list = alltags.split(u',')
             for tag in tag_list:
-                projects = projects.filter(tags__name=tag)
+                tag = tag.strip()
+                if tag is not "":
+                    projects = projects.filter(tags__name=tag)
         allterms = self.request.query_params.get('search_terms', None)
         if allterms is not None:
             term_list = allterms.split(u' ')
             for term in term_list:
-                projects = projects.filter(Q(title__icontains=term) | Q(description__icontains=term))
+                term = term.strip()
+                if term is not "":
+                    projects = projects.filter(Q(title__icontains=term) | Q(description__icontains=term))
         serializer = ProjectSerializer(projects, many=True)
         return Response(serializer.data)
 
