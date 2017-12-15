@@ -21,6 +21,7 @@ module.exports = {
     DashboardProject: './reactjs/DashboardProject',
     Proposal: './reactjs/Proposal',
     Settings: './reactjs/Settings',
+    ProjectApplicants: './reactjs/ProjectApplicants',
     vendors: ['react'],
   },
 
