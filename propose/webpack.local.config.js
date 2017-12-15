@@ -57,7 +57,12 @@ config.entry = {
     'webpack-dev-server/client?http://' + ip + ':3000',
     'webpack/hot/only-dev-server',
     './reactjs/Dashboard',
-  ]
+  ],
+  DashboardProject: [
+    'webpack-dev-server/client?http://' + ip + ':3000',
+    'webpack/hot/only-dev-server',
+    './reactjs/DashboardProject',
+  ],
 }
 
 config.output.publicPath = 'http://' + ip + ':3000' + '/assets/bundles/'

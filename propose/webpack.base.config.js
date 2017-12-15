@@ -16,6 +16,7 @@ module.exports = {
     ProjectView: './reactjs/ProjectView',
     OtherProfile: './reactjs/OtherProfile',
     Dashboard: './reactjs/Dashboard',
+    DashboardProject: './reactjs/DashboardProject',
     vendors: ['react'],
   },
 

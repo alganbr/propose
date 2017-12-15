@@ -38,7 +38,7 @@ export default class DashboardContainer extends React.Component {
 
   _renderCardsTwoColumn = (projects) => {
     const cards = projects.map(project => {
-      return <ProjectCard project={project}/>;
+      return <ProjectCard project={project} cardType="dashboard"/>;
     });
     const leftCol = []
     const rightCol = []
