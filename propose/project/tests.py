@@ -119,4 +119,4 @@ class ProjectTests(ProposeTestCase):
         response = self.client.post('/api/projects/%d/comments' % project.pk, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(ProjectComment.objects.count(), 1)
-        self.assertEqual(ProjectComment.first().comment, 'This is a comment.')
+        self.assertEqual(ProjectComment.objects.first().comment, 'This is a comment.')

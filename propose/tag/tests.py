@@ -28,5 +28,6 @@ class TagTests(ProposeTestCase):
         self.assertEqual(Tag.objects.count(), 1)
         self.assertEqual(Tag.objects.first().name, 'python3')
 
+        data = { 'name': 'Python3' }
         response = self.client.post('/api/tags/', data, format='json')
         self.assertEqual(response.status_code, status.HTTP_409_CONFLICT)
