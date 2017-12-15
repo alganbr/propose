@@ -31,8 +31,6 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 class TaskSerializer(serializers.ModelSerializer):
 
-    project = serializers.SlugRelatedField(read_only=True, slug_field='title')
-
     class Meta:
         model = Task
         fields = '__all__'
@@ -50,7 +48,20 @@ class TaskCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Task
-        fields = ('project', 'name', 'description', )
+        fields = ('project', 'task_number', 'name', 'description', )
+
+class TaskUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Task
+        fields = ('project', 'task_number', 'name', 'description', 'is_complete')
+
+    def update(self, instance, validated_data):
+        task = Task.objects.get(pk=instance.pk)
+        task.name = validated_data['name']
+        task.is_complete = validated_data['is_complete']
+        task.save()
+        return task
 
 class ProjectCreateSerializer(serializers.ModelSerializer):
     compensation = CompensationCreateSerializer()

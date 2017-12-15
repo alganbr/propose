@@ -1,13 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import ProjectViewContainer from './containers/ProjectViewContainer';
+import OtherProfileContainer from './containers/OtherProfileContainer';
 
 import './styles/global.scss';
 import './styles/navbar.scss';
-import './styles/project.scss';
+import './styles/profile.scss';
 
-class ProjectView extends React.Component {
+class OtherProfile extends React.Component {
+
+
   render() {
     const splitHref = window.location.href.split("/")
     const cleanHref = new Array();
@@ -16,11 +18,12 @@ class ProjectView extends React.Component {
         cleanHref.push(splitHref[i])
       }
     }
-    const projectId = cleanHref[cleanHref.length - 1];
+    const userId = cleanHref[cleanHref.length - 1];
+    console.log('in other profile container', userId)
     return (
-      <ProjectViewContainer projectId={projectId}/>
+      <OtherProfileContainer userId={userId}/>
     )
   }
 }
 
-render(<ProjectView/>, document.getElementById('ProjectView'))
+render(<OtherProfile/>, document.getElementById('OtherProfile'))

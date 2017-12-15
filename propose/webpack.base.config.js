@@ -14,6 +14,7 @@ module.exports = {
     FreelancerSearch: './reactjs/FreelancerSearch',
     ProjectSearch: './reactjs/ProjectSearch',
     ProjectView: './reactjs/ProjectView',
+    OtherProfile: './reactjs/OtherProfile',
     vendors: ['react'],
   },
 

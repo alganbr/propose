@@ -60,9 +60,13 @@ class Project(models.Model):
         return self.title
 
 class Task(models.Model):
+
     project = models.ForeignKey(
         Project,
         on_delete = models.CASCADE,
+        blank = False)
+
+    task_number = models.PositiveIntegerField(
         blank = False)
 
     name = models.CharField(
@@ -76,6 +80,9 @@ class Task(models.Model):
         default = False,
         null = False,
         blank = False)
+
+    class Meta:
+        unique_together = ('project', 'task_number')
 
     def __str__(self):
         return self.name
