@@ -5,6 +5,7 @@ from rest_framework import status, generics
 
 from .models import *
 from .serializers import *
+from django.db.models import Q
 
 # Create your views here.
 class ProjectList(APIView):
@@ -13,15 +14,17 @@ class ProjectList(APIView):
     """
     def get(self, request, format=None):
         projects = Project.objects.all()
-        serializer = ProjectSerializer(projects, many=True)
-        alltags = self.request.query_params.get('tag', None)
+        alltags = self.request.query_params.get('tags', None)
         if alltags is not None:
             tag_list = alltags.split(u',')
-            projects = projects.filter(tag__in=tag_list)
-        allterms = self.request.query_params.get('search_term', None)
+            for tag in tag_list:
+                projects = projects.filter(tags__name=tag)
+        allterms = self.request.query_params.get('search_terms', None)
         if allterms is not None:
             term_list = allterms.split(u' ')
-            projects = projects.filter(search_term__in=term_list)
+            for term in term_list:
+                projects = projects.filter(Q(title__icontains=term) | Q(description__icontains=term))
+        serializer = ProjectSerializer(projects, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):

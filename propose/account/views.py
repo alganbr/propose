@@ -5,6 +5,7 @@ from rest_framework import status, generics
 
 from .models import *
 from .serializers import *
+from django.db.models import Q
 
 # Create your views here.
 class AccountList(APIView):
@@ -13,14 +14,16 @@ class AccountList(APIView):
     """
     def get(self, request, format=None):
         accounts = Account.objects.all()
-        alltags = self.request.query_params.get('tag', None)
+        alltags = self.request.query_params.get('skills', None)
         if alltags is not None:
             tag_list = alltags.split(u',')
-            accounts = accounts.filter(tag__in=tag_list)
-        allterms = self.request.query_params.get('search_term', None)
+            for tag in tag_list:
+                accounts = accounts.filter(skills__name=tag)
+        allterms = self.request.query_params.get('search_terms', None)
         if allterms is not None:
             term_list = allterms.split(u' ')
-            accounts = accounts.filter(search_term__in=term_list)
+            for term in term_list:
+                accounts = accounts.filter(Q(user__username__iexact=term) | Q(user__first_name__iexact=term) | Q(user__last_name__iexact=term))
         serializer = AccountSerializer(accounts, many=True)
         return Response(serializer.data)
 
