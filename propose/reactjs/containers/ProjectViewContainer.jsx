@@ -104,10 +104,11 @@ export default class ProjectViewContainer extends React.Component {
           Edit
         </button>
         </a>
+        <a href={"/applicants/" + this.state.project.id +"/"}>
         <button className="btn btn-secondary" onClick={this.openModel}>
           Applicants 
         </button>
-
+        </a>
       </div>
       )
   }
