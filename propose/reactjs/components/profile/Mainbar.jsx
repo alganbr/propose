@@ -54,9 +54,23 @@ export default class Mainbar extends React.Component {
 
     alert('Reviewed!');
     this.setState({modalIsOpen: false});
+    window.location.reload();
   }
 
   render() {
+    const modalStyle = {
+      overlay: {
+        backgroundColor: 'rgba(0, 0, 0, 0.7)'
+      },
+      content: {
+        margin: '0 auto',
+        marginTop: '50px',
+        backgroundColor: '#FFFFFF',
+        height: '500px',
+        width: '700px',
+      }
+    }
+
     let review = [];
     if (!this.props.profile) {
       const options = [
