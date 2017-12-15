@@ -93,7 +93,7 @@ class ProjectUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Project
-        fields = ('title', 'description', 'tags', 'compensation', 'is_taken')
+        fields = ('title', 'description', 'tags', 'compensation', )
 
     def update(self, instance, validated_data):
         project = Project.objects.get(pk=instance.pk)
@@ -104,7 +104,6 @@ class ProjectUpdateSerializer(serializers.ModelSerializer):
         project.description = validated_data['description']
         project.tags = tags_data
         project.compensation = compensation
-        project.is_taken = validated_data['is_taken']
         project.save()
 
         return project
