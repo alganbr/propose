@@ -23,7 +23,7 @@ class ProjectList(APIView):
     /api/projects
     """
     def get(self, request, format=None):
-        projects = Project.objects.all()
+        projects = Project.objects.filter(is_taken=False)
         alltags = self.request.query_params.get('tags', None)
         if alltags is not None:
             tag_list = alltags.split(u',')

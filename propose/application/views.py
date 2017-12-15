@@ -174,6 +174,7 @@ class WorkOfferAccept(APIView):
         freelancer_dashboard = get_object_or_404(Dashboard, owner=work_offer.details.freelancer.pk, is_completed_dashboard=False)
         project.client_dashboard=client_dashboard
         project.freelancer_dashboard=freelancer_dashboard
+        project.is_taken = True
         project.save()
 
         return Response(None, status=status.HTTP_200_OK)
