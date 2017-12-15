@@ -16,7 +16,8 @@ class Account(models.Model):
 
     profile_pic = models.ImageField(
         blank = True,
-        upload_to = 'profile_pics')
+        upload_to = 'profile_pics',
+        null = True)
 
     rating = models.FloatField(
         blank = False,
@@ -25,7 +26,8 @@ class Account(models.Model):
     # Freelancer-specific
     resume = models.FileField(
         blank = True,
-        upload_to = 'resumes')
+        upload_to = 'resumes',
+        null = True)
 
     skills = models.ManyToManyField(
         Tag,

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, TextField, TextareaField, SubmitField } from 'react-components-form';
 import Schema from 'form-schema-validation';
+import ReactTags from 'react-tag-autocomplete';
 import Cookies from 'js-cookie';
 
 import Navbar from '../components/Navbar';
@@ -16,9 +17,9 @@ export default class SettingsContainer extends React.Component {
         last_name: "",
         email: "",
       },
-      resume: "",
-      profile_pic: "",
       bio: "",
+      skills: [],
+      suggestions: [],
     }
   }
 
@@ -29,14 +30,13 @@ export default class SettingsContainer extends React.Component {
       credentials: 'same-origin'
     };
 
-    const url = "/api/profile/";
+    let url = "/api/profile/";
     fetch(url, settings)
       .then((response) => response.json())
       .then((data) => {
         component.setState({
           bio: component.bio || data.bio,
-          profile_pic: component.profile_pic || data.profile_pic,
-          resume: data.resume || component.resume,
+          skills: component.skills || data.skills,
           user: {
             first_name: component.first_name || data.user.first_name,
             last_name: component.last_name || data.user.last_name,
@@ -44,21 +44,24 @@ export default class SettingsContainer extends React.Component {
           }
         });
       });
+
+    url = "/api/tags/";
+    fetch(url, settings)
+      .then((response) => response.json())
+      .then((data) => {
+        component.setState({ suggestions: data });
+      });
   }
 
   handleDelete = (i) => {
-    const tags = this.state.project.tags.slice(0);
-    tags.splice(i, 1);
-    let project = Object.assign({}, this.state.project);
-    project.tags = tags;
-    this.setState({ project })
+    const skills = this.state.skills.slice(0);
+    skills.splice(i, 1);
+    this.setState({ skills })
   }
 
-  handleAddition = (tag) => {
-    const tags = [].concat(this.state.project.tags, tag);
-    let project = Object.assign({}, this.state.project);
-    project.tags = tags;
-    this.setState({ project })
+  handleAddition = (skill) => {
+    const skills = [].concat(this.state.skills, skill);
+    this.setState({ skills })
   }
 
   onSubmit = (model) => {
@@ -71,14 +74,15 @@ export default class SettingsContainer extends React.Component {
 
     let user = {
       bio: model.bio || this.state.bio,
-      profile_pic: model.profile_pic || this.state.profile_pic,
-      resume: model.resume || this.state.resume,
+      skills: this.state.skills.map(tag => tag.id),
       user: {
         first_name: model.firstName || this.state.user.first_name,
         last_name: model.lastName || this.state.user.last_name,
         email: model.email || this.state.user.email,
       }
     }
+
+    console.log(user);
 
     const settings = {
         method: "POST",
@@ -87,7 +91,7 @@ export default class SettingsContainer extends React.Component {
         body: JSON.stringify(user)
     };
 
-    fetch(profileURL,  settings)
+    fetch(profileURL, settings)
         .then((response) => response.json())
         .then((data) => {});
 
@@ -156,26 +160,14 @@ export default class SettingsContainer extends React.Component {
               </div>
               <div className="row">
                 <div className="col-sm-2">
-                  Link to resume
+                  Skills
                 </div>
-                <div className="col-sm-10">
-                  <TextField
-                    className="input input-text"
-                    name="resume"
-                    value={this.state.resume}
-                  />
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-sm-2">
-                  Link to profile picture
-                </div>
-                <div className="col-sm-10">
-                  <TextField
-                    className="input input-text"
-                    name="profile_pic"
-                    value={this.state.profile_pic}
-                  />
+                <div className="col-sm-10 tags">
+                  <ReactTags
+                    tags={this.state.skills}
+                    suggestions={this.state.suggestions}
+                    handleDelete={this.handleDelete}
+                    handleAddition={this.handleAddition} />
                 </div>
               </div>
               <SubmitField className="btn btn-primary" value="Edit" />
