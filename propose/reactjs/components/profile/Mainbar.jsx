@@ -1,5 +1,6 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import FontAwesome from 'react-fontawesome';
 
 import About from './About';
 import ProfileInformation from './ProfileInformation';
@@ -27,9 +28,9 @@ export default class Mainbar extends React.Component {
         />
         <Tabs selectedIndex={this.state.tabIndex} onSelect={tabIndex => this.setState({ tabIndex })}>
           <TabList>
-            <Tab>About</Tab>
-            <Tab>Work Info </Tab>
-            <Tab>Reviews</Tab>
+            <Tab><FontAwesome name="user" className="tab-icon" />About</Tab>
+            <Tab><FontAwesome name="briefcase" className="tab-icon" />Work Info </Tab>
+            <Tab><FontAwesome name="file-text-o" className="tab-icon" />Reviews</Tab>
           </TabList>
           <TabPanel>
             <About
@@ -75,9 +76,7 @@ export default class Mainbar extends React.Component {
             />
           </TabPanel>
         </Tabs>
-
-
       </div>
-    );
+    )
   }
 }

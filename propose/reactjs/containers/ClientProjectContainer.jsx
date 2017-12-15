@@ -18,18 +18,30 @@ export default class ClientProjectContainer extends React.Component {
   }
 
   componentDidMount() {
-    const component = this;
-    const url = "/api/projects"
-    const settings = {
+    let component = this;
+    let settings = {
       method: "GET",
       credentials: 'same-origin'
-    }
+    };
+
+    let url = "/api/profile";
     fetch(url, settings)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
-        this.setState({projects: data})
-      })
+        component.setState({userId: data.id});
+      });
+
+    url = "/api/projects";
+    fetch(url, settings)
+      .then((response) => response.json())
+      .then((data) => {
+        let projects = [];
+        data.map(project => {
+          if (component.state.userId === project.client.id)
+            projects.push(project)
+        })
+        component.setState({projects});
+      });
   }
 
   _renderCardsTwoColumn = (projects) => {
