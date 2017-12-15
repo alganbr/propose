@@ -38,6 +38,9 @@ class ProjectList(APIView):
         return Response(serializer.data)
 
     def post(self, request, format=None):
+        project_data = request.data
+        client_account = get_object_or_404(Account, user=request.user.pk)
+        project_data['client'] = client_account.pk
         serializer = ProjectCreateSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
