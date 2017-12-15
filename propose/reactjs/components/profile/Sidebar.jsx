@@ -20,11 +20,6 @@ export default class Sidebar extends React.Component {
         <div className="completed-projects">
           <h4>Completed Projects</h4>
           <ul>
-            <li>Project Title</li>
-            <li>Project Title</li>
-            <li>Project Title</li>
-            <li>Project Title</li>
-            <li>Project Title</li>
           </ul>
         </div>
         <div className="skills">
