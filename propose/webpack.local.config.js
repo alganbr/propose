@@ -58,6 +58,11 @@ config.entry = {
     'webpack/hot/only-dev-server',
     './reactjs/ProjectEdit',
   ],
+  ProjectNew: [
+    'webpack-dev-server/client?http://' + ip + ':3000',
+    'webpack/hot/only-dev-server',
+    './reactjs/ProjectNew',
+  ],
   Dashboard: [
     'webpack-dev-server/client?http://' + ip + ':3000',
     'webpack/hot/only-dev-server',

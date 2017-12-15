@@ -84,22 +84,19 @@ export default class ProjectEditContainer extends React.Component {
       tags: this.state.project.tags.map(tag => tag.id)
     }
 
-    const details = {
-      ...project,
-    };
-
-    console.log(details);
-
     const settings = {
         method: "POST",
         credentials: 'same-origin',
         headers: headers,
-        body: JSON.stringify(details)
+        body: JSON.stringify(project)
     };
 
     fetch(projectURL,  settings)
         .then((response) => response.json())
-        .then((data) => {})
+        .then((data) => {});
+
+    alert("Project edited!");
+    window.location.replace(`/projects/${this.props.projectId}/`);
   }
 
   render() {
@@ -108,7 +105,7 @@ export default class ProjectEditContainer extends React.Component {
       <div className="project-edit">
         <Navbar />
         <div className="container">
-          <h3>Project Application</h3>
+          <h3>Edit Project</h3>
           <div className="form">
             <Form
               onSubmit={this.onSubmit}
