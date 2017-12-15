@@ -1,0 +1,1 @@
+[{"model": "tag.tag", "pk": 1, "fields": {"name": "c++"}}, {"model": "tag.tag", "pk": 2, "fields": {"name": "c"}}, {"model": "tag.tag", "pk": 3, "fields": {"name": "javascript"}}, {"model": "tag.tag", "pk": 4, "fields": {"name": "reactjs"}}]
