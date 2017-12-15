@@ -80,6 +80,39 @@ export default class ProjectViewContainer extends React.Component {
     )
   }
 
+  _renderButtons = () => {
+    if (this.state.user && this.state.project.client && this.state.user.id !== this.state.project.client.id) {
+      return (
+        <div className="buttons">
+          <button className="btn btn-secondary" onClick={this.openModel}>
+            Save
+          </button>
+          <button className="btn btn-primary" onClick={this.openModel}>
+            Apply
+          </button>
+        </div>
+        )
+    }
+
+    return (
+      <div className="buttons">
+        <button className="btn btn-secondary" onClick={this.openModel}>
+          Remove
+        </button>
+        <a href={"/projects/" + this.state.project.id +"/edit"}>
+        <button className="btn btn-primary">
+          Edit
+        </button>
+        </a>
+        <a href={"/applicants/" + this.state.project.id +"/"}>
+        <button className="btn btn-secondary" onClick={this.openModel}>
+          Applicants 
+        </button>
+        </a>
+      </div>
+      )
+  }
+
   openModel = () => {
     this.setState({modalIsOpen: true})
   }
@@ -147,14 +180,7 @@ export default class ProjectViewContainer extends React.Component {
               {this.state.project.description}
             </Col>
             <Col xs={3}>
-              <div className="buttons">
-                <button className="btn btn-secondary" onClick={this.openModel}>
-                  Save
-                </button>
-                <button className="btn btn-primary" onClick={this.openModel}>
-                  Apply
-                </button>
-              </div>
+              {this._renderButtons()}
             </Col>
             <Col xs={4}>
               <h3>Similar Projects</h3>
