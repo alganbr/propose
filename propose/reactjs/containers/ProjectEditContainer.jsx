@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, TextField, TextareaField, SelectField, SubmitField } from 'react-components-form';
 import Schema from 'form-schema-validation';
 import ReactTags from 'react-tag-autocomplete';
+import Cookies from 'js-cookie';
 
 import Navbar from '../components/Navbar';
 
@@ -42,7 +43,6 @@ export default class ProjectEditContainer extends React.Component {
         component.setState({ suggestions: data });
       });
 
-    console.log(this.props);
     url = `/api/projects/${this.props.projectId}/`;
     fetch(url, settings)
       .then((response) => response.json())
@@ -69,21 +69,23 @@ export default class ProjectEditContainer extends React.Component {
   onSubmit = (model) => {
     var headers = new Headers();
 
+    headers.append('X-CSRFToken', Cookies.get('csrftoken'));
     headers.append('Accept', 'application/json'); // This one is enough for GET requests
     headers.append('Content-Type', 'application/json'); // This one sends body
-    const projectURL = `/api/projects/${this.props.projectId}`;
+    const projectURL = `/api/projects/${this.props.projectId}/`;
 
-    let project = Object.assign({}, this.state.project);
-    project.title = model.title;
-    project.description = model.description;
-    project.compensation.currency = model.compensationCurrency;
-    project.compensation.value = model.compensationValue;
-    project.tags = this.state.tags;
+    let project = {
+      title: model.title || this.state.project.title,
+      description: model.description || this.state.project.description,
+      compensation: {
+        currency: model.compensationCurrency || this.state.project.compensation.currency,
+        value: model.compensationValue || this.state.project.compensation.value,
+      },
+      tags: this.state.project.tags.map(tag => tag.id)
+    }
 
     const details = {
-      details: {
-        ...project,
-      }
+      ...project,
     };
 
     console.log(details);
