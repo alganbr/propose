@@ -17,6 +17,9 @@ class Dashboard(models.Model):
         default = False,
         blank = False)
 
+    def __str__(self):
+        return str(self.id)
+
 # auto create dashboards when a user is created
 @receiver(post_save, sender=Account)
 def create_user_dashboards(sender, instance, created, **kwargs):
