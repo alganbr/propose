@@ -5,6 +5,7 @@ import ProjectViewContainer from './containers/ProjectViewContainer';
 
 import './styles/global.scss';
 import './styles/navbar.scss';
+import './styles/project.scss';
 
 class ProjectView extends React.Component {
   render() {
