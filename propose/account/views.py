@@ -17,7 +17,7 @@ class AccountList(APIView):
     """
     def get(self, request, format=None):
         accounts = Account.objects.all()
-        alltags = self.request.query_params.get('skills', None)
+        alltags = self.request.query_params.get('tags', None)
         if alltags is not None:
             tag_list = alltags.split(u',')
             for tag in tag_list:
