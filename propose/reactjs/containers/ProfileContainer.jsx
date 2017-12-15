@@ -17,7 +17,6 @@ export default class ProfileContainer extends React.Component {
     this.state = {
       profile_pic: "",
       skills: [],
-      userId: 0,
     }
   }
 
@@ -52,7 +51,6 @@ export default class ProfileContainer extends React.Component {
               <Sidebar
                 profilePicture={this.state.profile_pic}
                 skills={this.state.skills}
-                profile={true}
               />
             </div>
             <div className="col-sm-8">

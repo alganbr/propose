@@ -15,23 +15,23 @@ export default class Navbar extends React.Component {
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav navbar-right">
                 <li>
-                  <a href="/freelancer_search">Freelancer Search</a>
+                  <a href="/freelancer_search/">Freelancer Search</a>
                 </li>
                 <li>
-                  <a href="/project_search">Project Search</a>
+                  <a href="/project_search/">Project Search</a>
                 </li>
                 <li>
-                  <a href="/client_project_view">My Projects</a>
+                  <a href="/client_project_view/">My Projects</a>
                 </li>
                 <li>
-                  <a href="/proposal">My Proposals</a>
+                  <a href="/proposal/">My Proposals</a>
                 </li>
                 <li className="dropdown">
                   <a href="#" className="dropdown-toggle" data-toggle="dropdown">My Account <FontAwesome name="caret-down" /></a>
                   <ul className="dropdown-menu">
-                    <li><a href="/profile">Profile</a></li>
-                    <li><a href="">Settings</a></li>
-                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/profile/">Profile</a></li>
+                    <li><a href="/profile/edit/">Settings</a></li>
+                    <li><a href="/logout/">Logout</a></li>
                   </ul>
                 </li>
               </ul>

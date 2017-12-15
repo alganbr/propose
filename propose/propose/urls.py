@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(template_name='login.html', redirect_field_name='home', form_class=LoginForm, redirect_authenticated_user=True), name='login'),
     url(r'^register/$', RegisterView.as_view(), name='register'),
     url(r'^logout/$', LogoutView.as_view(redirect_field_name='login'), name='logout'),
+    url(r'^profile/edit/$', generic.TemplateView.as_view(template_name='settings.html')),
     url(r'^profile/', generic.TemplateView.as_view(template_name='profile.html')),
     url(r'^proposal/', generic.TemplateView.as_view(template_name='proposal.html')),
     url(r'^dashboard/', generic.TemplateView.as_view(template_name='dashboard.html')),

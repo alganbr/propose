@@ -60,28 +60,25 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'password', )
+        fields = ('email', 'first_name', 'last_name', )
 
 class AccountUpdateSerializer(serializers.ModelSerializer):
     user = UserUpdateSerializer()
 
     class Meta:
         model = Account
-        fields = '__all__'
+        exclude = ('rating', 'profile_pic', 'resume', )
 
     def update(self, instance, validated_data):
         account = Account.objects.get(pk=instance.id)
         user = User.objects.get(pk=account.user.id)
         user_data = validated_data.pop('user')
-        password = user_data.pop('password')
-        user.set_password(password)
         user.email = user_data['email']
         user.first_name = user_data['first_name']
         user.last_name = user_data['last_name']
         user.save()
         account.bio = validated_data['bio']
         account.skills = validated_data['skills']
-        account.rating = validated_data['rating']
         account.save()
         return account
 

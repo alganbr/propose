@@ -19,7 +19,6 @@ class OtherProfile extends React.Component {
       }
     }
     const userId = cleanHref[cleanHref.length - 1];
-    console.log('in other profile container', userId)
     return (
       <OtherProfileContainer userId={userId}/>
     )

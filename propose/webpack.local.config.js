@@ -78,6 +78,11 @@ config.entry = {
     'webpack/hot/only-dev-server',
     './reactjs/Proposal',
   ],
+  Settings: [
+    'webpack-dev-server/client?http://' + ip + ':3000',
+    'webpack/hot/only-dev-server',
+    './reactjs/Settings',
+  ],
 }
 
 config.output.publicPath = 'http://' + ip + ':3000' + '/assets/bundles/'
