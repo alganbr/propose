@@ -17,21 +17,29 @@ export default class ProfileContainer extends React.Component {
     this.state = {
       profile_pic: "",
       skills: [],
+      userId: 0,
     }
   }
 
   componentWillMount() {
-    let url = "/api/profile";
-    let settings = {
-        method: "GET",
-        credentials: 'same-origin',
+    const userURL = "/api/profile/";
+    const settings = {
+      method: "GET",
+      credentials: 'same-origin',
     };
-    let component = this;
-    fetch(url, settings)
-        .then((response) => response.json())
-        .then((data) => {
-          component.setState(data);
-        });
+    const component = this;
+    fetch(userURL, settings)
+      .then((response) => response.json())
+      .then((data) => {
+        component.setState(data);
+        const reviewsURL = `/api/users/${data.id}/review/`;
+        fetch(reviewsURL, settings)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            component.setState({reviews: data});
+          });
+      });
   }
 
   render() {
@@ -44,10 +52,14 @@ export default class ProfileContainer extends React.Component {
               <Sidebar
                 profilePicture={this.state.profile_pic}
                 skills={this.state.skills}
+                profile={true}
               />
             </div>
             <div className="col-sm-8">
-              <Mainbar user={this.state} />
+              <Mainbar
+                user={this.state}
+                profile={true}
+              />
             </div>
           </div>
         </div>

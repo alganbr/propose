@@ -118,9 +118,9 @@
     .card {
       border: none !important;
       border-radius: 0 !important;
+      min-height: 200px;
       .body {
         width: 100%;
-        min-height: 200px;
         margin-right: none;
         .name {
           font-size: 24px;

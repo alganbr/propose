@@ -112,7 +112,8 @@ export default class ProjectViewContainer extends React.Component {
     fetch(applyUrl,  settings)
         .then((response) => response.json())
         .then((data) => {})
-    this.setState({modalIsOpen: false})
+    alert('Applied!');
+    this.setState({modalIsOpen: false});
   }
 
   render() {
