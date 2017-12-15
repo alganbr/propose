@@ -166,6 +166,7 @@ class ProjectCommentDetail(APIView):
             return Response(None, status=status.HTTP_403_FORBIDDEN)
 
         comment = request.data
+        comment['project'] = pk
         serializer = ProjectCommentCreateSerializer(data=comment)
         if serializer.is_valid():
             serializer.save()

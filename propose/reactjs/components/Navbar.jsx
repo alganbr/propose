@@ -24,7 +24,7 @@ export default class Navbar extends React.Component {
                   <a href="/client_project_view">My Projects</a>
                 </li>
                 <li>
-                  <a href="">My Proposals</a>
+                  <a href="/proposal">My Proposals</a>
                 </li>
                 <li className="dropdown">
                   <a href="#" className="dropdown-toggle" data-toggle="dropdown">My Account <FontAwesome name="caret-down" /></a>

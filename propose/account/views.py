@@ -67,7 +67,7 @@ class AccountReview(APIView):
 
     def post(self, request, pk, format=None):
         reviewee_account = self.get_object(pk)
-        reviewer_account = self.get_object(request.user.pk)
+        reviewer_account = get_object_or_404(Account, user=request.user.pk)
         userreview_data = request.data
         userreview_data['reviewee'] = reviewee_account.pk
         userreview_data['reviewer'] = reviewer_account.pk
