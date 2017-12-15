@@ -29,7 +29,7 @@ from .views import *
 urlpatterns = [
     url(r'^$', RedirectView.as_view(url=reverse_lazy('login'))),
     # url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^login$', LoginView.as_view(template_name='login.html', redirect_field_name='home', form_class=LoginForm, redirect_authenticated_user=True), name='login'),
+    url(r'^login/$', LoginView.as_view(template_name='login.html', redirect_field_name='home', form_class=LoginForm, redirect_authenticated_user=True), name='login'),
     url(r'^register/$', RegisterView.as_view(), name='register'),
     url(r'^logout/$', LogoutView.as_view(redirect_field_name='login'), name='logout'),
     url(r'^profile/', generic.TemplateView.as_view(template_name='profile.html')),
