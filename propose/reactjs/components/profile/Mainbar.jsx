@@ -57,21 +57,6 @@ export default class Mainbar extends React.Component {
   }
 
   render() {
-    let image = "https://i.imgur.com/UyiR4w5.png";
-    let lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mattis nulla id scelerisque molestie. Pellentesque non tristique mauris. Vivamus a blandit turpis. Pellentesque tempus elit sit amet magna bibendum ullamcorper. Fusce nisl augue, laoreet a fringilla quis, viverra a leo. Phasellus aliquam tempor nisi.";
-    let modalStyle = {
-      overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.7)'
-      },
-      content: {
-        margin: '0 auto',
-        marginTop: '50px',
-        backgroundColor: '#FFFFFF',
-        height: '500px',
-        width: '700px',
-      }
-    };
-
     let review = [];
     if (!this.props.profile) {
       const options = [
@@ -120,8 +105,6 @@ export default class Mainbar extends React.Component {
     }
 
     let reviews = [];
-    let rating = 0;
-    let count = 0;
     if (this.props.user.reviews) {
       this.props.user.reviews.map((review) => {
         reviews.push(
@@ -132,9 +115,7 @@ export default class Mainbar extends React.Component {
             reviewText={review.review}
           />
         );
-        rating += review.rating;
       });
-      count = this.props.user.reviews.length;
     }
 
     if (reviews.length === 0) {
@@ -146,7 +127,7 @@ export default class Mainbar extends React.Component {
         <ProfileInformation
           {...this.props.user.user}
           bio={this.props.user.bio}
-          rating={rating}
+          rating={this.props.user.rating}
         />
         {review}
         <Tabs selectedIndex={this.state.tabIndex} onSelect={tabIndex => this.setState({ tabIndex })}>

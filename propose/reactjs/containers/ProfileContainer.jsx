@@ -22,26 +22,24 @@ export default class ProfileContainer extends React.Component {
   }
 
   componentWillMount() {
-    let url = "/api/profile/";
-    let settings = {
-        method: "GET",
-        credentials: 'same-origin',
+    const userURL = "/api/profile/";
+    const settings = {
+      method: "GET",
+      credentials: 'same-origin',
     };
-    let component = this;
-    fetch(url, settings)
-        .then((response) => response.json())
-        .then((data) => {
-          component.setState(data);
-          component.setState({userId: data.id});
-        });
-
-    url = `/api/users/${this.state.userId}/review/`;
-    fetch(url, settings)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          component.setState({reviews: data});
-        });
+    const component = this;
+    fetch(userURL, settings)
+      .then((response) => response.json())
+      .then((data) => {
+        component.setState(data);
+        const reviewsURL = `/api/users/${data.id}/review/`;
+        fetch(reviewsURL, settings)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            component.setState({reviews: data});
+          });
+      });
   }
 
   render() {
