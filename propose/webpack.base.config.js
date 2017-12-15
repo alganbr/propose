@@ -20,6 +20,7 @@ module.exports = {
     Dashboard: './reactjs/Dashboard',
     DashboardProject: './reactjs/DashboardProject',
     Proposal: './reactjs/Proposal',
+    Settings: './reactjs/Settings',
     vendors: ['react'],
   },
 
