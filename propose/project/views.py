@@ -35,21 +35,21 @@ class ProjectList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ProjectDetail(APIView):
-	"""
-	/api/projects/<id>
-	"""
-	def get_object(self, pk):
-		return get_object_or_404(Project, pk=pk)
+    """
+    /api/projects/<id>
+    """
+    def get_object(self, pk):
+        return get_object_or_404(Project, pk=pk)
 
-	def get(self, request, pk, format=None):
-		project = self.get_object(pk)
-		serializer = ProjectSerializer(project)
-		return Response(serializer.data)
+    def get(self, request, pk, format=None):
+        project = self.get_object(pk)
+        serializer = ProjectSerializer(project)
+        return Response(serializer.data)
 
-	def delete(self, request, pk, format=None):
-		project = self.get_object(pk)
-		project.delete()
-		return Response(status=status.HTTP_204_NO_CONTENT)
+    def delete(self, request, pk, format=None):
+        project = self.get_object(pk)
+        project.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ProjectTask(APIView):
     """
@@ -105,3 +105,25 @@ class ProjectTaskDetail(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class ProjectCommentDetail(APIView):
+    """
+    /api/projects/<id>/comments
+    """
+
+    def get_object(self, pk):
+        return get_object_or_404(Project, pk=pk)
+
+    def get(self, request, pk, format=None):
+        project = self.get_object(pk)
+        comments = ProjectComment.objects.filter(project=project)
+        serializer = ProjectCommentSerializer(comments, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, pk, format=None):
+        project = self.get_object(pk)
+        comment = request.data
+        serializer = ProjectCommentCreateSerializer(data=comment)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
