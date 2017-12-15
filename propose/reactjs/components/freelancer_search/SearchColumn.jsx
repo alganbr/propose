@@ -73,7 +73,7 @@ class SearchColumn extends React.Component {
     let url = "/api/projects/?" + $.param({search_terms: model.search, tags: tagString})
     if (this.props.tagType === "freelancer") {
       console.log('Looking at freelancers')
-      url = "/api/users/?" + $.param({search_terms: model.search, skills: tagString})
+      url = "/api/users/?" + $.param({search_terms: model.search, tags: tagString})
     }
     let settings = {
         method: "GET",
@@ -85,6 +85,9 @@ class SearchColumn extends React.Component {
         .then((data) => {
           console.log(data, "Looking at data")
           this.props.component.setState({projects:data});
+          if (this.props.tagType === 'freelancer') {
+            this.props.component.setState({users: data})
+          }
         });
   }
 
