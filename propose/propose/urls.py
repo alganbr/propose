@@ -29,7 +29,7 @@ from .views import *
 urlpatterns = [
     url(r'^$', RedirectView.as_view(url=reverse_lazy('login'))),
     # url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^login$', LoginView.as_view(template_name='login.html', redirect_field_name='home', form_class=LoginForm, redirect_authenticated_user=True), name='login'),
+    url(r'^login/$', LoginView.as_view(template_name='login.html', redirect_field_name='home', form_class=LoginForm, redirect_authenticated_user=True), name='login'),
     url(r'^register/$', RegisterView.as_view(), name='register'),
     url(r'^logout/$', LogoutView.as_view(redirect_field_name='login'), name='logout'),
     url(r'^profile/', generic.TemplateView.as_view(template_name='profile.html')),
@@ -43,6 +43,8 @@ urlpatterns = [
     url(r'^project_search/', generic.TemplateView.as_view(template_name='project_search.html')),
     url(r'^client_project_view/', generic.TemplateView.as_view(template_name='client_project_view.html')),
     url(r'^projects/(?P<pk>[0-9]+)/$', generic.TemplateView.as_view(template_name='projectview.html')),
+    url(r'^projects/(?P<pk>[0-9]+)/edit/$', generic.TemplateView.as_view(template_name='projectedit.html')),
+    url(r'^projects/new/$', generic.TemplateView.as_view(template_name='projectnew.html')),
     url(r'^api/', include('account.urls', namespace='account')),
     url(r'^api/', include('application.urls', namespace='application')),
     url(r'^api/', include('dashboard.urls', namespace='dashboard')),

@@ -21,19 +21,30 @@ export default class ProjectSearchContainer extends React.Component {
   }
 
   componentWillMount() {
-    let component = this
-    let url = "/api/projects"
+    let component = this;
     let settings = {
       method: "GET",
       credentials: 'same-origin'
-    }
+    };
 
+    let url = "/api/profile";
     fetch(url, settings)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
-        component.setState({projects:data})
-      })
+        component.setState({userId: data.id});
+      });
+
+    url = "/api/projects";
+    fetch(url, settings)
+      .then((response) => response.json())
+      .then((data) => {
+        let projects = [];
+        data.map(project => {
+          if (component.state.userId !== project.client.id)
+            projects.push(project)
+        })
+        component.setState({projects});
+      });
   }
 
   onSubmit = (model, component) => {

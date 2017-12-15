@@ -1,11 +1,14 @@
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
+from django.db.models import Avg
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, generics
 
+import math
+
 from .models import *
 from .serializers import *
-from django.db.models import Q
 
 # Create your views here.
 class AccountList(APIView):
@@ -74,6 +77,12 @@ class AccountReview(APIView):
         serializer = UserReviewCreateSerializer(data=userreview_data)
         if serializer.is_valid():
             serializer.save()
+
+            # update reviewee rating
+            rating = UserReview.objects.aggregate(rating=Avg('rating'))['rating']
+            rating = math.floor(rating * 10)/10 # round to 1 decimal
+            reviewee_account.rating = rating
+            reviewee_account.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

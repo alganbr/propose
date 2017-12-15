@@ -82,7 +82,7 @@ class ProjectCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         compensation_data = validated_data.pop('compensation')
         compensation = Compensation.objects.create(**compensation_data)
-        tags_data = validated_data.pop('tags')
+        tags_data = validated_data.pop('tags', [])
         project = Project.objects.create(compensation=compensation, **validated_data)
         project.tags = tags_data
 

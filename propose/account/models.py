@@ -20,7 +20,7 @@ class Account(models.Model):
 
     rating = models.FloatField(
         blank = False,
-        default = 3.0)
+        default = 0.0)
 
     # Freelancer-specific
     resume = models.FileField(

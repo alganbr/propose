@@ -27,7 +27,7 @@ import 'react-tabs/style/react-tabs.scss';
       }
       return cookieValue;
   }
-  
+
 export default class Mainbar extends React.Component {
   static propTypes = {
     project: PropTypes.object,
