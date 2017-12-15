@@ -52,13 +52,21 @@
       height: 40px;
       width: 100px;
       margin-right: 15px;
+      transition: all 0.3s;
     }
     .btn-primary {
       background-color: #EE534F;
+      transition: all 0.3s;
+      &:hover {
+        background-color: #F38683;
+      }
     }
     .btn-secondary {
       background-color: #616161;
       color: #FFFFFF;
+      &:hover {
+        background-color: #9E9E9E;
+      }
     }
   }
   .form {
@@ -86,6 +94,21 @@
   .form {
     .input {
       width: 250px;
+    }
+    .btn {
+      border-radius: 0;
+      border: none;
+      font-size: 16px;
+      height: 40px;
+      width: 100px;
+      margin-right: 15px;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background-color: #EE534F;
+      &:hover {
+        background-color: #F38683;
+      }
     }
     .tags {
       .react-tags {

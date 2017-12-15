@@ -43,7 +43,6 @@ export default class FreelancerSearchContainer extends React.Component {
     let settings = {
         method: "GET",
         credentials: 'same-origin'
-        // body: params,
     };
 
     fetch(url, settings)
