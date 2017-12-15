@@ -58,6 +58,8 @@ class ProjectDetail(APIView):
 
     def post(self, request, pk, format=None):
         project = self.get_object(pk)
+        if client_only(project, request):
+            return Response(None, status=status.HTTP_403_FORBIDDEN)
         serializer = ProjectUpdateSerializer(project, data=request.data)
         if serializer.is_valid():
             serializer.save()
