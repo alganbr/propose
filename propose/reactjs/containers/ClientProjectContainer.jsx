@@ -35,7 +35,7 @@ export default class ClientProjectContainer extends React.Component {
   _renderCardsTwoColumn = (projects) => {
     const cards = projects.map(project => {
       console.log(project)
-      return (<ProjectCard project={project}/>);
+      return (<ProjectCard project={project} cardType="dashboard"/>);
     });
     const leftCol = []
     const rightCol = []

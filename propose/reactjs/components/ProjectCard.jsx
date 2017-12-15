@@ -26,7 +26,7 @@ export default class ProjectCard extends React.Component {
     let projectUrl = "/projects/" + project.id.toString();
     if (this.props.cardType) {
       if (this.props.cardType == 'dashboard')
-        projectUrl = "/dashboard/project/" + project.id.toString();
+        projectUrl = "/dashboards/project/" + project.id.toString();
     } 
     return (
       <a href={projectUrl}>

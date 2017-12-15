@@ -5,7 +5,7 @@ import DashboardContainer from './containers/DashboardContainer';
 
 import './styles/global.scss';
 import './styles/navbar.scss';
-import './styles/header.scss';
+
 
 class Dashboard extends React.Component {
   render() {

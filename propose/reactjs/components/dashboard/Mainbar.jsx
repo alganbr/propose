@@ -29,7 +29,6 @@ export default class Mainbar extends React.Component {
           <TabList>
             <Tab>About</Tab>
             <Tab>Comments</Tab>
-            <Tab>Attachments</Tab>
             <Tab>Update</Tab>
           </TabList>
           <TabPanel>
@@ -39,14 +38,6 @@ export default class Mainbar extends React.Component {
               facebook="https://www.facebook.com/fwedeorange"
               twitter="https://twitter.com/fwedeorange_"
               website="https://fkennedy.co"
-            />
-          </TabPanel>
-          <TabPanel>
-            <WorkInfo
-              previousWork={[]}
-              resume={this.props.user.resume}
-              github="https://github.com/fkennedy"
-              linkedin="https://www.linkedin.com/in/fkennedy0110"
             />
           </TabPanel>
           <TabPanel>
@@ -79,8 +70,6 @@ export default class Mainbar extends React.Component {
             <h3> TO BE ADDED</h3>
           </TabPanel>
         </Tabs>
-
-
       </div>
     );
   }
