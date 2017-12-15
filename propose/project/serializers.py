@@ -35,6 +35,15 @@ class TaskSerializer(serializers.ModelSerializer):
         model = Task
         fields = '__all__'
 
+class ProjectCommentSerializer(serializers.ModelSerializer):
+
+    project = serializers.SlugRelatedField(read_only=True, slug_field='title')
+    user = AccountSerializer(Account)
+
+    class Meta:
+        model = ProjectComment
+        fields = '__all__'
+
 """
 POST
 """
@@ -78,3 +87,9 @@ class ProjectCreateSerializer(serializers.ModelSerializer):
         project.tags = tags_data
 
         return project
+
+class ProjectCommentCreateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ProjectComment
+        fields = ('project', 'user', 'comment', )
