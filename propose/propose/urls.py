@@ -46,6 +46,7 @@ urlpatterns = [
     url(r'^projects/(?P<pk>[0-9]+)/$', generic.TemplateView.as_view(template_name='projectview.html')),
     url(r'^projects/(?P<pk>[0-9]+)/edit/$', generic.TemplateView.as_view(template_name='projectedit.html')),
     url(r'^projects/new/$', generic.TemplateView.as_view(template_name='projectnew.html')),
+    url(r'^applications/$', generic.TemplateView.as_view(template_name='applications.html')),
     url(r'^applicants/(?P<pk>[0-9]+)/$', generic.TemplateView.as_view(template_name='projectapplicants.html')),
     url(r'^api/', include('account.urls', namespace='account')),
     url(r'^api/', include('application.urls', namespace='application')),
