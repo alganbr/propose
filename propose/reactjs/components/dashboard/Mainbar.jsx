@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import About from '../profile/About';
 import ProfileInformation from '../profile/ProfileInformation';
-import ReviewBlurb from '../profile/ReviewBlurb';
+import CommentBlurb from './CommentBlurb';
 import WorkInfo from '../profile/WorkInfo';
 
 import 'react-tabs/style/react-tabs.scss';
@@ -12,6 +12,7 @@ import 'react-tabs/style/react-tabs.scss';
 export default class Mainbar extends React.Component {
   static propTypes = {
     project: PropTypes.object,
+    comments: PropTypes.array,
   }
 
   constructor(props) {
@@ -31,6 +32,13 @@ export default class Mainbar extends React.Component {
         {skills}
       </ul>
     )
+  }
+
+  _renderReviewBlurbs = () => {
+    return this.props.comments.map(comment => {
+      console.log(comment.comment)
+      return <CommentBlurb comment={comment}/>
+    })
   }
 
   render() {
@@ -59,30 +67,7 @@ export default class Mainbar extends React.Component {
             {this._renderSkills(this.props.project)}
           </TabPanel>
           <TabPanel>
-            <ReviewBlurb
-              clientName="Lorem ipsum dolor"
-              rating={5}
-              image={image}
-              reviewText={lorem}
-            />
-            <ReviewBlurb
-              clientName="Lorem ipsum dolor"
-              rating={4}
-              image={image}
-              reviewText={lorem}
-            />
-            <ReviewBlurb
-              clientName="Lorem ipsum dolor"
-              rating={3}
-              image={image}
-              reviewText={lorem}
-            />
-            <ReviewBlurb
-              clientName="Lorem ipsum dolor"
-              rating={5}
-              image={image}
-              reviewText={lorem}
-            />
+            {this._renderReviewBlurbs()}
           </TabPanel>
           <TabPanel>
             <h3> TO BE ADDED</h3>
