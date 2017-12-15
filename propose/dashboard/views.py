@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status, generics
 from django.db.models import Q
 
+from django.contrib.auth.models import User
 from .models import *
 from .serializers import *
 from project.models import *
@@ -31,5 +32,27 @@ class DashboardCompletedList(APIView):
             return Response(status=status.HTTP_204_NO_CONTENT)
         dashboard = get_object_or_404(Dashboard, owner=request.user.pk, is_completed_dashboard=True)
         projects = Project.objects.filter(Q(client_dashboard=dashboard) | Q(freelancer_dashboard=dashboard))
+        serializer = ProjectSerializer(projects, many=True)
+        return Response(serializer.data)
+
+class DashboardUserWorkingList(APIView):
+    """
+    /api/dashboards/user/<id>/working
+    """
+    def get(self, request, pk, format=None):
+        user = get_object_or_404(User, pk=pk)
+        dashboard = get_object_or_404(Dashboard, owner=user.pk, is_completed_dashboard=False)
+        projects = Project.objects.filter(Q(freelancer_dashboard=dashboard))
+        serializer = ProjectSerializer(projects, many=True)
+        return Response(serializer.data)
+
+class DashboardUserCompletedList(APIView):
+    """
+    /api/dashboards/user/<id>/completed
+    """
+    def get(self, request, pk, format=None):
+        user = get_object_or_404(User, pk=pk)
+        dashboard = get_object_or_404(Dashboard, owner=user.pk, is_completed_dashboard=True)
+        projects = Project.objects.filter(Q(freelancer_dashboard=dashboard))
         serializer = ProjectSerializer(projects, many=True)
         return Response(serializer.data)
