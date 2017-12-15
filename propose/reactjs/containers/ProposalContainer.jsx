@@ -25,29 +25,21 @@ export default class ProposalContainer extends React.Component {
       fetch(profileUrl, settings)
           .then((response) => response.json())
           .then((data) => {
-            console.log(data)
             component.setState({user: data});
           });
       let url = "/api/projects"
       fetch(url, settings)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
           component.setState({proposals:data})
         })
     }
 
     _renderCardsTwoColumn = (projects) => {
-      // let myProposals = projects.map(project => {
-      //   if (project && project.client && project.user && project.user.user && project.client.user.user.id === userId) {
-      //     return project
-      //   }
-      //   else {
-      //     return null;
-      //   }
-      // })
+      const user = this.state.user;
+      const validUserId = user && user.user 
       const cards = projects.map(project => {
-        if (project && project.client && project.user && project.user.user && project.client.user.user.id === userId) {
+        if (project && project.client && project.client.id && validUserId && project.client.id === user.id) {
           return <ProjectCard project={project}/>;
         }
         else {
