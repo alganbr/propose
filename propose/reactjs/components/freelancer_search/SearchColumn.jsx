@@ -71,7 +71,10 @@ class SearchColumn extends React.Component {
     })
     const tagString = parsedTags.toString();
     let url = "/api/projects/?" + $.param({search_terms: model.search, tags: tagString})
-    console.log(url)
+    if (this.props.tagType === "freelancer") {
+      console.log('Looking at freelancers')
+      url = "/api/users/?" + $.param({search_terms: model.search, skills: tagString})
+    }
     let settings = {
         method: "GET",
         credentials: 'same-origin'
@@ -86,6 +89,7 @@ class SearchColumn extends React.Component {
   }
 
   render() {
+    console.log('tagtype', this.props.tagType)
     return (
       <div className="search-column">
         <h3>Refine Your Search</h3>

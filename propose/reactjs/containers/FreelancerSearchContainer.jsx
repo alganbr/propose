@@ -21,7 +21,8 @@ export default class FreelancerSearchContainer extends React.Component {
 
   */
   static propTypes = {
-    data: PropTypes.array
+    data: PropTypes.array,
+
   }
 
   constructor(props) {
@@ -60,7 +61,7 @@ export default class FreelancerSearchContainer extends React.Component {
         <div className="container">
           <Headline>Search for a Freelancer</Headline>
         </div>
-        <FreelancerResultsContainer freelancers={this.state.users}/>
+        <FreelancerResultsContainer freelancers={this.state.users} component={this}/>
       </div>
     )
   }

@@ -39,30 +39,15 @@ export default class ProjectSearchContainer extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         let projects = [];
-        data.map(project => {
-          if (component.state.userId !== project.client.id)
-            projects.push(project)
-        })
-        component.setState({projects});
+        // data.map(project => {
+        //   if (component.state.userId !== project.client.id)
+        //     projects.push(project)
+        // })
+        component.setState({projects:data});
       });
   }
 
   onSubmit = (model, component) => {
-    console.log("Called sumit from resultscontainer!")
-    // let component = this;
-    // let url = "/api/projects/?" + $.param({search_terms: model.search})
-    // console.log(url)
-    // let settings = {
-    //     method: "GET",
-    //     credentials: 'same-origin'
-    // };
-
-    // fetch(url, settings)
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       console.log(data, "Looking at data")
-    //       component.setState({project:data});
-    //     });
   }
 
   render() {

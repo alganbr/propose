@@ -7,7 +7,8 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 
 export default class FreelancerResultsContainer extends React.Component {
   static propTypes = {
-    freelancers: PropTypes.array
+    freelancers: PropTypes.array,
+    component: PropTypes.element
   }
 
   constructor(props) {
@@ -49,7 +50,7 @@ export default class FreelancerResultsContainer extends React.Component {
       <Grid fluid>
         <Row>
           <Col className="sidebar" xs={4}>
-            <SearchColumn tagType="freelancer"/>
+            <SearchColumn tagType="freelancer" component={this.props.component}/>
           </Col>
           <Col className="mainbar" xs={8}>
             {this._renderCardsTwoColumn(this.props.freelancers)}
