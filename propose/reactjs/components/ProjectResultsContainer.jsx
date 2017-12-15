@@ -7,11 +7,14 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 
 export default class ProjectResultsContainer extends React.Component {
   static propTypes = {
-    projects: PropTypes.array
+    projects: PropTypes.array,
+    onSubmit: PropTypes.func,
+    component: PropTypes.element,
   }
 
   constructor(props) {
     super(props)
+    this.state=({projects: this.props.projects})
   }
 
   _renderCardsTwoColumn = (projects) => {
@@ -40,12 +43,15 @@ export default class ProjectResultsContainer extends React.Component {
       );
   }
 
+
+
   render() {
+    console.log('Render!')
     return (
       <Grid fluid>
         <Row>
           <Col className="sidebar" xs={4}>
-            <SearchColumn/>
+            <SearchColumn onSubmit={this.props.onSubmit} component={this.props.component}/>
           </Col>
           <Col className="mainbar" xs={8}>
             {this._renderCardsTwoColumn(this.props.projects)}

@@ -36,13 +36,32 @@ export default class ProjectSearchContainer extends React.Component {
       })
   }
 
+  onSubmit = (model, component) => {
+    console.log("Called sumit from resultscontainer!")
+    // let component = this;
+    // let url = "/api/projects/?" + $.param({search_terms: model.search})
+    // console.log(url)
+    // let settings = {
+    //     method: "GET",
+    //     credentials: 'same-origin'
+    // };
+
+    // fetch(url, settings)
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       console.log(data, "Looking at data")
+    //       component.setState({project:data});
+    //     });
+  }
+
   render() {
+    console.log(this.state, 'highest tier')
     return (
       <div className="project-search">
         <Navbar />
         <div className="container">
           <Headline>Search for a Project</Headline>
-          <ProjectResultsContainer projects={this.state.projects}/>
+          <ProjectResultsContainer projects={this.state.projects} onSubmit={this.onSubmit} component={this}/>
         </div>
       </div>
     )

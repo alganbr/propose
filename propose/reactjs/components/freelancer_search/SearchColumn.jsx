@@ -3,17 +3,22 @@ import ReactDOM from 'react-dom';
 import ReactTags from 'react-tag-autocomplete';
 import PropTypes from 'prop-types';
 
+import { Form, TextareaField, SubmitField } from 'react-components-form';
+
 import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons';
 
 class SearchColumn extends React.Component {
+  propTypes = {
+    onSubmit: PropTypes.func,
+    component: PropTypes.element,
+  }
   constructor (props) {
     super(props)
 
     this.state = {
       projectSize: "small",
       tags: [
-        { id: 1, name: "Apples" },
-        { id: 2, name: "Pears" }
+        { id: 1, name: "C++" },
       ],
       suggestions: [
         { id: 3, name: "Bananas" },
@@ -21,12 +26,6 @@ class SearchColumn extends React.Component {
         { id: 5, name: "Lemons" },
         { id: 6, name: "Apricots" }
       ],
-      locationTags: [],
-      locationSuggestions: [
-        { id: 1, name: "San Francisco" },
-        { id: 2, name: "New York" },
-        { id: 3, name: "Chicago" }
-      ]
     }
   }
 
@@ -56,6 +55,27 @@ class SearchColumn extends React.Component {
     this.setState({ locationTags: tags })
   }
 
+  onSubmit = (model) => {
+    const tags = this.state.tags;
+    const parsedTags = tags.map(tag => {
+      return tag.name;
+    })
+    const tagString = parsedTags.toString();
+    let url = "/api/projects/?" + $.param({search_terms: model.search, tags: tagString})
+    console.log(url)
+    let settings = {
+        method: "GET",
+        credentials: 'same-origin'
+    };
+
+    fetch(url, settings)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data, "Looking at data")
+          this.props.component.setState({projects:data});
+        });
+  }
+
   render() {
     return (
       <div className="search-column">
@@ -69,12 +89,13 @@ class SearchColumn extends React.Component {
           suggestions={this.state.suggestions}
           handleDelete={this.handleDelete}
           handleAddition={this.handleAddition} />
-        <h4>Location</h4>
-        <ReactTags
-          tags={this.state.locationTags}
-          suggestions={this.state.locationSuggestions}
-          handleDelete={this.handleLocationDelete}
-          handleAddition={this.handleLocationAddition} />
+        <Form
+          onSubmit={this.onSubmit}
+          onError={(errors, model) => console.log('error', errors, model)}
+        >
+          <TextareaField className="textarea" name="search" label="Search" />
+          <SubmitField value="Search" />
+        </Form>
       </div>
     )
   }
