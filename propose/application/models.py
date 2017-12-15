@@ -43,6 +43,9 @@ class WorkApplication(models.Model):
         default = False,
         blank = False)
 
+    def __str__(self):
+        return str(self.id)
+
 class WorkOffer(models.Model):
     details = models.OneToOneField(
         ApplicationDetail,
@@ -65,6 +68,9 @@ class WorkOffer(models.Model):
     expire_time = models.DateTimeField(
         blank = False)
 
+    def __str__(self):
+        return str(self.id)
+
 class WorkRequest(models.Model):
     details = models.OneToOneField(
         ApplicationDetail,
@@ -74,3 +80,6 @@ class WorkRequest(models.Model):
     is_declined = models.BooleanField(
         default = False,
         blank = False)
+
+    def __str__(self):
+        return str(self.id)
