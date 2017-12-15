@@ -14,6 +14,9 @@ def authorized_to_access_project(project, request):
         return True
     return False
 
+def client_only(project, request):
+    return project.client_id != request.user.pk
+
 # Create your views here.
 class ProjectList(APIView):
     """
@@ -55,6 +58,8 @@ class ProjectDetail(APIView):
 
     def delete(self, request, pk, format=None):
         project = self.get_object(pk)
+        if client_only(project, request):
+            return Response(None, status=status.HTTP_403_FORBIDDEN)
         project.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
