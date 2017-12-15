@@ -88,6 +88,25 @@ class ProjectCreateSerializer(serializers.ModelSerializer):
 
         return project
 
+class ProjectUpdateSerializer(serializers.ModelSerializer):
+    compensation = CompensationCreateSerializer()
+
+    class Meta:
+        model = Project
+        fields = ('title', 'description', 'tags', 'compensation', )
+
+    def update(self, instance, validated_data):
+        project = Project.objects.get(pk=instance.pk)
+        compensation_data = validated_data.pop('compensation')
+        compensation = Compensation.objects.create(**compensation_data)
+        tags_data = validated_data.pop('tags')
+        project.title = validated_data['title']
+        project.description = validated_data['description']
+        project.tags = tags_data
+        project.compensation = compensation
+
+        return project
+
 class ProjectCommentCreateSerializer(serializers.ModelSerializer):
 
     class Meta:

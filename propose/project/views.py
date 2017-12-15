@@ -56,6 +56,15 @@ class ProjectDetail(APIView):
         serializer = ProjectSerializer(project)
         return Response(serializer.data)
 
+    def post(self, request, pk, format=None):
+        project = self.get_object(pk)
+        serializer = ProjectUpdateSerializer(project, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
     def delete(self, request, pk, format=None):
         project = self.get_object(pk)
         if client_only(project, request):
