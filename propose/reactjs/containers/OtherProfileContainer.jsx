@@ -57,7 +57,6 @@ export default class OtherProfileContainer extends React.Component {
               <Sidebar
                 profilePicture={this.state.profile_pic}
                 skills={this.state.skills}
-                profile={false}
               />
             </div>
             <div className="col-sm-8">
