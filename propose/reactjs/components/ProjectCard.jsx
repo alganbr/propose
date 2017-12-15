@@ -7,6 +7,7 @@ import FontAwesome from 'react-fontawesome';
 export default class ProjectCard extends React.Component {
   static propTypes = {
     project: PropTypes.object,
+    cardType: PropTypes.string,
   }
 
   constructor(props) {
@@ -22,7 +23,11 @@ export default class ProjectCard extends React.Component {
 
   render() {
     const project = this.props.project
-    const projectUrl = "/projects/" + project.id.toString();
+    let projectUrl = "/projects/" + project.id.toString();
+    if (this.props.cardType) {
+      if (this.props.cardType == 'dashboard')
+        projectUrl = "/dashboards/project/" + project.id.toString();
+    } 
     return (
       <a href={projectUrl}>
       <Card className="card">

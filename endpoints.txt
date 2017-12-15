@@ -80,6 +80,10 @@ API Endpoints
         - (user-restricted) get tasks for project <id>
     - POST /api/project/<id>/tasks
         - (user-restricted) add a task to project <id>
+    - GET /api/project/<id>/tasks/<tasknumber>
+        - (user-restricted) get a specific task <tasknumber> of project <id>
+    - POST /api/project/<d>/tasks/<tasknuber>
+        - (user-restricted) edit a specific task <tasknumber> of project <id>
 
     - GET /api/applications
         - show list of applications

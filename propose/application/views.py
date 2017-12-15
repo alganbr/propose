@@ -49,6 +49,11 @@ class WorkApplicationList(APIView):
         return Response(serializer.data)
 
     def post(self, request, format=None):
+        # One application per user
+        existing_apps = WorkApplication.objects.filter(details__freelancer=request.user.pk)
+        if len(existing_apps) != 0:
+            return Response(None, status=status.HTTP_409_CONFLICT)
+
         serializer = WorkApplicationCreateSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
