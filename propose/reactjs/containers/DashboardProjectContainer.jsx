@@ -70,7 +70,7 @@ export default class DashProjectContainer extends React.Component {
                         <h3>Project List Here</h3>
                       </div>
                       <div className="col-sm-8">
-                        <Mainbar project={this.state.project} comments={thist.state.comments} />
+                        <Mainbar project={this.state.project} comments={this.state.comments} />
                       </div>
                     </div>
                   </div>
