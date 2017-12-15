@@ -49,7 +49,7 @@ export default class FreelancerResultsContainer extends React.Component {
       <Grid fluid>
         <Row>
           <Col className="sidebar" xs={4}>
-            <SearchColumn/>
+            <SearchColumn tagType="freelancer"/>
           </Col>
           <Col className="mainbar" xs={8}>
             {this._renderCardsTwoColumn(this.props.freelancers)}

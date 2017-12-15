@@ -51,7 +51,7 @@ export default class ProjectResultsContainer extends React.Component {
       <Grid fluid>
         <Row>
           <Col className="sidebar" xs={4}>
-            <SearchColumn onSubmit={this.props.onSubmit} component={this.props.component}/>
+            <SearchColumn onSubmit={this.props.onSubmit} component={this.props.component} tagType="project"/>
           </Col>
           <Col className="mainbar" xs={8}>
             {this._renderCardsTwoColumn(this.props.projects)}

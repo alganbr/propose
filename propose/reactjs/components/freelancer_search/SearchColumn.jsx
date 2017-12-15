@@ -11,22 +11,31 @@ class SearchColumn extends React.Component {
   propTypes = {
     onSubmit: PropTypes.func,
     component: PropTypes.element,
+    tagType: PropTypes.string,
   }
   constructor (props) {
     super(props)
 
     this.state = {
       projectSize: "small",
-      tags: [
-        { id: 1, name: "C++" },
-      ],
-      suggestions: [
-        { id: 3, name: "Bananas" },
-        { id: 4, name: "Mangos" },
-        { id: 5, name: "Lemons" },
-        { id: 6, name: "Apricots" }
-      ],
+      tags: [],
+      suggestions: [],
     }
+  }
+
+  componentDidMount() {
+    let component = this;
+    let profileUrl = "/api/tags";
+    let settings = {
+        method: "GET",
+        credentials: 'same-origin',
+    };
+
+    fetch(profileUrl, settings)
+        .then((response) => response.json())
+        .then((data) => {
+          component.setState({suggestions: data});
+        });
   }
 
   onChange = (value) => {
