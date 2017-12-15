@@ -110,7 +110,7 @@ class SearchColumn extends React.Component {
           onError={(errors, model) => console.log('error', errors, model)}
         >
           <TextareaField className="textarea" name="search" label="Search" />
-          <SubmitField value="Search" />
+          <SubmitField className="btn btn-primary" value="Search" />
         </Form>
       </div>
     )
