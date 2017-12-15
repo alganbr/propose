@@ -5,6 +5,22 @@ import Mainbar from '../components/dashboard/Mainbar';
 import Navbar from '../components/Navbar';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 export default class DashProjectContainer extends React.Component {
     static propTypes = {
         projectId: PropTypes.number,
@@ -54,7 +70,7 @@ export default class DashProjectContainer extends React.Component {
                         <h3>Project List Here</h3>
                       </div>
                       <div className="col-sm-8">
-                        <Mainbar project={this.state.project} comments={this.state.comments} />
+                        <Mainbar project={this.state.project} comments={thist.state.comments} />
                       </div>
                     </div>
                   </div>

@@ -13,6 +13,23 @@ const applyProjectSchema = new Schema({
     required: true
   }
 })
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
 export default class ProjectViewContainer extends React.Component {
   static propTypes = {
     projectsId: PropTypes.number,
@@ -76,6 +93,7 @@ export default class ProjectViewContainer extends React.Component {
 
     headers.append('Accept', 'application/json'); // This one is enough for GET requests
     headers.append('Content-Type', 'application/json'); // This one sends body
+    headers.append('X-CSRFToken', getCookie("csrftoken"))
     const applyUrl = "/api/applications/"
     const details = {
         details: {
