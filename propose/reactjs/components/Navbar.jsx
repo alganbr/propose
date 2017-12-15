@@ -21,6 +21,9 @@ export default class Navbar extends React.Component {
                   <a href="/project_search">Project Search</a>
                 </li>
                 <li>
+                  <a href="/dashboard">Dashboard</a>
+                </li>
+                <li>
                   <a href="/client_project_view">My Projects</a>
                 </li>
                 <li>
