@@ -44,7 +44,7 @@ class WorkApplicationList(APIView):
     /api/applications
     """
     def get(self, request, format=None):
-        application = WorkApplication.objects.filter(details__freelancer=request.user.pk)
+        application = WorkApplication.objects.all()
         serializer = WorkApplicationSerializer(application, many=True)
         return Response(serializer.data)
 

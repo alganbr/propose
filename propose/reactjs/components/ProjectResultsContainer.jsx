@@ -43,8 +43,6 @@ export default class ProjectResultsContainer extends React.Component {
       );
   }
 
-
-
   render() {
     console.log('Render!')
     return (

@@ -39,10 +39,6 @@ export default class ProjectSearchContainer extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         let projects = [];
-        // data.map(project => {
-        //   if (component.state.userId !== project.client.id)
-        //     projects.push(project)
-        // })
         component.setState({projects:data});
       });
   }

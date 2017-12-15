@@ -52,6 +52,11 @@ export default class DashProjectContainer extends React.Component {
           <div className="row">
             <div className="col-sm-4">
               <h3>Project List Here</h3>
+              <ul>
+                {this.state.projectList.map(project => {
+                  return(<li>{project.title}</li>);
+                })}
+              </ul>
             </div>
             <div className="col-sm-8">
               <Mainbar project={this.state.project} comments={this.state.comments} />
