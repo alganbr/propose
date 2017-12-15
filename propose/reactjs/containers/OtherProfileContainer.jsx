@@ -27,21 +27,27 @@ export default class OtherProfileContainer extends React.Component {
   }
 
   componentWillMount() {
-    let url = "/api/users/" + this.props.userId.toString();
-    let settings = {
-        method: "GET",
-        credentials: 'same-origin',
+    const userURL = "/api/users/" + this.props.userId.toString();
+    const settings = {
+      method: "GET",
+      credentials: 'same-origin',
     };
-    let component = this;
-    fetch(url, settings)
-        .then((response) => response.json())
-        .then((data) => {
-          component.setState(data);
-        });
+    const component = this;
+    fetch(userURL, settings)
+      .then((response) => response.json())
+      .then((data) => {
+        component.setState(data);
+        const reviewsURL = `/api/users/${data.id}/review/`;
+        fetch(reviewsURL, settings)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            component.setState({reviews: data});
+          });
+      });
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="profile">
         <Navbar />
@@ -51,10 +57,14 @@ export default class OtherProfileContainer extends React.Component {
               <Sidebar
                 profilePicture={this.state.profile_pic}
                 skills={this.state.skills}
+                profile={false}
               />
             </div>
             <div className="col-sm-8">
-              <Mainbar user={this.state} />
+              <Mainbar
+                user={this.state}
+                profile={false}
+              />
             </div>
           </div>
         </div>
