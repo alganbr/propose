@@ -24,14 +24,14 @@ export default class ClientProjectContainer extends React.Component {
       credentials: 'same-origin'
     };
 
-    let url = "/api/profile";
+    let url = "/api/profile/";
     fetch(url, settings)
       .then((response) => response.json())
       .then((data) => {
         component.setState({userId: data.id});
       });
 
-    url = "/api/projects";
+    url = "/api/dashboard/working/";
     fetch(url, settings)
       .then((response) => response.json())
       .then((data) => {
@@ -76,28 +76,7 @@ export default class ClientProjectContainer extends React.Component {
      <div className="client-project">
       <Navbar />
        <Grid fluid>
-         <Row>
-           <Col className="sidebar" xs={3}>
-             <h3>View Projects</h3>
-             <ul className="projects-list">
-              <li className="category">
-                <FontAwesome className="icon" name="bookmark" />Saved
-              </li>
-              <li className="category">
-                <FontAwesome className="icon" name="clock-o" />Pending
-              </li>
-              <li className="category">
-                <FontAwesome className="icon" name="envelope-o" />Invites
-              </li>
-              <li className="category">
-                <FontAwesome className="icon" name="check" />Completed
-              </li>
-             </ul>
-           </Col>
-           <Col className="mainbar" xs={9}>
-             {this._renderCardsTwoColumn(this.state.projects)}
-           </Col>
-         </Row>
+         {this._renderCardsTwoColumn(this.state.projects)}
        </Grid>
      </div>
     );

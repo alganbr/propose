@@ -68,7 +68,7 @@ class WorkOfferCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = WorkOffer
-        fields = ('details', 'applicatoin','expire_time')
+        fields = ('details', 'application', 'expire_time')
 
 class WorkRequestCreateSerializer(serializers.ModelSerializer):
 

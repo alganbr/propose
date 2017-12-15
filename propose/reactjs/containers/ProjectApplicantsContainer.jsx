@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 
 import Headline from '../components/Headline';
 import Navbar from '../components/Navbar';
-import FreelancerCard from '../components/FreelancerCard';
+import ApplicantCard from '../components/ApplicantCard';
 import ReviewBlurb from '../components/profile/ReviewBlurb';
 import WorkInfo from '../components/profile/WorkInfo';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 
-export default class FreelancerSearchContainer extends React.Component {
+export default class ProjectApplicantsContainer extends React.Component {
   /*
   TO LOAD FIXTURE DATA run the following for accounts
 
@@ -52,7 +52,7 @@ export default class FreelancerSearchContainer extends React.Component {
           component.setState({users:data});
         });
 
-    fetch("/api/applications", settings)
+    fetch("/api/applications/", settings)
       .then((response) => response.json())
       .then((data) => {
         console.log(data, "Looking at data")
@@ -64,20 +64,18 @@ export default class FreelancerSearchContainer extends React.Component {
   _renderCardsTwoColumn = (users) => {
     console.log(this.state.users, "users")
     let parsedApps = this.state.applications.map(app => {
-      console.log('app', app)
-      console.log(app.details.project === 1)
       if (app.details && app.details.project === Number(this.props.projectId)) {
-        console.log('EAULQ')
-        return app.details.freelancer
+        return app
       }
       return null
     });
-    console.log(parsedApps, 'parsed')
+
     const cards = users.map(user => {
       for (let i = 0; i<parsedApps.length; i++) {
-        if (user.id === parsedApps[i]){
+        if (user.id === parsedApps[i].details.freelancer){
           return (
-            <FreelancerCard
+            <ApplicantCard
+              application={parsedApps[i]}
               freelancer={user}
             />
           );
@@ -109,7 +107,7 @@ export default class FreelancerSearchContainer extends React.Component {
 
   render() {
     return (
-      <div className="freelancer-search">
+      <div className="applicants">
         <Navbar />
         <div className="container">
           <Headline>View Applicants</Headline>

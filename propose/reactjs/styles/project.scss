@@ -14,27 +14,25 @@
       }
     }
   }
-  .mainbar {
-    .card {
-      border: none !important;
-      border-radius: 0 !important;
-      min-height: 200px;
-      .body {
-        width: 100%;
-        margin-right: none;
-        .name {
-          font-size: 24px;
-          font-weight: bold;
-        }
-        .card-icon {
-          padding-right: 5px;
-        }
-        .compensation {
-          color: #4CAF50;
-        }
-        .description, .bio {
-          padding-top: 10px;
-        }
+  .card {
+    border: none !important;
+    border-radius: 0 !important;
+    min-height: 200px;
+    .body {
+      width: 100%;
+      margin-right: none;
+      .name {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .card-icon {
+        padding-right: 5px;
+      }
+      .compensation {
+        color: #4CAF50;
+      }
+      .description, .bio {
+        padding-top: 10px;
       }
     }
   }

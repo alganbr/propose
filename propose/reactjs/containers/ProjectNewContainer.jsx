@@ -22,7 +22,6 @@ export default class ProjectNewContainer extends React.Component {
   }
 
   componentWillMount() {
-    alert("Project proposed!");
     let component = this;
     let settings = {
       method: "GET",

@@ -16,7 +16,7 @@ export default class Sidebar extends React.Component {
 
     return (
       <div className="sidebar">
-        <img src={this.props.profilePicture} className="profile-picture"/>
+        <img src="/media/profile_pics/profilepicture.jpg" className="profile-picture"/>
         <div className="completed-projects">
           <h4>Completed Projects</h4>
           <ul>

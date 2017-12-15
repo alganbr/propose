@@ -2,6 +2,7 @@ from django.db import models
 
 from account.models import Account
 from project.models import Project
+from datetime import datetime, timedelta
 
 # Create your models here.
 class ApplicationDetail(models.Model):
@@ -66,6 +67,7 @@ class WorkOffer(models.Model):
         blank = False)
 
     expire_time = models.DateTimeField(
+        default = datetime.now()+timedelta(days=30),
         blank = False)
 
     def __str__(self):

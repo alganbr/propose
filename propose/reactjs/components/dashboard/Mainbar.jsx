@@ -55,7 +55,7 @@ export default class Mainbar extends React.Component {
     var headers = new Headers();
     headers.append('Accept', 'application/json'); // This one is enough for GET requests
     headers.append('Content-Type', 'application/json'); // This one sends body
-    headers.append('X-CSRFToken', Cookies.get("csrftoken"))
+    headers.append('X-CSRFToken', Cookies.get("csrftoken"));
     const convertedText = htmlToText.fromString(this.state.value.toString('html'));
     const commentUrl = "/api/projects/" + this.props.project.id.toString() + "/comments"
     const details = {

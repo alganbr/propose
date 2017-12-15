@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Form, TextareaField, SubmitField } from 'react-components-form';
 import Schema from 'form-schema-validation';
+import Cookies from 'js-cookie';
 
 import Navbar from '../components/Navbar';
 
@@ -13,22 +14,6 @@ const applyProjectSchema = new Schema({
     required: true
   }
 })
-
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie != '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
 
 export default class ProjectViewContainer extends React.Component {
   static propTypes = {
@@ -106,7 +91,7 @@ export default class ProjectViewContainer extends React.Component {
         </a>
         <a href={"/applicants/" + this.state.project.id +"/"}>
         <button className="btn btn-secondary" onClick={this.openModel}>
-          Applicants 
+          Applicants
         </button>
         </a>
       </div>
@@ -126,16 +111,16 @@ export default class ProjectViewContainer extends React.Component {
 
     headers.append('Accept', 'application/json'); // This one is enough for GET requests
     headers.append('Content-Type', 'application/json'); // This one sends body
-    headers.append('X-CSRFToken', getCookie("csrftoken"))
-    const applyUrl = "/api/applications/"
+    headers.append('X-CSRFToken', Cookies.get("csrftoken"))
+    const applyUrl = "/api/applications/";
     const details = {
-        details: {
-               project: this.state.project.id,
-               freelancer: this.state.user.id,
-               client: this.state.project.client.id,
-               message: model.message,
-           }};
-    console.log("looking at the detials", details)
+      details: {
+        project: this.state.project.id,
+        freelancer: this.state.user.id,
+        client: this.state.project.client.id,
+        message: model.message,
+      }
+    }
     const settings = {
         method: "POST",
         credentials: 'same-origin',
@@ -147,6 +132,7 @@ export default class ProjectViewContainer extends React.Component {
         .then((data) => {})
     alert('Applied!');
     this.setState({modalIsOpen: false});
+    window.location.replace('/applications/')
   }
 
   render() {

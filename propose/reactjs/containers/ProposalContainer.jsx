@@ -73,6 +73,11 @@ export default class ProposalContainer extends React.Component {
     return (
       <div className="proposal">
         <Navbar />
+        <a href="/projects/new">
+          <button className="btn btn-primary">
+            Propose a Project
+          </button>
+        </a>
         <Grid fluid>
           <Row>
           <Col className="mainbar" xs={12}>
